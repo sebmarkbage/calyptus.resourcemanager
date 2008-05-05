@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YUICompressor.NET", "YUICompressor.NET.csproj", "{4B7FF731-918C-4E45-AC1C-0AFE56CC68E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YUICompressor.NET Tests", "..\YUICompressor.NET Tests\YUICompressor.NET Tests.csproj", "{5281DBE8-180F-4112-A53C-279C0E7F9A5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CD89CD3E-1C9E-42D6-B7CA-4F57D5FE3C55}"
+	ProjectSection(SolutionItems) = preProject
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+		YUICompressor.NET.vsmdi = YUICompressor.NET.vsmdi
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = YUICompressor.NET.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B7FF731-918C-4E45-AC1C-0AFE56CC68E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B7FF731-918C-4E45-AC1C-0AFE56CC68E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B7FF731-918C-4E45-AC1C-0AFE56CC68E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B7FF731-918C-4E45-AC1C-0AFE56CC68E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5281DBE8-180F-4112-A53C-279C0E7F9A5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5281DBE8-180F-4112-A53C-279C0E7F9A5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5281DBE8-180F-4112-A53C-279C0E7F9A5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5281DBE8-180F-4112-A53C-279C0E7F9A5B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
