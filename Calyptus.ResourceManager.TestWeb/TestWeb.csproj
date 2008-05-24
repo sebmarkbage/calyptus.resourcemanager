@@ -1,0 +1,189 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BD38D7F6-244E-4631-933B-4231B9443D2D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestWebNamespace</RootNamespace>
+    <AssemblyName>TestWeb</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CSS\MyStyleB.css" />
+    <Content Include="CSS\MyStyleA.css" />
+    <Content Include="CSS\Reset.css" />
+    <Content Include="Default.aspx" />
+    <EmbeddedResource Include="JS\Test3.js" />
+    <Content Include="JS\Default.aspx" />
+    <Content Include="MooTools\References\Class\Class.js" />
+    <Content Include="MooTools\References\Class\Class.Extras.js" />
+    <Content Include="MooTools\References\Core\Browser.js" />
+    <Content Include="MooTools\References\Core\Core.js" />
+    <Content Include="MooTools\References\Element\Element.Dimensions.js" />
+    <Content Include="MooTools\References\Element\Element.Style.js" />
+    <Content Include="MooTools\References\Element\Element.Event.js" />
+    <Content Include="MooTools\References\Element\Element.js" />
+    <Content Include="MooTools\References\Fx\Fx.CSS.js" />
+    <Content Include="MooTools\References\Fx\Fx.js" />
+    <Content Include="MooTools\References\Fx\Fx.Morph.js" />
+    <Content Include="MooTools\References\Fx\Fx.Transitions.js" />
+    <Content Include="MooTools\References\Fx\Fx.Tween.js" />
+    <Content Include="MooTools\References\Native\Array.js" />
+    <Content Include="MooTools\References\Plugins\Accordion.js" />
+    <Content Include="MooTools\References\Plugins\Assets.js" />
+    <Content Include="MooTools\References\Plugins\Color.js" />
+    <Content Include="MooTools\References\Plugins\Drag.js" />
+    <Content Include="MooTools\References\Plugins\Drag.Move.js" />
+    <Content Include="MooTools\References\Plugins\Fx.Elements.js" />
+    <Content Include="MooTools\References\Plugins\Fx.Scroll.js" />
+    <Content Include="MooTools\References\Plugins\Fx.Slide.js" />
+    <Content Include="MooTools\References\Plugins\Group.js" />
+    <Content Include="MooTools\References\Plugins\Hash.Cookie.js" />
+    <Content Include="MooTools\References\Plugins\Scroller.js" />
+    <Content Include="MooTools\References\Plugins\Slider.js" />
+    <Content Include="MooTools\References\Plugins\SmoothScroll.js" />
+    <Content Include="MooTools\References\Plugins\Sortables.js" />
+    <Content Include="MooTools\References\Plugins\Tips.js" />
+    <Content Include="MooTools\References\Request\Request.HTML.js" />
+    <Content Include="MooTools\References\Request\Request.js" />
+    <Content Include="MooTools\References\Request\Request.JSON.js" />
+    <Content Include="MooTools\References\Utilities\Cookie.js" />
+    <Content Include="MooTools\References\Utilities\Swiff.js" />
+    <Content Include="MooTools\References\Utilities\Selectors.js" />
+    <Content Include="MooTools\References\Utilities\JSON.js" />
+    <Content Include="MooTools\References\Utilities\DomReady.js" />
+    <Content Include="MooTools\Source\Class\Class.Extras.js" />
+    <Content Include="MooTools\Source\Class\Class.js" />
+    <Content Include="MooTools\Source\Core\Browser.js" />
+    <Content Include="MooTools\Source\Core\Core.js" />
+    <Content Include="MooTools\Source\Element\Element.Dimensions.js" />
+    <Content Include="MooTools\Source\Element\Element.Event.js" />
+    <Content Include="MooTools\Source\Element\Element.js" />
+    <Content Include="MooTools\Source\Element\Element.Style.js" />
+    <Content Include="MooTools\Source\Fx\Fx.CSS.js" />
+    <Content Include="MooTools\Source\Fx\Fx.js" />
+    <Content Include="MooTools\Source\Fx\Fx.Morph.js" />
+    <Content Include="MooTools\Source\Fx\Fx.Transitions.js" />
+    <Content Include="MooTools\Source\Fx\Fx.Tween.js" />
+    <Content Include="MooTools\Source\Native\Array.js" />
+    <Content Include="MooTools\Source\Native\Event.js" />
+    <Content Include="MooTools\Source\Native\Function.js" />
+    <Content Include="MooTools\Source\Native\Hash.js" />
+    <Content Include="MooTools\Source\Native\Number.js" />
+    <Content Include="MooTools\Source\Native\String.js" />
+    <Content Include="MooTools\Source\Plugins\Accordion.js" />
+    <Content Include="MooTools\Source\Plugins\Assets.js" />
+    <Content Include="MooTools\Source\Plugins\Color.js" />
+    <Content Include="MooTools\Source\Plugins\Drag.js" />
+    <Content Include="MooTools\Source\Plugins\Drag.Move.js" />
+    <Content Include="MooTools\Source\Plugins\Fx.Elements.js" />
+    <Content Include="MooTools\Source\Plugins\Fx.Scroll.js" />
+    <Content Include="MooTools\Source\Plugins\Fx.Slide.js" />
+    <Content Include="MooTools\Source\Plugins\Group.js" />
+    <Content Include="MooTools\Source\Plugins\Hash.Cookie.js" />
+    <Content Include="MooTools\Source\Plugins\Scroller.js" />
+    <Content Include="MooTools\Source\Plugins\Slider.js" />
+    <Content Include="MooTools\Source\Plugins\SmoothScroll.js" />
+    <Content Include="MooTools\Source\Plugins\Sortables.js" />
+    <Content Include="MooTools\Source\Plugins\Tips.js" />
+    <Content Include="MooTools\Source\Request\Request.HTML.js" />
+    <Content Include="MooTools\Source\Request\Request.js" />
+    <Content Include="MooTools\Source\Request\Request.JSON.js" />
+    <Content Include="MooTools\Source\Utilities\Cookie.js" />
+    <Content Include="MooTools\Source\Utilities\DomReady.js" />
+    <Content Include="MooTools\Source\Utilities\JSON.js" />
+    <Content Include="MooTools\Source\Utilities\Selectors.js" />
+    <Content Include="MooTools\Source\Utilities\Swiff.js" />
+    <Content Include="Test.js" />
+    <EmbeddedResource Include="JS\Test2.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Calyptus.ResourceManager\ResourceManager.csproj">
+      <Project>{BFDEC588-9458-42B6-824B-F6D3B43C8899}</Project>
+      <Name>ResourceManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>47957</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

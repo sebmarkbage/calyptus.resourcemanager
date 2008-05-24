@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Calyptus.ResourceManager.HttpHandlerURLFactory">
+    <Position X="8.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>URLFactories\HttpHandlerURLFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Calyptus.ResourceManager.JavaScriptFactory">
+    <Position X="0.75" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>ResourceFactories\JavaScriptResourceFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calyptus.ResourceManager.CSSFactory">
+    <Position X="0.75" Y="2" Width="3" />
+    <InheritanceLine Type="Calyptus.ResourceManager.ResourceFactoryBase" FixedToPoint="true">
+      <Path>
+        <Point X="6.25" Y="2.055" />
+        <Point X="6.25" Y="2.625" />
+        <Point X="3.75" Y="2.625" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>ResourceFactories\CSSResourceFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calyptus.ResourceManager.ImageFactory">
+    <Position X="0.75" Y="3.5" Width="3" />
+    <InheritanceLine Type="Calyptus.ResourceManager.ResourceFactoryBase" FixedToPoint="true">
+      <Path>
+        <Point X="6.25" Y="2.055" />
+        <Point X="6.25" Y="4.062" />
+        <Point X="3.75" Y="4.062" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>ResourceFactories\ImageResourceFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calyptus.ResourceManager.XMLResourceFactory">
+    <Position X="0.75" Y="5" Width="3" />
+    <InheritanceLine Type="Calyptus.ResourceManager.ResourceFactoryBase" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.25" Y="2.055" />
+        <Point X="6.25" Y="5.688" />
+        <Point X="3.75" Y="5.688" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>ResourceFactories\XMLResourceFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calyptus.ResourceManager.ResourceFactoryBase">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>ResourceFactories\ResourceFactoryBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Calyptus.ResourceManager.FactoryManager">
+    <Position X="8.25" Y="2.25" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>BEAAQABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ResourceFactories\FactoryManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

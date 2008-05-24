@@ -1,0 +1,8 @@
+﻿/*
+@reference(MyStyleA.css)
+*/
+
+h1
+{
+	color: #FF0000;
+}
