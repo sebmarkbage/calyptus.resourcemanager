@@ -58,7 +58,6 @@
     <Content Include="CSS\Reset.css" />
     <Content Include="Default.aspx" />
     <EmbeddedResource Include="JS\Test3.js" />
-    <Content Include="JS\Default.aspx" />
     <Content Include="MooTools\References\Class\Class.js" />
     <Content Include="MooTools\References\Class\Class.Extras.js" />
     <Content Include="MooTools\References\Core\Browser.js" />

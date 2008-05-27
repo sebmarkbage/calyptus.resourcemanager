@@ -6,6 +6,7 @@
 <head>
     <title>Untitled Page</title>
     <c:Build Name="CSS/MyStyleB.css" runat="server" />
+    <c:Reference Src="http://www.fordonslagret.se/js/common.js" runat="server" />
     <c:Reference Name="Test.js" runat="server" />
     <c:Reference Name="MooTools/References/Utilities/DomReady.js" runat="server" />
 </head>

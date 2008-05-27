@@ -75,6 +75,11 @@ namespace Calyptus.ResourceManager
 				VirtualPathLocation vl = location as VirtualPathLocation;
 				path = String.Format(resource is IProxyResource ? "{0}.res.axd" : "{0}", HttpUtility.UrlPathEncode(vl.VirtualPath));
 			}
+			else if (location is ExternalLocation)
+			{
+				ExternalLocation el = location as ExternalLocation;
+				return el.Uri.ToString();
+			}
 			else
 				throw new Exception("Unknown IResourceLocationType");
 			return String.Format("{0}?{1}", path, version);

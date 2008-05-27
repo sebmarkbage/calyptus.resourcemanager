@@ -54,6 +54,7 @@
     <Compile Include="IProxyResource.cs" />
     <Compile Include="JavaScript\ExtendedJavaScriptResource.cs" />
     <Compile Include="Compression\IJavaScriptCompressor.cs" />
+    <Compile Include="Location\ExternalLocation.cs" />
     <Compile Include="Location\FileLocation.cs" />
     <Compile Include="Location\LocationHelper.cs" />
     <Compile Include="Controls\Include.cs" />

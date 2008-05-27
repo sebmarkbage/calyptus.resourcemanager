@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace Calyptus.ResourceManager
 {
@@ -12,6 +13,11 @@ namespace Calyptus.ResourceManager
 			{
 				Assembly a = Assembly.Load(assembly);
 				return GetLocation(a, name);
+			}
+			Regex isUrl = new Regex(@"(http|https)\://", RegexOptions.IgnoreCase);
+			if (isUrl.IsMatch(name))
+			{
+				return GetLocation(new Uri(name));
 			}
 			else if (baseLocation is EmbeddedLocation)
 			{
@@ -27,8 +33,22 @@ namespace Calyptus.ResourceManager
 			{
 				return GetLocation((baseLocation as VirtualPathLocation).VirtualPath, name);
 			}
+			else if (baseLocation is ExternalLocation)
+			{
+				return GetLocation((baseLocation as ExternalLocation).Uri, name);
+			}
 			else
 				throw new Exception("Unknown IResourceLocation");
+		}
+
+		public static IResourceLocation GetLocation(Uri uri)
+		{
+			return new ExternalLocation(uri);
+		}
+
+		public static IResourceLocation GetLocation(Uri uri, string relativePath)
+		{
+			return new ExternalLocation(new Uri(uri, relativePath));
 		}
 
 		public static IResourceLocation GetLocation(Assembly assembly, string name)
