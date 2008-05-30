@@ -1443,13 +1443,12 @@ namespace Org.Mozilla.JavaScript
 
 		private bool FillSourceBuffer()
 		{
-			if (sourceString != null) //TODO: Kit.codeBug();
+			//if (sourceString != null) //TODO: Kit.codeBug();
 			if (sourceEnd == sourceBuffer.Length)
 			{
 				if (lineStart != 0)
 				{
-					Array.Copy(sourceBuffer, lineStart, sourceBuffer, 0,
-									 sourceEnd - lineStart);
+					Array.Copy(sourceBuffer, lineStart, sourceBuffer, 0, sourceEnd - lineStart);
 					sourceEnd -= lineStart;
 					sourceCursor -= lineStart;
 					lineStart = 0;
@@ -1461,8 +1460,7 @@ namespace Org.Mozilla.JavaScript
 					sourceBuffer = tmp;
 				}
 			}
-			int n = sourceReader.Read(sourceBuffer, sourceEnd,
-									  sourceBuffer.length - sourceEnd);
+			int n = sourceReader.Read(sourceBuffer, sourceEnd, sourceBuffer.length - sourceEnd);
 			if (n < 0)
 				return false;
 

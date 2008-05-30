@@ -45,14 +45,18 @@
     <Compile Include="Decompiler.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="IRFactory.cs" />
     <Compile Include="JavaScriptCompressor.cs" />
     <Compile Include="JavaScriptIdentifier.cs" />
     <Compile Include="JavaScriptToken.cs" />
+    <Compile Include="Kit.cs" />
+    <Compile Include="Node.cs" />
     <Compile Include="Parser.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScriptOrFnNode.cs" />
     <Compile Include="ScriptOrFnScope.cs" />
     <Compile Include="ScriptRuntime.cs" />
     <Compile Include="Token.cs">
