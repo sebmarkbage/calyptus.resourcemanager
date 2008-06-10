@@ -1,0 +1,5 @@
+﻿//@reference(MooTools.Core.Core.js)
+//@reference(MooTools.Native.Array.js)
+//@reference(MooTools.Class.Class.js)
+//@reference(MooTools.Class.Class.Extras.js)
+//@include(Calyptus.ClientSide.JavaScript.Native.Uri.js)

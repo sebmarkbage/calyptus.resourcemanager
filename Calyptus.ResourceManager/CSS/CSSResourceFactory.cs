@@ -61,7 +61,12 @@ namespace Calyptus.ResourceManager
 			if ((reader.Compress == null || compress == Compress.Never) && reader.Includes == null && reader.Builds == null && l is VirtualPathLocation)
 				return new PlainCSSResource(references.Count > 0 ? references.ToArray() : null, l);
 			else
-				return new ExtendedCSSResource(reader.Compress == null ? (bool?)null : compress != Compress.Never, references.Count > 0 ? references.ToArray() : null, includes.Count > 0 ? includes.ToArray() : null, builds.Count > 0 ? builds.ToArray() : null, l);
+				return new ExtendedCSSResource(
+					reader.Compress == null ? (bool?)null : (compress == Compress.Always || (compress == Compress.Release && !FactoryManager.DebugMode)),
+					references.Count > 0 ? references.ToArray() : null,
+					includes.Count > 0 ? includes.ToArray() : null,
+					builds.Count > 0 ? builds.ToArray() : null,
+					l);
 		}
 	}
 }

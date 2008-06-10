@@ -1,0 +1,7 @@
+﻿//@reference(MooTools.Core.Core.js)
+//@reference(MooTools.Class.Class.js)
+//@reference(MooTools.Element.Element.js)
+//@reference(MooTools.Element.Element.Style.js)
+//@reference(MooTools.Fx.Fx.Morph.js)
+//@reference(Calyptus.Popup.Popup.js)
+//@include(Calyptus.ClientSide.JavaScript.Popup.Popup.Overlay.js)

@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Compress.cs" />
+    <Compile Include="Compression\Compress.cs" />
     <Compile Include="Compression\ICSSCompressor.cs" />
     <Compile Include="Compression\EMCAScriptPacker.cs" />
     <Compile Include="Compression\ParseMaster.cs" />
