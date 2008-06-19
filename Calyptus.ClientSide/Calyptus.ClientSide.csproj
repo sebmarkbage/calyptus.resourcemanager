@@ -39,12 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Calyptus.ResourceManager\ResourceManager.csproj">
-      <Project>{BFDEC588-9458-42B6-824B-F6D3B43C8899}</Project>
-      <Name>ResourceManager</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Calyptus\Editable.Exec.js">
       <LogicalName>Calyptus.Editable.Exec.js</LogicalName>
     </EmbeddedResource>
