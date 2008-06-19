@@ -34,11 +34,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Calyptus\Editable.Exec.js">
       <LogicalName>Calyptus.Editable.Exec.js</LogicalName>
     </EmbeddedResource>
