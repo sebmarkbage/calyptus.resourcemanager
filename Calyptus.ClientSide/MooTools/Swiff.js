@@ -1,2 +1,2 @@
-//@reference(MooTools.Element.Element.Event.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Utilities.Swiff.js)
+//@reference(MooTools.Event.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.Core.Utilities.Swiff.js)

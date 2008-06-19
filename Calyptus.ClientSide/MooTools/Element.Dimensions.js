@@ -1,2 +1,2 @@
-//@reference(MooTools.Element.Element.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Element.Element.Dimensions.js)
+//@reference(MooTools.Element.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.Core.Element.Element.Dimensions.js)

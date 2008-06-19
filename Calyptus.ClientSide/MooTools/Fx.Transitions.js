@@ -1,2 +1,2 @@
-//@reference(MooTools.Fx.Fx.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Fx.Fx.Transitions.js)
+//@reference(MooTools.Fx.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.Core.Fx.Fx.Transitions.js)

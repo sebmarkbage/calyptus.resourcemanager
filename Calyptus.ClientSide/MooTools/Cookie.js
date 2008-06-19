@@ -1,4 +1,4 @@
-//@reference(MooTools.Core.Browser.js)
-//@reference(MooTools.Class.Class.js)
-//@reference(MooTools.Class.Class.Extras.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Utilities.Cookie.js)
+//@reference(MooTools.Browser.js)
+//@reference(MooTools.Class.js)
+//@reference(MooTools.Class.Extras.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.Core.Utilities.Cookie.js)

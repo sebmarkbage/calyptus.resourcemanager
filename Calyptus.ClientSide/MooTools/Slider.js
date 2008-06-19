@@ -1,3 +1,3 @@
-//@reference(MooTools.Plugins.Drag.js)
-//@reference(MooTools.Element.Element.Dimensions.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Plugins.Slider.js)
+//@reference(MooTools.Drag.js)
+//@reference(MooTools.Element.Dimensions.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.More.Interface.Slider.js)

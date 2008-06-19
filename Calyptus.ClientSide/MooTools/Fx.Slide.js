@@ -1,3 +1,3 @@
-//@reference(MooTools.Fx.Fx.js)
-//@reference(MooTools.Element.Element.Style.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Plugins.Fx.Slide.js)
+//@reference(MooTools.Fx.js)
+//@reference(MooTools.Element.Style.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.More.Fx.Fx.Slide.js)

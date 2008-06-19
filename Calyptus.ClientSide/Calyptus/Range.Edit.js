@@ -1,4 +1,4 @@
-﻿//@reference(MooTools.Core.Core.js)
-//@reference(MooTools.Element.Element.js)
-//@reference(Calyptus.Native.Range.js)
-//@include(Calyptus.ClientSide.JavaScript.Native.Range.Edit.js)
+﻿//@reference(MooTools.Core.js)
+//@reference(MooTools.Element.js)
+//@reference(Calyptus.Range.js)
+//@include(Calyptus.ClientSide.Lib.Calyptus.Native.Range.Edit.js)

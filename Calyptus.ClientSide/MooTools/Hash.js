@@ -1,2 +1,2 @@
-//@reference(MooTools.Core.Core.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Native.Hash.js)
+//@reference(MooTools.Core.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.Core.Native.Hash.js)

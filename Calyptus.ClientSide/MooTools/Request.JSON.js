@@ -1,3 +1,3 @@
-//@reference(MooTools.Request.Request.js)
-//@reference(MooTools.Utilities.JSON.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Request.Request.JSON.js)
+//@reference(MooTools.Request.js)
+//@reference(MooTools.JSON.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.Core.Request.Request.JSON.js)

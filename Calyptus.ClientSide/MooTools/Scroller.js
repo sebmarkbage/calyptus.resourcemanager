@@ -1,4 +1,4 @@
-//@reference(MooTools.Class.Class.Extras.js)
-//@reference(MooTools.Element.Element.Event.js)
-//@reference(MooTools.Element.Element.Dimensions.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Plugins.Scroller.js)
+//@reference(MooTools.Class.Extras.js)
+//@reference(MooTools.Element.Event.js)
+//@reference(MooTools.Element.Dimensions.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.More.Interface.Scroller.js)

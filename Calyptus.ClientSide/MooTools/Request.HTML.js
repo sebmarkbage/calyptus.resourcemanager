@@ -1,3 +1,3 @@
-//@reference(MooTools.Request.Request.js)
-//@reference(MooTools.Element.Element.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Request.Request.HTML.js)
+//@reference(MooTools.Request.js)
+//@reference(MooTools.Element.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.Core.Request.Request.HTML.js)

@@ -1,1 +1,1 @@
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Core.Core.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.Core.Core.Core.js)

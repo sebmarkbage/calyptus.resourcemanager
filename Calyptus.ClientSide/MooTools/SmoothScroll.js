@@ -1,2 +1,2 @@
-//@reference(MooTools.Plugins.Fx.Scroll.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Plugins.SmoothScroll.js)
+//@reference(MooTools.Fx.Scroll.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.More.Interface.SmoothScroll.js)

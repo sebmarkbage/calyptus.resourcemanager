@@ -1,4 +1,4 @@
-//@reference(MooTools.Class.Class.Extras.js)
-//@reference(MooTools.Utilities.Cookie.js)
-//@reference(MooTools.Utilities.JSON.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Plugins.Hash.Cookie.js)
+//@reference(MooTools.Class.Extras.js)
+//@reference(MooTools.Cookie.js)
+//@reference(MooTools.JSON.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.More.Utilities.Hash.Cookie.js)

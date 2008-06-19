@@ -1,2 +1,2 @@
-﻿//@reference(Calyptus.Editable.Editable.js)
-//@include(Calyptus.ClientSide.JavaScript.Editable.Editable.Toolbox.js)
+﻿//@reference(Calyptus.Editable.js)
+//@include(Calyptus.ClientSide.Lib.Calyptus.Editable.Editable.Toolbox.js)

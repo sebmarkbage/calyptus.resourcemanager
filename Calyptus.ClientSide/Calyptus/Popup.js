@@ -1,4 +1,4 @@
-﻿//@reference(MooTools.Core.Core.js)
-//@reference(MooTools.Class.Class.js)
-//@reference(MooTools.Element.Element.js)
-//@include(Calyptus.ClientSide.JavaScript.Popup.Popup.js)
+﻿//@reference(MooTools.Core.js)
+//@reference(MooTools.Class.js)
+//@reference(MooTools.Element.js)
+//@include(Calyptus.ClientSide.Lib.Calyptus.Popup.Popup.js)

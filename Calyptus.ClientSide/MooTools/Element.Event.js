@@ -1,3 +1,3 @@
-//@reference(MooTools.Element.Element.js)
-//@reference(MooTools.Native.Event.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Element.Element.Event.js)
+//@reference(MooTools.Element.js)
+//@reference(MooTools.Event.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.Core.Element.Element.Event.js)

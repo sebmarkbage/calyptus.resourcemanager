@@ -1,4 +1,4 @@
-//@reference(MooTools.Core.Core.js)
-//@reference(MooTools.Class.Class.js)
-//@reference(MooTools.Utilities.Swiff.js)
-//@include(Calyptus.ClientSide.JavaScript.Plugins.Video.js)
+//@reference(MooTools.Core.js)
+//@reference(MooTools.Class.js)
+//@reference(MooTools.Swiff.js)
+//@include(Calyptus.ClientSide.Lib.Calyptus.Plugins.Video.js)

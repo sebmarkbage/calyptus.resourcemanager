@@ -1,2 +1,2 @@
-//@reference(MooTools.Element.Element.Event.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Plugins.Assets.js)
+//@reference(MooTools.Element.Event.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.More.Utilities.Assets.js)

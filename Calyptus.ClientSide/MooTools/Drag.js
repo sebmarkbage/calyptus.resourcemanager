@@ -1,4 +1,4 @@
-//@reference(MooTools.Class.Class.Extras.js)
-//@reference(MooTools.Element.Element.Event.js)
-//@reference(MooTools.Element.Element.Style.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Plugins.Drag.js)
+//@reference(MooTools.Class.Extras.js)
+//@reference(MooTools.Element.Event.js)
+//@reference(MooTools.Element.Style.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.More.Drag.Drag.js)

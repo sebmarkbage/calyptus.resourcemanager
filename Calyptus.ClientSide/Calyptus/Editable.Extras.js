@@ -1,3 +1,3 @@
-﻿//@reference(Calyptus.Native.Uri.js)
-//@reference(Calyptus.Editable.Editable.js)
-//@include(Calyptus.ClientSide.JavaScript.Editable.Editable.Extras.js)
+﻿//@reference(Calyptus.Uri.js)
+//@reference(Calyptus.Editable.js)
+//@include(Calyptus.ClientSide.Lib.Calyptus.Editable.Editable.Extras.js)

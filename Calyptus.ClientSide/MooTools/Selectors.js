@@ -1,2 +1,2 @@
-//@reference(MooTools.Element.Element.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Utilities.Selectors.js)
+//@reference(MooTools.Element.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.Core.Utilities.Selectors.js)

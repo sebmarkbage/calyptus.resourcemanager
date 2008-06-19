@@ -1,2 +1,2 @@
-//@reference(MooTools.Class.Class.Extras.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Request.Request.js)
+//@reference(MooTools.Class.Extras.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.Core.Request.Request.js)

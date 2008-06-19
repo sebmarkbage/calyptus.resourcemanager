@@ -1,2 +1,2 @@
-//@reference(MooTools.Plugins.Drag.Move.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Plugins.Sortables.js)
+//@reference(MooTools.Move.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.More.Interface.Sortables.js)

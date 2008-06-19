@@ -1,2 +1,2 @@
-//@reference(MooTools.Core.Core.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Native.String.js)
+//@reference(MooTools.Core.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.Core.Native.String.js)

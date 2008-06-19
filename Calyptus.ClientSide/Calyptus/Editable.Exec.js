@@ -1,3 +1,3 @@
-﻿//@reference(MooTools.Utilities.Selectors.js)
-//@reference(Calyptus.Editable.Editable.js)
-//@include(Calyptus.ClientSide.JavaScript.Editable.Editable.Exec.js)
+﻿//@reference(MooTools.Selectors.js)
+//@reference(Calyptus.Editable.js)
+//@include(Calyptus.ClientSide.Lib.Calyptus.Editable.Editable.Exec.js)

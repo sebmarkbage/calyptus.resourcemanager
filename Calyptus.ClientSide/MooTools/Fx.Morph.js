@@ -1,2 +1,2 @@
-//@reference(MooTools.Fx.Fx.CSS.js)
-//@include(Calyptus.ClientSide.JavaScript.MooTools.Fx.Fx.Morph.js)
+//@reference(MooTools.Fx.CSS.js)
+//@include(Calyptus.ClientSide.Lib.MooTools.Core.Fx.Fx.Morph.js)
