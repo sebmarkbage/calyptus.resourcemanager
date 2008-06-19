@@ -103,173 +103,173 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Calyptus\Editable\Editable.Exec.js">
-      <LogicalName>Calyptus.Editable.Editable.Exec.js</LogicalName>
+    <EmbeddedResource Include="Calyptus\Editable.Exec.js">
+      <LogicalName>Calyptus.Editable.Exec.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calyptus\Editable\Editable.Extras.js">
-      <LogicalName>Calyptus.Editable.Editable.Extras.js</LogicalName>
+    <EmbeddedResource Include="Calyptus\Editable.Extras.js">
+      <LogicalName>Calyptus.Editable.Extras.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calyptus\Editable\Editable.js">
-      <LogicalName>Calyptus.Editable.Editable.js</LogicalName>
+    <EmbeddedResource Include="Calyptus\Editable.js">
+      <LogicalName>Calyptus.Editable.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calyptus\Editable\Editable.Toolbox.js">
-      <LogicalName>Calyptus.Editable.Editable.Toolbox.js</LogicalName>
+    <EmbeddedResource Include="Calyptus\Editable.Toolbox.js">
+      <LogicalName>Calyptus.Editable.Toolbox.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calyptus\Native\Range.Edit.js">
-      <LogicalName>Calyptus.Native.Range.Edit.js</LogicalName>
+    <EmbeddedResource Include="Calyptus\Range.Edit.js">
+      <LogicalName>Calyptus.Range.Edit.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calyptus\Native\Range.js">
-      <LogicalName>Calyptus.Native.Range.js</LogicalName>
+    <EmbeddedResource Include="Calyptus\Range.js">
+      <LogicalName>Calyptus.Range.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calyptus\Native\String.js">
-      <LogicalName>Calyptus.Native.String.js</LogicalName>
+    <EmbeddedResource Include="Calyptus\String.js">
+      <LogicalName>Calyptus.String.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calyptus\Native\Uri.js">
-      <LogicalName>Calyptus.Native.Uri.js</LogicalName>
+    <EmbeddedResource Include="Calyptus\Uri.js">
+      <LogicalName>Calyptus.Uri.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calyptus\Popup\Popup.js">
-      <LogicalName>Calyptus.Popup.Popup.js</LogicalName>
+    <EmbeddedResource Include="Calyptus\Popup.js">
+      <LogicalName>Calyptus.Popup.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calyptus\Popup\Popup.Lightbox.js">
-      <LogicalName>Calyptus.Popup.Popup.Lightbox.js</LogicalName>
+    <EmbeddedResource Include="Calyptus\Popup.Lightbox.js">
+      <LogicalName>Calyptus.Popup.Lightbox.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calyptus\Popup\Popup.Load.js">
-      <LogicalName>Calyptus.Popup.Popup.Load.js</LogicalName>
+    <EmbeddedResource Include="Calyptus\Popup.Load.js">
+      <LogicalName>Calyptus.Popup.Load.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calyptus\Popup\Popup.Overlay.js">
-      <LogicalName>Calyptus.Popup.Popup.Overlay.js</LogicalName>
+    <EmbeddedResource Include="Calyptus\Popup.Overlay.js">
+      <LogicalName>Calyptus.Popup.Overlay.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calyptus\Popup\Popup.Videobox.js">
-      <LogicalName>Calyptus.Popup.Popup.Videobox.js</LogicalName>
+    <EmbeddedResource Include="Calyptus\Popup.Videobox.js">
+      <LogicalName>Calyptus.Popup.Videobox.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calyptus\Plugins\Video.js">
-      <LogicalName>Calyptus.Plugins.Video.js</LogicalName>
+    <EmbeddedResource Include="Calyptus\Video.js">
+      <LogicalName>Calyptus.Video.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Class\Class.Extras.js">
-      <LogicalName>MooTools.Class.Class.Extras.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Class.Extras.js">
+      <LogicalName>MooTools.Class.Extras.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Class\Class.js">
-      <LogicalName>MooTools.Class.Class.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Class.js">
+      <LogicalName>MooTools.Class.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Core\Browser.js">
-      <LogicalName>MooTools.Core.Browser.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Browser.js">
+      <LogicalName>MooTools.Browser.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Core\Core.js">
-      <LogicalName>MooTools.Core.Core.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Core.js">
+      <LogicalName>MooTools.Core.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Element\Element.Dimensions.js">
-      <LogicalName>MooTools.Element.Element.Dimensions.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Element.Dimensions.js">
+      <LogicalName>MooTools.Element.Dimensions.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Element\Element.Event.js">
-      <LogicalName>MooTools.Element.Element.Event.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Element.Event.js">
+      <LogicalName>MooTools.Element.Event.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Element\Element.js">
-      <LogicalName>MooTools.Element.Element.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Element.js">
+      <LogicalName>MooTools.Element.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Element\Element.Style.js">
-      <LogicalName>MooTools.Element.Element.Style.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Element.Style.js">
+      <LogicalName>MooTools.Element.Style.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Fx\Fx.CSS.js">
-      <LogicalName>MooTools.Fx.Fx.CSS.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Fx.CSS.js">
+      <LogicalName>MooTools.Fx.CSS.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Fx\Fx.js">
-      <LogicalName>MooTools.Fx.Fx.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Fx.js">
+      <LogicalName>MooTools.Fx.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Fx\Fx.Morph.js">
-      <LogicalName>MooTools.Fx.Fx.Morph.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Fx.Morph.js">
+      <LogicalName>MooTools.Fx.Morph.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Fx\Fx.Transitions.js">
-      <LogicalName>MooTools.Fx.Fx.Transitions.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Fx.Transitions.js">
+      <LogicalName>MooTools.Fx.Transitions.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Fx\Fx.Tween.js">
-      <LogicalName>MooTools.Fx.Fx.Tween.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Fx.Tween.js">
+      <LogicalName>MooTools.Fx.Tween.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Native\Array.js">
-      <LogicalName>MooTools.Native.Array.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Array.js">
+      <LogicalName>MooTools.Array.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Native\Event.js">
-      <LogicalName>MooTools.Native.Event.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Event.js">
+      <LogicalName>MooTools.Event.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Native\Function.js">
-      <LogicalName>MooTools.Native.Function.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Function.js">
+      <LogicalName>MooTools.Function.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Native\Hash.js">
-      <LogicalName>MooTools.Native.Hash.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Hash.js">
+      <LogicalName>MooTools.Hash.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Native\Number.js">
-      <LogicalName>MooTools.Native.Number.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Number.js">
+      <LogicalName>MooTools.Number.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Native\String.js">
-      <LogicalName>MooTools.Native.String.js</LogicalName>
+    <EmbeddedResource Include="MooTools\String.js">
+      <LogicalName>MooTools.String.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Plugins\Accordion.js">
-      <LogicalName>MooTools.Plugins.Accordion.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Accordion.js">
+      <LogicalName>MooTools.Accordion.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Plugins\Assets.js">
-      <LogicalName>MooTools.Plugins.Assets.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Assets.js">
+      <LogicalName>MooTools.Assets.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Plugins\Color.js">
-      <LogicalName>MooTools.Plugins.Color.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Color.js">
+      <LogicalName>MooTools.Color.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Plugins\Drag.js">
-      <LogicalName>MooTools.Plugins.Drag.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Drag.js">
+      <LogicalName>MooTools.Drag.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Plugins\Drag.Move.js">
-      <LogicalName>MooTools.Plugins.Drag.Move.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Drag.Move.js">
+      <LogicalName>MooTools.Drag.Move.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Plugins\Fx.Elements.js">
-      <LogicalName>MooTools.Plugins.Fx.Elements.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Fx.Elements.js">
+      <LogicalName>MooTools.Fx.Elements.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Plugins\Fx.Scroll.js">
-      <LogicalName>MooTools.Plugins.Fx.Scroll.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Fx.Scroll.js">
+      <LogicalName>MooTools.Fx.Scroll.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Plugins\Fx.Slide.js">
-      <LogicalName>MooTools.Plugins.Fx.Slide.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Fx.Slide.js">
+      <LogicalName>MooTools.Fx.Slide.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Plugins\Group.js">
-      <LogicalName>MooTools.Plugins.Group.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Group.js">
+      <LogicalName>MooTools.Group.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Plugins\Hash.Cookie.js">
-      <LogicalName>MooTools.Plugins.Hash.Cookie.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Hash.Cookie.js">
+      <LogicalName>MooTools.Hash.Cookie.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Plugins\Scroller.js">
-      <LogicalName>MooTools.Plugins.Scroller.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Scroller.js">
+      <LogicalName>MooTools.Scroller.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Plugins\Slider.js">
-      <LogicalName>MooTools.Plugins.Slider.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Slider.js">
+      <LogicalName>MooTools.Slider.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Plugins\SmoothScroll.js">
-      <LogicalName>MooTools.Plugins.SmoothScroll.js</LogicalName>
+    <EmbeddedResource Include="MooTools\SmoothScroll.js">
+      <LogicalName>MooTools.SmoothScroll.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Plugins\Sortables.js">
-      <LogicalName>MooTools.Plugins.Sortables.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Sortables.js">
+      <LogicalName>MooTools.Sortables.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Plugins\Tips.js">
-      <LogicalName>MooTools.Plugins.Tips.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Tips.js">
+      <LogicalName>MooTools.Tips.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Request\Request.HTML.js">
-      <LogicalName>MooTools.Request.Request.HTML.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Request.HTML.js">
+      <LogicalName>MooTools.Request.HTML.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Request\Request.js">
-      <LogicalName>MooTools.Request.Request.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Request.js">
+      <LogicalName>MooTools.Request.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Request\Request.JSON.js">
-      <LogicalName>MooTools.Request.Request.JSON.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Request.JSON.js">
+      <LogicalName>MooTools.Request.JSON.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Utilities\Cookie.js">
-      <LogicalName>MooTools.Utilities.Cookie.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Cookie.js">
+      <LogicalName>MooTools.Cookie.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Utilities\DomReady.js">
-      <LogicalName>MooTools.Utilities.DomReady.js</LogicalName>
+    <EmbeddedResource Include="MooTools\DomReady.js">
+      <LogicalName>MooTools.DomReady.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Utilities\JSON.js">
-      <LogicalName>MooTools.Utilities.JSON.js</LogicalName>
+    <EmbeddedResource Include="MooTools\JSON.js">
+      <LogicalName>MooTools.JSON.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Utilities\Selectors.js">
-      <LogicalName>MooTools.Utilities.Selectors.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Selectors.js">
+      <LogicalName>MooTools.Selectors.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Utilities\Swiff.js">
-      <LogicalName>MooTools.Utilities.Swiff.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Swiff.js">
+      <LogicalName>MooTools.Swiff.js</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
