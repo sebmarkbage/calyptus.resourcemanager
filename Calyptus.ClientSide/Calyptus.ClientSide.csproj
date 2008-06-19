@@ -273,6 +273,14 @@
     <EmbeddedResource Include="Lib\MooTools\More\Utilities\Group.js" />
     <EmbeddedResource Include="Lib\MooTools\More\Utilities\Hash.Cookie.js" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClientSide License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MooTools License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
