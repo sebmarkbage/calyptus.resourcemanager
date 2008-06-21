@@ -17,6 +17,6 @@ namespace Calyptus.ResourceManager
 
 		IEnumerable<IResource> References { get; }
 
-		void RenderReferenceTags(ResourceConfigurationManager factory, TextWriter writer, ICollection<IResource> writtenResources);
+		void RenderReferenceTags(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources);
 	}
 }

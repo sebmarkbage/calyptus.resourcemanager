@@ -48,6 +48,25 @@ namespace Calyptus.ResourceManager
 			}
 		}
 
+		private IResourceURLFactory _urlFactory;
+
+		protected virtual IResourceURLFactory UrlFactory
+		{
+			get
+			{
+				if (_urlFactory == null)
+				{
+					IResourceURLProvider p = Manager.URLProvider;
+					IResourceURLControlProvider pc = p as IResourceURLControlProvider;
+					if (pc != null)
+						_urlFactory = pc.GetURLFactory(this);
+					else
+						_urlFactory = p.GetURLFactory(Context);
+				}
+				return _urlFactory;
+			}
+		}
+
 		private static object _itemKey = new object();
 		private ICollection<IResource> _writtenResources;
 		protected virtual ICollection<IResource> WrittenResources

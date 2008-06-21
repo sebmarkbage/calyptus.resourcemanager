@@ -52,17 +52,17 @@ namespace Calyptus.ResourceManager
 			writer.Write(s);
 		}
 
-		public void RenderReferenceTags(ResourceConfigurationManager factory, TextWriter writer, ICollection<IResource> writtenResources)
+		public void RenderReferenceTags(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)
 		{
 			if (writtenResources.Contains(this)) return;
 			writtenResources.Add(this);
 			if (_references != null)
 				foreach (IResource reference in _references)
-					reference.RenderReferenceTags(factory, writer, writtenResources);
+					reference.RenderReferenceTags(writer, urlFactory, writtenResources);
 
 			if (writer == null) return;
 			writer.Write("<script src=\"");
-			writer.Write(HttpUtility.HtmlEncode(factory.GetURL(this)));
+			writer.Write(HttpUtility.HtmlEncode(urlFactory.GetURL(this)));
 			writer.Write("\" type=\"text/javascript\"></script>");
 		}
 	}

@@ -6,12 +6,14 @@
 <head>
     <title>Untitled Page</title>
     <c:Build Name="CSS/MyStyleB.css" runat="server" />
-    <c:Reference Src="http://www.fordonslagret.se/js/common.js" runat="server" />
+    <!--<c:Reference Src="http://www.fordonslagret.se/js/common.js" runat="server" />-->
     <c:Reference Name="Test.js" runat="server" />
     <c:Reference Name="MooTools/References/Utilities/DomReady.js" runat="server" />
 </head>
 <body>
-<h1>Test header</h1>
+<h1>Test header (<%= System.Globalization.CultureInfo.CurrentUICulture.Name %>)</h1>
+<c:Reference Src="Img/toad.jpg" runat="server" />
 <p>Paragraph</p>
+<c:Include Src="Img/toad.jpg" runat="server" />
 </body>
 </html>

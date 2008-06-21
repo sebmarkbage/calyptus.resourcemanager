@@ -21,7 +21,7 @@ namespace Calyptus.ResourceManager
 
 		protected override void RenderTag(HtmlTextWriter writer)
 		{
-			Resource.RenderReferenceTags(Manager, writer, WrittenResources);
+			Resource.RenderReferenceTags(writer, UrlFactory, WrittenResources);
 		}
 	}
 }

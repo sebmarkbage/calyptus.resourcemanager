@@ -12,18 +12,21 @@ namespace Calyptus.ResourceManager
 		private Dictionary<IResource, string> _urlCache;
 		private ReaderWriterLock _lock;
 
-		public HttpHandlerURLFactory()
+		public HttpHandlerURLFactory(string appPath)
 		{
+			AppPath = (appPath == "/") ? null : appPath;
 			_urlCache = new Dictionary<IResource, string>();
 			_lock = new ReaderWriterLock();
 		}
+
+		protected string AppPath { get; private set; }
 
 		private string ToHex(byte[] bytes)
 		{
 			if (bytes == null) return null;
 			StringBuilder sb = new StringBuilder();
 			foreach (byte b in bytes)
-				sb.AppendFormat("{0:x1}", b);
+				sb.AppendFormat("{0:x2}", b);
 			return sb.ToString();
 		}
 
@@ -50,30 +53,38 @@ namespace Calyptus.ResourceManager
 			{
 				_lock.ReleaseReaderLock();
 			}
+			IProxyResource pr = resource as IProxyResource;
+			if (!(resource.Location is ExternalLocation) && pr != null && (pr.CultureSensitive || pr.CultureUISensitive))
+			{
+				url += "-";
+				if (pr.CultureSensitive)
+					url += CultureInfo.CurrentCulture.LCID.ToString("x");
+				url += "-";
+				if (pr.CultureUISensitive)
+					url += CultureInfo.CurrentCulture.LCID.ToString("x");
+			}
 			return url;
 		}
 
 		private string GetURLInternal(IResource resource)
 		{
-			string AppPath = HttpContext.Current.Request.ApplicationPath;
-			if (AppPath == "/") AppPath = null;
 			IResourceLocation location = resource.Location;
-			string version = ToHex(resource.Version);
 			string path;
 			if (location is TypeLocation)
 			{
 				TypeLocation tl = location as TypeLocation;
-				path = String.Format("{2}/Assemblies/{0}/{1}.res.axd", HttpUtility.UrlPathEncode(tl.ProxyType.Assembly.GetName().Name), HttpUtility.UrlPathEncode(tl.ProxyType.FullName), AppPath);
+				path = String.Format("{2}/{3}{0}/{1}{4}", HttpUtility.UrlPathEncode(tl.ProxyType.Assembly.GetName().Name), HttpUtility.UrlPathEncode(tl.ProxyType.FullName), AppPath, ResourceHttpHandler.AssemblyPath, ResourceHttpHandler.Extension);
 			}
 			else if (location is EmbeddedLocation)
 			{
 				EmbeddedLocation el = location as EmbeddedLocation;
-				path = String.Format("{2}/Assemblies/{0}/{1}.res.axd", HttpUtility.UrlPathEncode(el.Assembly.GetName().Name), HttpUtility.UrlPathEncode(el.ResourceName), AppPath);
+				path = String.Format("{2}/{3}{0}/{1}{4}", HttpUtility.UrlPathEncode(el.Assembly.GetName().Name), HttpUtility.UrlPathEncode(el.ResourceName), AppPath, ResourceHttpHandler.AssemblyPath, ResourceHttpHandler.Extension);
 			}
 			else if (location is VirtualPathLocation)
 			{
 				VirtualPathLocation vl = location as VirtualPathLocation;
-				path = String.Format(resource is IProxyResource ? "{0}.res.axd" : "{0}", HttpUtility.UrlPathEncode(vl.VirtualPath));
+				path = HttpUtility.UrlPathEncode(vl.VirtualPath);
+				if (resource is IProxyResource) path += ResourceHttpHandler.Extension;
 			}
 			else if (location is ExternalLocation)
 			{
@@ -82,7 +93,7 @@ namespace Calyptus.ResourceManager
 			}
 			else
 				throw new Exception("Unknown IResourceLocationType");
-			return String.Format("{0}?{1}", path, version);
+			return path + "?" + ToHex(resource.Version);
 		}
 	}
 }

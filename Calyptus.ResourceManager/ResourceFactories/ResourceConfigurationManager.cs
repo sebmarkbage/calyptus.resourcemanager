@@ -10,36 +10,28 @@ namespace Calyptus.ResourceManager
 	public class ResourceConfigurationManager
 	{
 		private ReaderWriterLock _lock;
-		private IResourceURLFactory _urlFactory;
+		private IResourceURLProvider _urlProvider;
 		private IResourceFactory[] _resourceFactories;
 		private Dictionary<IResourceLocation, IResource> _resourceCache;
 
 		// TODO: Configurable
 
-		private ResourceConfigurationManager(IResourceURLFactory urlFactory, IResourceFactory[] resourceFactories)
+		private ResourceConfigurationManager(IResourceURLProvider urlProvider, IResourceFactory[] resourceFactories)
 		{
 			_resourceCache = new Dictionary<IResourceLocation, IResource>();
-			_urlFactory = urlFactory;
+			_urlProvider = urlProvider;
 			_resourceFactories = resourceFactories;
+			foreach (IResourceFactory factory in _resourceFactories)
+				factory.FactoryManager = this;
 			_lock = new ReaderWriterLock();
 		}
 
-		private ResourceConfigurationManager() : this(new HttpHandlerURLFactory(), new IResourceFactory[] {
-					new JavaScriptFactory { FactoryManager = _m },
-					new XMLResourceFactory { FactoryManager = _m },
-					new CSSFactory { FactoryManager = _m },
-					new ImageFactory { FactoryManager = _m }
+		private ResourceConfigurationManager() : this(new HttpHandlerURLProvider(), new IResourceFactory[] {
+					new JavaScriptFactory(),
+					new FileResourceFactory(),
+					new CSSFactory(),
+					new ImageFactory()
 		}) { }
-
-		private static ResourceConfigurationManager _m;
-
-		public static ResourceConfigurationManager GetFactoryManager()
-		{
-			if (_m == null)
-				_m = new ResourceConfigurationManager();
-
-			return _m;
-		}
 
 		public static ResourceConfigurationManager GetFactoryManager(HttpContext context)
 		{
@@ -53,13 +45,12 @@ namespace Calyptus.ResourceManager
 			return m;
 		}
 
-		public string GetURL(IResource resource)
-		{
-			return _urlFactory.GetURL(resource);
-		}
+		public IResourceURLProvider URLProvider { get { return _urlProvider; } }
 
 		public IResource GetResource(IResourceLocation location)
 		{
+			if (location == null) return null;
+
 			IResource res;
 			_lock.AcquireReaderLock(3000);
 			try
@@ -69,15 +60,7 @@ namespace Calyptus.ResourceManager
 					var c = _lock.UpgradeToWriterLock(3000);
 					try
 					{
-						TypeLocation tl = location as TypeLocation;
-						if (tl != null && typeof(IResource).IsAssignableFrom(tl.ProxyType))
-							res = (IResource)System.Activator.CreateInstance(tl.ProxyType); // Precompiled resource
-						else
-							foreach (IResourceFactory factory in _resourceFactories)
-							{
-								res = factory.GetResource(location);
-								if (res != null) break;
-							}
+						res = GetResourcePrivate(location) ?? new UnknownResource(location);
 						_resourceCache.Add(location, res);
 					}
 					finally
@@ -91,6 +74,31 @@ namespace Calyptus.ResourceManager
 				_lock.ReleaseReaderLock();
 			}
 			return res;
+		}
+
+		private IResource GetResourcePrivate(IResourceLocation location)
+		{
+			TypeLocation tl = location as TypeLocation;
+			if (tl != null && typeof(IResource).IsAssignableFrom(tl.ProxyType))
+				return (IResource)System.Activator.CreateInstance(tl.ProxyType); // Precompiled resource
+			else
+				foreach (IResourceFactory factory in _resourceFactories)
+				{
+					IResource res = factory.GetResource(location);
+					if (res != null) return res;
+				}
+			if (tl != null)
+			{
+				IResourceLocation fr = FileResourceHelper.GetRelatedResourceLocation(tl);
+				if (fr != null)
+				{
+					IResource res;
+					if (!_resourceCache.TryGetValue(fr, out res))
+						res = GetResourcePrivate(fr);
+					return res;
+				}
+			}
+			return null;
 		}
 
 		public bool DebugMode

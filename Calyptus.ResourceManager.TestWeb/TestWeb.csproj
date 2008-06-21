@@ -58,6 +58,7 @@
     <Content Include="CSS\Reset.css" />
     <Content Include="Default.aspx" />
     <EmbeddedResource Include="JS\Test3.js" />
+    <EmbeddedResource Include="Img\toad.jpg" />
     <Content Include="MooTools\References\Class\Class.js" />
     <Content Include="MooTools\References\Class\Class.Extras.js" />
     <Content Include="MooTools\References\Core\Browser.js" />
@@ -139,6 +140,14 @@
     <Content Include="MooTools\Source\Utilities\Swiff.js" />
     <Content Include="Test.js" />
     <EmbeddedResource Include="JS\Test2.js" />
+    <EmbeddedResource Include="MyResourceFile.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MyResourceFile.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyResourceFile.sv-SE.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +157,11 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyResourceFile.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyResourceFile.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

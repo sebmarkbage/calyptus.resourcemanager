@@ -21,33 +21,10 @@ namespace Calyptus.ResourceManager
 
 			Compress compress = reader.Compress == null ? Compress.Release : (Compress)Enum.Parse(typeof(Compress), reader.Compress, true);
 
-			var includes = new List<IResource>();
-			var builds = new List<IResource>();
+			var includes = new List<ICSSResource>();
+			var imageIncludes = new List<IImageResource>();
+			var builds = new List<ICSSResource>();
 			var references = new List<IResource>();
-			if (reader.Includes != null)
-				foreach (var r in reader.Includes)
-				{
-					IResourceLocation rl = r.GetLocation(location);
-					if (location.Equals(rl)) continue;
-					var resource = FactoryManager.GetResource(rl);
-					if (resource == null) throw new Exception(String.Format("Resource {0}, {1} is not a valid resource.", r.Assembly, r.Filename));
-					if (resource is ICSSResource)
-						includes.Add(resource);
-					else if (!references.Contains(resource))
-						references.Add(resource); // throw new Exception(String.Format("Resource {0}, {1} is not a JavaScript resource.", r.Assembly, r.Filename));
-				}
-			if (reader.Builds != null)
-				foreach (var r in reader.Builds)
-				{
-					IResourceLocation rl = r.GetLocation(location);
-					if (location.Equals(rl)) continue;
-					var resource = FactoryManager.GetResource(rl);
-					if (resource == null) throw new Exception(String.Format("Resource {0}, {1} is not a valid resource.", r.Assembly, r.Filename));
-					if (resource is ICSSResource)
-						builds.Add(resource);
-					else if (!references.Contains(resource))
-						references.Add(resource); // throw new Exception(String.Format("Resource {0}, {1} is not a JavaScript resource and cannot be included.", r.Assembly, r.Filename));
-				}
 			if (reader.References != null)
 				foreach (var r in reader.References)
 				{
@@ -58,12 +35,47 @@ namespace Calyptus.ResourceManager
 					if (!references.Contains(resource))
 						references.Add(resource);
 				}
+			if (reader.Includes != null)
+				foreach (var r in reader.Includes)
+				{
+					IResourceLocation rl = r.GetLocation(location);
+					if (location.Equals(rl)) continue;
+					var resource = FactoryManager.GetResource(rl);
+					if (resource == null) throw new Exception(String.Format("Resource {0}, {1} is not a valid resource.", r.Assembly, r.Filename));
+					if (resource is ICSSResource && !FactoryManager.DebugMode)
+						includes.Add((ICSSResource)resource);
+					else if (resource is IImageResource)
+					{
+						if (!FactoryManager.DebugMode)
+							imageIncludes.Add((IImageResource)resource);
+					}
+					else if (!references.Contains(resource))
+						references.Add(resource); // throw new Exception(String.Format("Resource {0}, {1} is not a JavaScript resource.", r.Assembly, r.Filename));
+				}
+			if (reader.Builds != null)
+				foreach (var r in reader.Builds)
+				{
+					IResourceLocation rl = r.GetLocation(location);
+					if (location.Equals(rl)) continue;
+					var resource = FactoryManager.GetResource(rl);
+					if (resource == null) throw new Exception(String.Format("Resource {0}, {1} is not a valid resource.", r.Assembly, r.Filename));
+					if (resource is ICSSResource && !FactoryManager.DebugMode)
+						builds.Add((ICSSResource) resource);
+					else if (resource is IImageResource)
+					{
+						if (!FactoryManager.DebugMode)
+							imageIncludes.Add((IImageResource)resource);
+					}
+					else if (!references.Contains(resource))
+						references.Add(resource); // throw new Exception(String.Format("Resource {0}, {1} is not a JavaScript resource and cannot be included.", r.Assembly, r.Filename));
+				}
 			if ((reader.Compress == null || compress == Compress.Never) && reader.Includes == null && reader.Builds == null && l is VirtualPathLocation)
 				return new PlainCSSResource(references.Count > 0 ? references.ToArray() : null, l);
 			else
 				return new ExtendedCSSResource(
 					reader.Compress == null ? (bool?)null : (compress == Compress.Always || (compress == Compress.Release && !FactoryManager.DebugMode)),
 					references.Count > 0 ? references.ToArray() : null,
+					imageIncludes.Count > 0 ? imageIncludes.ToArray() : null,
 					includes.Count > 0 ? includes.ToArray() : null,
 					builds.Count > 0 ? builds.ToArray() : null,
 					l);

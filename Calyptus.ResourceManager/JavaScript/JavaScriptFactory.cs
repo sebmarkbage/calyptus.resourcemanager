@@ -24,6 +24,16 @@ namespace Calyptus.ResourceManager
 			var includes = new List<IResource>();
 			var builds = new List<IResource>();
 			var references = new List<IResource>();
+			if (reader.References != null)
+				foreach (var r in reader.References)
+				{
+					IResourceLocation rl = r.GetLocation(location);
+					if (location.Equals(rl)) continue;
+					var resource = FactoryManager.GetResource(rl);
+					if (resource == null) throw new Exception(String.Format("Resource {0}, {1} is not a valid resource.", r.Assembly, r.Filename));
+					if (!references.Contains(resource))
+						references.Add(resource);
+				}
 			if (reader.Includes != null)
 				foreach (var r in reader.Includes)
 				{
@@ -31,7 +41,7 @@ namespace Calyptus.ResourceManager
 					if (location.Equals(rl)) continue;
 					var resource = FactoryManager.GetResource(rl);
 					if (resource == null) throw new Exception(String.Format("Resource {0}, {1} is not a valid resource.", r.Assembly, r.Filename));
-					if (resource is IJavaScriptResource)
+					if (resource is IJavaScriptResource && !FactoryManager.DebugMode)
 						includes.Add(resource);
 					else if (!references.Contains(resource))
 						references.Add(resource); // throw new Exception(String.Format("Resource {0}, {1} is not a JavaScript resource.", r.Assembly, r.Filename));
@@ -43,22 +53,26 @@ namespace Calyptus.ResourceManager
 					if (location.Equals(rl)) continue;
 					var resource = FactoryManager.GetResource(rl);
 					if (resource == null) throw new Exception(String.Format("Resource {0}, {1} is not a valid resource.", r.Assembly, r.Filename));
-					if (resource is IJavaScriptResource)
+					if (resource is IJavaScriptResource && !FactoryManager.DebugMode)
 						builds.Add(resource);
 					else if (!references.Contains(resource))
 						references.Add(resource); // throw new Exception(String.Format("Resource {0}, {1} is not a JavaScript resource and cannot be included.", r.Assembly, r.Filename));
 				}
-			if (reader.References != null)
-				foreach (var r in reader.References)
+
+			IResourceLocation rf = FileResourceHelper.GetRelatedResourceLocation(location);
+			if (rf != null)
+			{
+				IResource rs = FactoryManager.GetResource(rf);
+				if (rs != null)
 				{
-					IResourceLocation rl = r.GetLocation(location);
-					if (location.Equals(rl)) continue;
-					var resource = FactoryManager.GetResource(rl);
-					if (resource == null) throw new Exception(String.Format("Resource {0}, {1} is not a valid resource.", r.Assembly, r.Filename));
-					if (!references.Contains(resource))
-						references.Add(resource);
+					if (rs is IJavaScriptResource && !FactoryManager.DebugMode)
+						includes.Add(rs);
+					else
+						references.Add(rs);
 				}
-			if ((reader.Compress == null || compress == Compress.Never) && reader.Includes == null && reader.Builds == null && l is VirtualPathLocation)
+			}
+
+			if ((reader.Compress == null || compress == Compress.Never) && reader.Includes == null && reader.Builds == null && !(l is EmbeddedLocation))
 				return new PlainJavaScriptResource(references.Count > 0 ? references.ToArray() : null, l);
 			else
 				return new ExtendedJavaScriptResource(

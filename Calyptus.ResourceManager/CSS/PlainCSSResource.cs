@@ -35,7 +35,7 @@ namespace Calyptus.ResourceManager
 			get { return _references; }
 		}
 
-		public void RenderCSS(TextWriter writer, ICollection<IResource> writtenResources, bool compress)
+		public void RenderCSS(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources, bool compress, bool includeImages)
 		{
 			if (writtenResources.Contains(this)) return;
 			writtenResources.Add(this);
@@ -47,20 +47,21 @@ namespace Calyptus.ResourceManager
 			{
 				s = compressor.Compress(s);
 			}
+			s = CssUrlParserHelper.ConvertUrls(s, Location, urlFactory, null);
 			writer.Write(s);
 		}
 
-		public void RenderReferenceTags(ResourceConfigurationManager factory, TextWriter writer, ICollection<IResource> writtenResources)
+		public void RenderReferenceTags(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)
 		{
 			if (writtenResources.Contains(this)) return;
 			writtenResources.Add(this);
 			if (_references != null)
 				foreach (IResource reference in _references)
-					reference.RenderReferenceTags(factory, writer, writtenResources);
+					reference.RenderReferenceTags(writer, urlFactory, writtenResources);
 
 			if (writer == null) return;
 			writer.Write("<link rel=\"stylesheet\" href=\"");
-			writer.Write(HttpUtility.HtmlEncode(factory.GetURL(this)));
+			writer.Write(HttpUtility.HtmlEncode(urlFactory.GetURL(this)));
 			writer.Write("\" type=\"text/css\"/>");
 		}
 	}

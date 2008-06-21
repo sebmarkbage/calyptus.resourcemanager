@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 
 namespace Calyptus.ResourceManager
 {
-	public class ExtendedJavaScriptResource : IJavaScriptResource, IProxyResource
+	public class ExtendedJavaScriptResource : IJavaScriptResource, ITextProxyResource
 	{
 		private static IJavaScriptCompressor compressor = new Dean.Edwards.ECMAScriptPacker(Dean.Edwards.ECMAScriptPacker.PackerEncoding.None, false, false);
 
@@ -38,6 +38,18 @@ namespace Calyptus.ResourceManager
 			{
 				return _version;
 			}
+		}
+
+		public bool CultureSensitive
+		{
+			get;
+			private set;
+		}
+
+		public bool CultureUISensitive
+		{
+			get;
+			private set;
 		}
 
 		private bool? _compress;
@@ -92,14 +104,22 @@ namespace Calyptus.ResourceManager
 			resource.RenderJavaScript(writer, writtenResources, compress);
 		}
 
-		public void RenderReferenceTags(ResourceConfigurationManager factory, TextWriter writer, ICollection<IResource> writtenResources)
+		public void RenderReferenceTags(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)
 		{
 			if (writtenResources.Contains(this)) return;
 			writtenResources.Add(this);
 
 			if (_builds != null)
 				foreach (IResource resource in _builds)
+				{
 					resource.RenderReferenceTags(null, null, writtenResources);
+					IProxyResource pr = resource as IProxyResource;
+					if (pr != null)
+					{
+						if (pr.CultureSensitive) CultureSensitive = true;
+						if (pr.CultureUISensitive) CultureUISensitive = true;
+					}
+				}
 
 			if (_includes != null)
 				foreach (IResource resource in _includes)
@@ -108,16 +128,22 @@ namespace Calyptus.ResourceManager
 					writtenResources.Add(resource);
 					if (resource.References != null)
 						foreach (IResource res in resource.References)
-							res.RenderReferenceTags(factory, writer, writtenResources);
+							res.RenderReferenceTags(writer, urlFactory, writtenResources);
+					IProxyResource pr = resource as IProxyResource;
+					if (pr != null)
+					{
+						if (pr.CultureSensitive) CultureSensitive = true;
+						if (pr.CultureUISensitive) CultureUISensitive = true;
+					}
 				}
 
 			if (_references != null)
 				foreach (IResource reference in _references)
-					reference.RenderReferenceTags(factory, writer, writtenResources);
+					reference.RenderReferenceTags(writer, urlFactory, writtenResources);
 
 			if (writer == null) return;
 			writer.Write("<script src=\"");
-			writer.Write(HttpUtility.HtmlEncode(factory.GetURL(this)));
+			writer.Write(HttpUtility.HtmlEncode(urlFactory.GetURL(this)));
 			writer.Write("\" type=\"text/javascript\"></script>");
 		}
 
@@ -126,9 +152,19 @@ namespace Calyptus.ResourceManager
 			get { return "text/javascript"; }
 		}
 
-		public void RenderProxy(TextWriter writer, ICollection<IResource> writtenResources)
+		public bool Gzip
+		{
+			get { return true; }
+		}
+
+		public void RenderProxy(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)
 		{
 			RenderJavaScript(writer, writtenResources, !_compress.HasValue || _compress.Value);
+		}
+
+		public void RenderProxy(Stream stream, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)
+		{
+			RenderProxy(new StreamWriter(stream), urlFactory, writtenResources);
 		}
 	}
 }

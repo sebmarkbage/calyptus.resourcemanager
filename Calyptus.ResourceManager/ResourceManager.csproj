@@ -48,9 +48,14 @@
     <Compile Include="Compression\CssMinify.cs" />
     <Compile Include="Compression\YUICompressor.cs" />
     <Compile Include="Controls\Build.cs" />
+    <Compile Include="CSS\CssUrlParserHelper.cs" />
     <Compile Include="CSS\ExtendedCSSResource.cs" />
+    <Compile Include="FileResources\FileResourceHelper.cs" />
     <Compile Include="Helpers\ChecksumHelper.cs" />
     <Compile Include="Helpers\SyntaxReader.cs" />
+    <Compile Include="Images\ProxyImageResource.cs" />
+    <Compile Include="Images\IImageResource.cs" />
+    <Compile Include="Images\PlainImageResource.cs" />
     <Compile Include="IProxyResource.cs" />
     <Compile Include="JavaScript\ExtendedJavaScriptResource.cs" />
     <Compile Include="Compression\IJavaScriptCompressor.cs" />
@@ -61,14 +66,15 @@
     <Compile Include="Controls\ResourceControl.cs" />
     <Compile Include="Controls\Reference.cs" />
     <Compile Include="ResourceFactories\ResourceConfigurationManager.cs" />
-    <Compile Include="CSS\CSSResourceFactory.cs" />
-    <Compile Include="CSS\CSSImageResource.cs" />
+    <Compile Include="CSS\CSSFactory.cs" />
     <Compile Include="CSS\PlainCSSResource.cs" />
-    <Compile Include="ResourceFactories\ImageResourceFactory.cs" />
-    <Compile Include="JavaScript\JavaScriptResourceFactory.cs" />
+    <Compile Include="Images\ImageFactory.cs" />
+    <Compile Include="JavaScript\JavaScriptFactory.cs" />
     <Compile Include="ResourceFactories\ResourceFactoryBase.cs" />
-    <Compile Include="URLFactories\Handlers\ResourceHttpHandler.cs" />
-    <Compile Include="URLFactories\HttpHandlerURLFactory.cs" />
+    <Compile Include="UnknownResource.cs" />
+    <Compile Include="URLFactories\Handler\HttpHandlerURLProvider.cs" />
+    <Compile Include="URLFactories\Handler\ResourceHttpHandler.cs" />
+    <Compile Include="URLFactories\Handler\HttpHandlerURLFactory.cs" />
     <Compile Include="JavaScript\PlainJavaScriptResource.cs" />
     <Compile Include="CSS\ICSSResource.cs" />
     <Compile Include="Location\EmbeddedLocation.cs" />
@@ -80,8 +86,9 @@
     <Compile Include="URLFactories\IResourceURLFactory.cs" />
     <Compile Include="Location\VirtualPathLocation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="JavaScript\XMLResourceJavaScriptProxy.cs" />
-    <Compile Include="ResourceFactories\XMLResourceFactory.cs" />
+    <Compile Include="FileResources\FileResourceProxy.cs" />
+    <Compile Include="FileResources\FileResourceFactory.cs" />
+    <Compile Include="URLFactories\IResourceURLProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Diagrams\Interfaces.cd" />

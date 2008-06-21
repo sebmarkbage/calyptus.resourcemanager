@@ -8,6 +8,8 @@ namespace Calyptus.ResourceManager
 	{
 		protected override void RenderTag(HtmlTextWriter writer)
 		{
+			if (Manager.DebugMode) { base.RenderTag(writer); return; }
+
 			IJavaScriptResource js = Resource as IJavaScriptResource;
 			if (js != null)
 			{
@@ -22,18 +24,21 @@ namespace Calyptus.ResourceManager
 				return;
 			}
 
+			bool inclImages = !"IE".Equals(Context.Request.Browser.Browser, StringComparison.InvariantCultureIgnoreCase) || Context.Request.Browser.MajorVersion > 7;
+
 			ICSSResource css = Resource as ICSSResource;
 			if (css != null)
 			{
 				BuildReferences<ICSSResource>(Resource, writer);
 
 				writer.WriteLine("<style type=\"text/css\">/*<![CDATA[*/");
-				RenderBuild(css, writer);
+				RenderBuild(css, writer, inclImages);
 				writer.WriteLine();
 				writer.Write("/*]]>*/</style>");
 				return;
 			}
-			throw new Exception("Cannot include non JavaScript or CSS resource on the page");
+
+			throw new Exception("Cannot build non JavaScript or CSS resource on the page");
 		}
 
 		private void BuildReferences<T>(IResource resource, TextWriter writer) where T : IResource
@@ -43,7 +48,7 @@ namespace Calyptus.ResourceManager
 					if (res is T)
 						BuildReferences<T>(res, writer);
 					else
-						res.RenderReferenceTags(Manager, writer, WrittenResources);
+						res.RenderReferenceTags(writer, UrlFactory, WrittenResources);
 		}
 
 		private void RenderBuild(IJavaScriptResource resource, TextWriter writer)
@@ -54,24 +59,20 @@ namespace Calyptus.ResourceManager
 						IJavaScriptResource js = res as IJavaScriptResource;
 						if (js != null)
 							RenderBuild(js, writer);
-						else
-							res.RenderReferenceTags(Manager, writer, WrittenResources);
 					}
 			resource.RenderJavaScript(writer, WrittenResources, Compress != Compress.Never);
 		}
 
-		private void RenderBuild(ICSSResource resource, TextWriter writer)
+		private void RenderBuild(ICSSResource resource, TextWriter writer, bool inclImages)
 		{
 			if (resource.References != null)
 				foreach (IResource res in resource.References)
 					{
 						ICSSResource css = res as ICSSResource;
 						if (css != null)
-							RenderBuild(css, writer);
-						else
-							res.RenderReferenceTags(Manager, writer, WrittenResources);
+							RenderBuild(css, writer, inclImages);
 					}
-			resource.RenderCSS(writer, WrittenResources, Compress != Compress.Never);
+			resource.RenderCSS(writer, UrlFactory, WrittenResources, Compress != Compress.Never, inclImages);
 		}
 	}
 }
