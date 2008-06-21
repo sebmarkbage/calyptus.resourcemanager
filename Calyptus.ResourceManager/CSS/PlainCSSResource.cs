@@ -10,11 +10,14 @@ namespace Calyptus.ResourceManager
 	{
 		private static ICSSCompressor compressor = new YUICompressor();
 
-		public PlainCSSResource(IResource[] references, FileLocation location)
+		public PlainCSSResource(IResource[] references, FileLocation location, bool hasContent)
 		{
 			_references = references;
 			_location = location;
+			_hasContent = hasContent;
 		}
+
+		private bool _hasContent;
 
 		private FileLocation _location;
 
@@ -59,7 +62,7 @@ namespace Calyptus.ResourceManager
 				foreach (IResource reference in _references)
 					reference.RenderReferenceTags(writer, urlFactory, writtenResources);
 
-			if (writer == null) return;
+			if (writer == null || !_hasContent) return;
 			writer.Write("<link rel=\"stylesheet\" href=\"");
 			writer.Write(HttpUtility.HtmlEncode(urlFactory.GetURL(this)));
 			writer.Write("\" type=\"text/css\"/>");

@@ -10,5 +10,7 @@ namespace Calyptus.ResourceManager
 		{
 			get;
 		}
+
+		void MonitorChanges(Action onChanged);
 	}
 }

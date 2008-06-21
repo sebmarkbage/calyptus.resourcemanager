@@ -29,9 +29,29 @@ namespace Calyptus.ResourceManager
 		public override string FileName
 		{
 			get
-			{ 
+			{
 				int i = Uri.AbsolutePath.LastIndexOf('/', 1);
 				return i > 0 ? Uri.AbsolutePath.Substring(i + 1) : Uri.AbsolutePath.Substring(1);
+			}
+		}
+
+		private bool _mimeSet;
+		private string _mime;
+		public string Mime
+		{
+			get
+			{
+				if (!_mimeSet)
+					using (WebClient client = new WebClient())
+					using (Stream s = client.OpenRead(Uri))
+					{
+						_mime = client.ResponseHeaders["Content-Type"];
+						int i = _mime == null ? 0 : _mime.IndexOf(';');
+						if (i > 0)
+							_mime = _mime.Substring(0, i);
+						_mimeSet = true;
+					}
+				return _mime;
 			}
 		}
 
@@ -45,6 +65,11 @@ namespace Calyptus.ResourceManager
 		public override int GetHashCode()
 		{
 			return Uri.GetHashCode();
+		}
+
+		public override string ToString()
+		{
+			return Uri.ToString();
 		}
 	}
 }

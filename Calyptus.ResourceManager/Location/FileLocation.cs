@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Security.Cryptography;
+using System;
 
 namespace Calyptus.ResourceManager
 {
@@ -12,17 +13,35 @@ namespace Calyptus.ResourceManager
 		}
 
 		private byte[] _version;
-		public virtual byte[] Version
+		public byte[] Version
 		{
 			get
 			{
 				if (_version == null)
 				{
-					using(var s = GetStream())
-						_version = ChecksumHelper.GetChecksum(s);
+					_version = GetVersion();
 				}
 				return _version;
 			}
 		}
+
+		protected virtual byte[] GetVersion()
+		{
+			using (var s = GetStream())
+				return ChecksumHelper.GetChecksum(s);
+		}
+
+		protected virtual void OnChanged()
+		{
+			if (_version == null || !_version.Equals(GetVersion()))
+				Changed();
+		}
+
+		public virtual void MonitorChanges(Action onChange)
+		{
+			Changed += onChange;
+		}
+
+		public event Action Changed;
 	}
 }

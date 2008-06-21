@@ -8,10 +8,15 @@ namespace Calyptus.ResourceManager
 	{
 		public abstract IResource GetResource(IResourceLocation location);
 
-		public ResourceConfigurationManager FactoryManager
+		public IResourceConfiguration Configuration
 		{
 			get;
-			set;
+			private set;
+		}
+
+		IResourceConfiguration IResourceFactory.Configuration
+		{
+			set { this.Configuration = value; }
 		}
 	}
 }

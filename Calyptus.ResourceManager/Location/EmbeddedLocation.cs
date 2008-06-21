@@ -47,5 +47,10 @@ namespace Calyptus.ResourceManager
 		{
 			return (Int32) ((Int64) Assembly.GetHashCode() + (Int64)ResourceName.ToLower().GetHashCode() % Int32.MaxValue);
 		}
+
+		public override string ToString()
+		{
+			return Assembly.GetName().Name + ", " + ResourceName;
+		}
 	}
 }

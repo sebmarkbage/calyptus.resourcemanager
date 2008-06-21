@@ -12,8 +12,9 @@ namespace Calyptus.ResourceManager
 	{
 		private static IJavaScriptCompressor compressor = new Dean.Edwards.ECMAScriptPacker(Dean.Edwards.ECMAScriptPacker.PackerEncoding.None, false, false);
 
-		public ExtendedJavaScriptResource(bool? compress, IResource[] references, IResource[] includes, IResource[] builds, FileLocation location)
+		public ExtendedJavaScriptResource(bool? compress, IResource[] references, IResource[] includes, IResource[] builds, FileLocation location, bool hasContent)
 		{
+			_hasContent = hasContent;
 			_compress = compress;
 			_builds = builds;
 			_references = references;
@@ -21,6 +22,8 @@ namespace Calyptus.ResourceManager
 			_location = location;
 			_version = ChecksumHelper.GetCombinedChecksum(location.Version, _includes, _builds);
 		}
+
+		private bool _hasContent;
 
 		private FileLocation _location;
 
@@ -59,11 +62,6 @@ namespace Calyptus.ResourceManager
 			get { return _references; }
 		}
 
-		public IEnumerable<IResource> Includes
-		{
-			get { return _includes; }
-		}
-
 		public void RenderJavaScript(TextWriter writer, ICollection<IResource> writtenResources, bool compress)
 		{
 			if (_compress.HasValue)
@@ -80,7 +78,7 @@ namespace Calyptus.ResourceManager
 				foreach (IJavaScriptResource resource in _includes)
 					resource.RenderJavaScript(writer, writtenResources, compress);
 
-			if (writer == null) return;
+			if (writer == null || !_hasContent) return;
 
 			var r = new StreamReader(_location.GetStream());
 			var s = r.ReadToEnd();
@@ -141,7 +139,7 @@ namespace Calyptus.ResourceManager
 				foreach (IResource reference in _references)
 					reference.RenderReferenceTags(writer, urlFactory, writtenResources);
 
-			if (writer == null) return;
+			if (writer == null || (!_hasContent && _builds == null && _includes == null)) return;
 			writer.Write("<script src=\"");
 			writer.Write(HttpUtility.HtmlEncode(urlFactory.GetURL(this)));
 			writer.Write("\" type=\"text/javascript\"></script>");

@@ -10,10 +10,8 @@ namespace Calyptus.ResourceManager
 	{
 		private Regex _parser;
 
-		public SyntaxReader(TextReader textReader)
+		public SyntaxReader(TextReader textReader, bool parseSingleLineComments)
 		{
-			//  (?:^|\s)\@(include|using|compress)\(\s*[\'\"]?((?<=\")[^\"]*(?=\")|(?<=\')[^\']*(?=\')|[^\s\']+)[\'\"]?\s*(?:,\s*[\'\"]?((?<=\")[^\"]*(?=\")|(?<=\')[^\']*(?=\')|[^\s\']+)[\'\"]?)?\s*(?:,\s*[\'\"]?((?<=\")[^\"]*(?=\")|(?<=\')[^\']*(?=\')|[^\s\']+)[\'\"]?)?\s*\)
-
 			_parser = new Regex("(?:^|\\s)\\@(include|reference|build|compress)\\(\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\)\\,]+)[\\'\\\"]?\\s*(?:,\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\)\\,]+)[\\'\\\"]?)?\\s*(?:,\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\)\\,]+)[\\'\\\"]?)?\\s*\\)", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Multiline);
 
 			_includes = new List<FileReference>();
@@ -30,7 +28,7 @@ namespace Calyptus.ResourceManager
 				for (int i = 0; i < l; i++)
 				{
 					char c = buffer[i];
-					if (!isInComment && lastc == '/' && (c == '/' || c == '*'))
+					if (!isInComment && lastc == '/' && (c == '*' || (c == '/' && parseSingleLineComments)))
 					{
 						isInComment = true;
 						isMultiLineComment = c == '*';
@@ -47,12 +45,13 @@ namespace Calyptus.ResourceManager
 						block.Append(c);
 					else if (c != '/' && c != '\t' && c != ' ' && c != ' ' && c != '\r' && c != '\n')
 					{
+						HasContent = true;
 						textReader.Close();
 						return;
 					}
 					lastc = c;
 				}
-
+			textReader.Close();
 			if (isInComment)
 			{
 				ParseBlock(block.ToString());
@@ -123,6 +122,8 @@ namespace Calyptus.ResourceManager
 			get;
 			private set;
 		}
+
+		public bool HasContent { get; private set; }
 
 		public struct FileReference
 		{

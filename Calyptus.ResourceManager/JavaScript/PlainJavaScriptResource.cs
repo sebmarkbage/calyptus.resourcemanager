@@ -12,11 +12,14 @@ namespace Calyptus.ResourceManager
 	{
 		private static IJavaScriptCompressor compressor = new Dean.Edwards.ECMAScriptPacker(Dean.Edwards.ECMAScriptPacker.PackerEncoding.None, false, false);
 
-		public PlainJavaScriptResource(IResource[] references, FileLocation location)
+		public PlainJavaScriptResource(IResource[] references, FileLocation location, bool hasContent)
 		{
+			_hasContent = hasContent;
 			_references = references;
 			_location = location;
 		}
+
+		private bool _hasContent;
 
 		private FileLocation _location;
 
@@ -60,7 +63,7 @@ namespace Calyptus.ResourceManager
 				foreach (IResource reference in _references)
 					reference.RenderReferenceTags(writer, urlFactory, writtenResources);
 
-			if (writer == null) return;
+			if (writer == null || !_hasContent) return;
 			writer.Write("<script src=\"");
 			writer.Write(HttpUtility.HtmlEncode(urlFactory.GetURL(this)));
 			writer.Write("\" type=\"text/javascript\"></script>");

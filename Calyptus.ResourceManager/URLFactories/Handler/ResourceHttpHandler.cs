@@ -87,8 +87,8 @@ namespace Calyptus.ResourceManager
 			else
 				location = LocationHelper.GetLocation("~/", path);
 
-			ResourceConfigurationManager fm = ResourceConfigurationManager.GetFactoryManager(context);
-			IResource res = fm.GetResource(location);
+			IResourceConfiguration config = ResourceConfigurationManager.GetConfiguration();
+			IResource res = config.GetResource(location);
 			if (res == null) throw new HttpException(404, "Resource not found");
 
 			IProxyResource r = res as IProxyResource;
@@ -103,7 +103,7 @@ namespace Calyptus.ResourceManager
 			string v = ToHex(res.Version);
 			if (v != version)
 			{
-				response.RedirectLocation = String.Format("{0}?{1}", context.Request.Path, v);
+				response.RedirectLocation = String.Format("{0}?{1}{2}{3}", context.Request.Path, v, ps.Length > 1 ? "-" + ps[1] : null, ps.Length > 2 ? "-" + ps[2] : null);
 				response.StatusCode = 301;
 				return;
 			}
@@ -125,7 +125,7 @@ namespace Calyptus.ResourceManager
 			response.Cache.SetValidUntilExpires(true);
 
 			ICollection<IResource> writtenResources = new Collection<IResource>();
-			IResourceURLFactory urlFactory = fm.URLProvider.GetURLFactory(context);
+			IResourceURLFactory urlFactory = config.URLProvider.GetURLFactory(context);
 
 			bool base64support = !"IE".Equals(request.Browser.Browser, StringComparison.InvariantCultureIgnoreCase) || request.Browser.MajorVersion > 7;
 			ITextProxyResource tr;

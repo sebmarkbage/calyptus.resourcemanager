@@ -47,5 +47,14 @@ namespace Calyptus.ResourceManager
 				return _version;
 			}
 		}
+
+		public override string ToString()
+		{
+			return ProxyType.FullName;
+		}
+
+		public void MonitorChanges(Action onChanged)
+		{
+		}
 	}
 }

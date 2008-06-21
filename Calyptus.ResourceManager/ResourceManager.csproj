@@ -65,6 +65,7 @@
     <Compile Include="Controls\Include.cs" />
     <Compile Include="Controls\ResourceControl.cs" />
     <Compile Include="Controls\Reference.cs" />
+    <Compile Include="ResourceFactories\IResourceConfiguration.cs" />
     <Compile Include="ResourceFactories\ResourceConfigurationManager.cs" />
     <Compile Include="CSS\CSSFactory.cs" />
     <Compile Include="CSS\PlainCSSResource.cs" />

@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace Calyptus.ResourceManager
 {
-	public class ResourceConfigurationManager
+	public class ResourceConfigurationManager : IResourceConfiguration
 	{
 		private ReaderWriterLock _lock;
 		private IResourceURLProvider _urlProvider;
@@ -16,33 +16,44 @@ namespace Calyptus.ResourceManager
 
 		// TODO: Configurable
 
-		private ResourceConfigurationManager(IResourceURLProvider urlProvider, IResourceFactory[] resourceFactories)
+		protected ResourceConfigurationManager(IResourceURLProvider urlProvider, IResourceFactory[] resourceFactories)
 		{
 			_resourceCache = new Dictionary<IResourceLocation, IResource>();
 			_urlProvider = urlProvider;
 			_resourceFactories = resourceFactories;
 			foreach (IResourceFactory factory in _resourceFactories)
-				factory.FactoryManager = this;
+				factory.Configuration = this;
 			_lock = new ReaderWriterLock();
 		}
 
-		private ResourceConfigurationManager() : this(new HttpHandlerURLProvider(), new IResourceFactory[] {
+		protected ResourceConfigurationManager() : this(new HttpHandlerURLProvider(), new IResourceFactory[] {
 					new JavaScriptFactory(),
 					new FileResourceFactory(),
 					new CSSFactory(),
 					new ImageFactory()
 		}) { }
 
-		public static ResourceConfigurationManager GetFactoryManager(HttpContext context)
+		public static IResourceConfiguration GetConfiguration()
 		{
-			ResourceConfigurationManager m = context.Cache["ResourceConfigurationManager"] as ResourceConfigurationManager;
+			ResourceConfigurationManager m = HttpRuntime.Cache["ResourceConfigurationManager"] as ResourceConfigurationManager;
 			if (m == null)
 			{
 				m = new ResourceConfigurationManager();
-				m.DebugMode = context.IsDebuggingEnabled;
-				context.Cache.Add("ResourceConfigurationManager", m, null, System.Web.Caching.Cache.NoAbsoluteExpiration, System.Web.Caching.Cache.NoSlidingExpiration, System.Web.Caching.CacheItemPriority.BelowNormal, null);
+				try
+				{
+					HttpContext context = HttpContext.Current;
+					if (context != null)
+						m.DebugMode = context.IsDebuggingEnabled;
+				}
+				catch { }
+				HttpRuntime.Cache.Add("ResourceConfigurationManager", m, null, System.Web.Caching.Cache.NoAbsoluteExpiration, System.Web.Caching.Cache.NoSlidingExpiration, System.Web.Caching.CacheItemPriority.BelowNormal, null);
 			}
 			return m;
+		}
+
+		protected virtual void Reset()
+		{
+			_resourceCache.Clear();
 		}
 
 		public IResourceURLProvider URLProvider { get { return _urlProvider; } }
@@ -60,8 +71,10 @@ namespace Calyptus.ResourceManager
 					var c = _lock.UpgradeToWriterLock(3000);
 					try
 					{
+						_resourceCache.Add(location, null); // Adding it as null first prevents recursive reference errors
 						res = GetResourcePrivate(location) ?? new UnknownResource(location);
-						_resourceCache.Add(location, res);
+						_resourceCache[location] = res;
+						location.MonitorChanges(new Action(Reset));
 					}
 					finally
 					{
@@ -73,6 +86,7 @@ namespace Calyptus.ResourceManager
 			{
 				_lock.ReleaseReaderLock();
 			}
+			if (res == null) throw new Exception(String.Format("The resource at {0} contains recursive references. This is currently not supported.", location.ToString()));
 			return res;
 		}
 
@@ -80,13 +94,19 @@ namespace Calyptus.ResourceManager
 		{
 			TypeLocation tl = location as TypeLocation;
 			if (tl != null && typeof(IResource).IsAssignableFrom(tl.ProxyType))
-				return (IResource)System.Activator.CreateInstance(tl.ProxyType); // Precompiled resource
-			else
-				foreach (IResourceFactory factory in _resourceFactories)
-				{
-					IResource res = factory.GetResource(location);
-					if (res != null) return res;
-				}
+			{
+				ConstructorInfo c = tl.ProxyType.GetConstructor(new Type[] { typeof(IResourceConfiguration) });
+				if (c != null)
+					return (IResource)c.Invoke(new object[] { this });
+				c = tl.ProxyType.GetConstructor(new Type[0]);
+				if (c != null)
+					return (IResource)c.Invoke(new object[0]);
+			}
+			foreach (IResourceFactory factory in _resourceFactories)
+			{
+				IResource res = factory.GetResource(location);
+				if (res != null) return res;
+			}
 			if (tl != null)
 			{
 				IResourceLocation fr = FileResourceHelper.GetRelatedResourceLocation(tl);
@@ -104,7 +124,7 @@ namespace Calyptus.ResourceManager
 		public bool DebugMode
 		{
 			get;
-			private set;
+			protected set;
 		}
 	}
 }

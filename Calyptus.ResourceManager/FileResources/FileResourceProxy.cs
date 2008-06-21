@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 using System.Globalization;
 using System.Web;
+using System.Reflection;
 
 namespace Calyptus.ResourceManager
 {
@@ -15,6 +16,7 @@ namespace Calyptus.ResourceManager
 		{
 			Manager = new System.Resources.ResourceManager(location.ProxyType);
 			this.Location = location;
+			SetVersions(location.ProxyType.Assembly);
 		}
 
 		public FileResourceProxy(EmbeddedLocation location)
@@ -24,6 +26,7 @@ namespace Calyptus.ResourceManager
 			bn = bn.Substring(0, bn.Length - EXTENSION.Length);
 			Manager = new System.Resources.ResourceManager(bn, location.Assembly);
 			this.Location = location;
+			SetVersions(location.Assembly);
 		}
 
 		protected System.Resources.ResourceManager Manager
@@ -45,8 +48,40 @@ namespace Calyptus.ResourceManager
 		public byte[] Version
 		{
 			get {
-				return Location.Version;
+				if (CultureInfo.CurrentUICulture == CultureInfo.InvariantCulture)
+					return _mainVer;
+				else
+					return _satVer;
 			}
+		}
+
+		private byte[] _mainVer;
+		private byte[] _satVer;
+
+		private void SetVersions(Assembly a)
+		{
+			_mainVer = GetVerBytes(a.GetName().Version);
+			object[] atts = a.GetCustomAttributes(typeof(System.Resources.SatelliteContractVersionAttribute), false);
+			if (atts != null && atts.Length > 0)
+			{
+				try
+				{
+					_satVer = GetVerBytes(new Version(((System.Resources.SatelliteContractVersionAttribute)atts[0]).Version));
+					return;
+				}
+				catch { }
+			}
+			_satVer = _mainVer;
+		}
+
+		private byte[] GetVerBytes(Version version)
+		{
+			return new byte[] {
+				(byte)((version.Major << 4 & 240) | (version.Minor & 15)),
+				(byte)(version.Build & 255),
+				(byte)(version.Revision >> 8 & 255),
+				(byte)(version.Revision & 255)
+			};
 		}
 
 		public bool CultureSensitive
@@ -120,7 +155,6 @@ namespace Calyptus.ResourceManager
 				culture = culture.Parent;
 			}
 			writer.Write("};");
-
 		}
 
 		private void WriteJSEncodedString(TextWriter writer, string value)

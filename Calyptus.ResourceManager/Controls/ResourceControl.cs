@@ -8,14 +8,14 @@ namespace Calyptus.ResourceManager
 {
 	public abstract class ResourceControl : System.Web.UI.Control
 	{
-		private ResourceConfigurationManager _manager;
-		protected ResourceConfigurationManager Manager
+		private IResourceConfiguration _config;
+		protected IResourceConfiguration Manager
 		{
 			get
 			{
-				if (_manager == null)
-					_manager = ResourceConfigurationManager.GetFactoryManager(Context);
-				return _manager;
+				if (_config == null)
+					_config = ResourceConfigurationManager.GetConfiguration();
+				return _config;
 			}
 		}
 
