@@ -78,9 +78,11 @@ namespace Calyptus.ResourceManager
 				if (i > 0) fullName.Append('.');
 				fullName.Append(names[i]);
 				string fn = fullName.ToString();
-				writer.Write("if(!");
+				writer.Write("if(typeof(");
 				writer.Write(fn);
-				writer.Write(")");
+				writer.Write(")!='object'||");
+				writer.Write(fn);
+				writer.Write("==null)");
 				if (i == 0)
 					writer.Write("var ");
 				writer.Write(fn);
