@@ -32,24 +32,31 @@ namespace Calyptus.ResourceManager
 			}
 		}
 
-		protected abstract IResourceLocation Location
+		protected abstract IEnumerable<IResourceLocation> Locations
 		{
 			get;
 		}
 
-		private IResource _resource;
-		public virtual IResource Resource
+		private List<IResource> _resources;
+		public virtual IEnumerable<IResource> Resources
 		{
 			get
 			{
-				if (_resource == null)
-					_resource = Manager.GetResource(Location);
-				return _resource;
+				if (_resources == null)
+				{
+					_resources = new List<IResource>();
+					foreach (IResourceLocation l in Locations)
+					{
+						IResource res = Manager.GetResource(l);
+						if (res != null)
+							_resources.Add(res);
+					}
+				}
+				return _resources;
 			}
 		}
 
 		private IResourceURLFactory _urlFactory;
-
 		protected virtual IResourceURLFactory UrlFactory
 		{
 			get
@@ -85,9 +92,10 @@ namespace Calyptus.ResourceManager
 
 		protected override void Render(HtmlTextWriter writer)
 		{
-			RenderTag(writer);
+			foreach (IResource resource in Resources)
+				RenderTag(writer, resource);
 		}
 
-		protected abstract void RenderTag(HtmlTextWriter writer);
+		protected abstract void RenderTag(HtmlTextWriter writer, IResource resource);
 	}
 }

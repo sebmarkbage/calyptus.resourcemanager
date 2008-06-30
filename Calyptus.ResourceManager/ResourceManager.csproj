@@ -48,10 +48,11 @@
     <Compile Include="Compression\CssMinify.cs" />
     <Compile Include="Compression\YUICompressor.cs" />
     <Compile Include="Controls\Build.cs" />
-    <Compile Include="CSS\CssUrlParserHelper.cs" />
+    <Compile Include="CSS\CSSUrlParser.cs" />
     <Compile Include="CSS\ExtendedCSSResource.cs" />
     <Compile Include="FileResources\FileResourceHelper.cs" />
     <Compile Include="Helpers\ChecksumHelper.cs" />
+    <Compile Include="Helpers\ExternalResourcePackage.cs" />
     <Compile Include="Helpers\SyntaxReader.cs" />
     <Compile Include="Images\ProxyImageResource.cs" />
     <Compile Include="Images\IImageResource.cs" />
@@ -61,10 +62,10 @@
     <Compile Include="Compression\IJavaScriptCompressor.cs" />
     <Compile Include="Location\ExternalLocation.cs" />
     <Compile Include="Location\FileLocation.cs" />
-    <Compile Include="Location\LocationHelper.cs" />
+    <Compile Include="Location\ResourceLocations.cs" />
     <Compile Include="Controls\Include.cs" />
     <Compile Include="Controls\ResourceControl.cs" />
-    <Compile Include="Controls\Reference.cs" />
+    <Compile Include="Controls\Import.cs" />
     <Compile Include="ResourceFactories\IResourceConfiguration.cs" />
     <Compile Include="ResourceFactories\ResourceConfigurationManager.cs" />
     <Compile Include="CSS\CSSFactory.cs" />

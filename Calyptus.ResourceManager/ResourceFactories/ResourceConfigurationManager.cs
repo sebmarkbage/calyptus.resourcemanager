@@ -86,7 +86,7 @@ namespace Calyptus.ResourceManager
 			{
 				_lock.ReleaseReaderLock();
 			}
-			if (res == null) throw new Exception(String.Format("The resource at {0} contains recursive references. This is currently not supported.", location.ToString()));
+			if (res == null) throw new Exception(String.Format("The resource at {0} contains recursive references. This is not supported.", location.ToString()));
 			return res;
 		}
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Calyptus.ResourceManager
 {
-	public class UnknownResource : IResource
+	public sealed class UnknownResource : IResource
 	{
 		public UnknownResource(IResourceLocation location)
 		{
@@ -30,6 +30,7 @@ namespace Calyptus.ResourceManager
 		{
 			if (writtenResources.Contains(this)) return;
 			writtenResources.Add(this);
+			if (writer == null) return;
 			writer.Write("<!-- Unknown Resource Type (");
 			writer.Write(urlFactory.GetURL(this));
 			writer.Write(") -->");

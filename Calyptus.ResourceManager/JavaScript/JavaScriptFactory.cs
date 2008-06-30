@@ -23,46 +23,41 @@ namespace Calyptus.ResourceManager
 
 			SyntaxReader reader;
 			using (TextReader r = new StreamReader(s))
-				reader = new SyntaxReader(r, true);
+				reader = new SyntaxReader(r, true, location, ".js");
 
 			Compress compress = reader.Compress == null ? Compress.Release : (Compress)Enum.Parse(typeof(Compress), reader.Compress, true);
+			bool cmpr = (compress == Compress.Always || (compress == Compress.Release && !Configuration.DebugMode));
 
 			var includes = new List<IResource>();
 			var builds = new List<IResource>();
 			var references = new List<IResource>();
 			if (reader.References != null)
-				foreach (var r in reader.References)
+				foreach (var rl in reader.References)
 				{
-					IResourceLocation rl = r.GetLocation(location);
-					if (location.Equals(rl)) continue;
 					var resource = Configuration.GetResource(rl);
-					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", r.Assembly == null ? r.Filename : r.Assembly + ", " + r.Filename));
+					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", rl));
 					if (!references.Contains(resource))
 						references.Add(resource);
 				}
 			if (reader.Includes != null)
-				foreach (var r in reader.Includes)
+				foreach (var rl in reader.Includes)
 				{
-					IResourceLocation rl = r.GetLocation(location);
-					if (location.Equals(rl)) continue;
 					var resource = Configuration.GetResource(rl);
-					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", r.Assembly == null ? r.Filename : r.Assembly + ", " + r.Filename));
-					if (resource is IJavaScriptResource && !Configuration.DebugMode)
+					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", rl));
+					if (resource is IJavaScriptResource && cmpr)
 						includes.Add(resource);
 					else if (!references.Contains(resource))
-						references.Add(resource); // throw new Exception(String.Format("Resource {0}, {1} is not a JavaScript resource.", r.Assembly, r.Filename));
+						references.Add(resource);
 				}
 			if (reader.Builds != null)
-				foreach (var r in reader.Builds)
+				foreach (var rl in reader.Builds)
 				{
-					IResourceLocation rl = r.GetLocation(location);
-					if (location.Equals(rl)) continue;
 					var resource = Configuration.GetResource(rl);
-					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", r.Assembly == null ? r.Filename : r.Assembly + ", " + r.Filename));
-					if (resource is IJavaScriptResource && !Configuration.DebugMode)
+					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", rl));
+					if (resource is IJavaScriptResource && cmpr)
 						builds.Add(resource);
 					else if (!references.Contains(resource))
-						references.Add(resource); // throw new Exception(String.Format("Resource {0}, {1} is not a JavaScript resource and cannot be included.", r.Assembly, r.Filename));
+						references.Add(resource);
 				}
 
 			IResourceLocation rf = FileResourceHelper.GetRelatedResourceLocation(location);
@@ -82,7 +77,7 @@ namespace Calyptus.ResourceManager
 				return new PlainJavaScriptResource(references.Count > 0 ? references.ToArray() : null, l, reader.HasContent);
 			else
 				return new ExtendedJavaScriptResource(
-					reader.Compress == null ? (bool?)null : (compress == Compress.Always || (compress == Compress.Release && !Configuration.DebugMode)),
+					reader.Compress == null ? (bool?)null : cmpr,
 					references.Count > 0 ? references.ToArray() : null,
 					includes.Count > 0 ? includes.ToArray() : null,
 					builds.Count > 0 ? builds.ToArray() : null,

@@ -50,7 +50,7 @@ namespace Calyptus.ResourceManager
 			{
 				s = compressor.Compress(s);
 			}
-			s = CssUrlParserHelper.ConvertUrls(s, Location, urlFactory, null);
+			s = CSSUrlParser.ConvertUrls(s, Location, urlFactory, null);
 			writer.Write(s);
 		}
 

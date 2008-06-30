@@ -87,7 +87,7 @@ namespace Calyptus.ResourceManager
 			if (compress)
 				s = compressor.Compress(s);
 
-			s = CssUrlParserHelper.ConvertUrls(s, Location, urlFactory, includeImages ? _imageIncludes : null);
+			s = CSSUrlParser.ConvertUrls(s, Location, urlFactory, includeImages ? _imageIncludes : null);
 
 			writer.Write(s);
 		}

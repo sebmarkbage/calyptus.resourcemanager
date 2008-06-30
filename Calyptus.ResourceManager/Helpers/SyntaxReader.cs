@@ -6,17 +6,23 @@ using System.Collections.Generic;
 
 namespace Calyptus.ResourceManager
 {
-	public class SyntaxReader
+	internal class SyntaxReader
 	{
 		private Regex _parser;
 
-		public SyntaxReader(TextReader textReader, bool parseSingleLineComments)
-		{
-			_parser = new Regex("(?:^|\\s)\\@(include|reference|build|compress)\\(\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\)\\,]+)[\\'\\\"]?\\s*(?:,\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\)\\,]+)[\\'\\\"]?)?\\s*(?:,\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\)\\,]+)[\\'\\\"]?)?\\s*\\)", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Multiline);
+		private IResourceLocation _baseLocation;
+		private string _ext;
 
-			_includes = new List<FileReference>();
-			_references = new List<FileReference>();
-			_builds = new List<FileReference>();
+		public SyntaxReader(TextReader textReader, bool parseSingleLineComments, IResourceLocation baseLocation, string defaultExtension)
+		{
+			_baseLocation = baseLocation;
+			_ext = defaultExtension;
+
+			_parser = new Regex("(?:^|\\s)\\@(include|import|build|compress)[\\(\\s]\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\)\\,]+)[\\'\\\"]?\\s*(?:,\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\)\\,]+)[\\'\\\"]?)?\\s*(?:,\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\)\\,]+)[\\'\\\"]?)?\\s*[\\)\\n\\;]", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Multiline);
+
+			_includes = new List<IResourceLocation>();
+			_references = new List<IResourceLocation>();
+			_builds = new List<IResourceLocation>();
 
 			bool isInComment = false;
 			bool isMultiLineComment = false;
@@ -62,36 +68,37 @@ namespace Calyptus.ResourceManager
 		{
 			foreach (Match m in _parser.Matches(block))
 			{
-				string command = m.Groups[1].Value.ToLower();
+				string command = m.Groups[1].Value;
 				string param1 = m.Groups[2].Success ? m.Groups[2].Value : null;
 				string param2 = m.Groups[3].Success ? m.Groups[3].Value : null;
 				string param3 = m.Groups[4].Success ? m.Groups[4].Value : null;
-				switch (command)
+
+				if (command.Equals("compress", StringComparison.OrdinalIgnoreCase))
 				{
-					case "include":
-						_includes.Add(
-								param2 != null ? new FileReference { Assembly = param1, Filename = param2 } : new FileReference { Filename = param1 }
-							);
-						break;
-					case "build":
-						_builds.Add(
-								param2 != null ? new FileReference { Assembly = param1, Filename = param2 } : new FileReference { Filename = param1 }
-							);
-						break;
-					case "reference":
-						_references.Add(
-								param2 != null ? new FileReference { Assembly = param1, Filename = param2 } : new FileReference { Filename = param1 }
-							);
-						break;
-					case "compress":
-						Compress = param1;
-						break;
+					Compress = param1;
+					continue;
+				}
+
+				List<IResourceLocation> l =
+					command.Equals("include", StringComparison.OrdinalIgnoreCase) ? _includes : (
+						command.Equals("build", StringComparison.OrdinalIgnoreCase) ? _builds : (
+							command.Equals("import", StringComparison.OrdinalIgnoreCase) ? _references : null
+						)
+					);
+
+				if (l != null)
+				{
+					IEnumerable<IResourceLocation> ls = ResourceLocations.GetLocations(_baseLocation, param2 != null ? param1 : null, param2 ?? param1);
+					if (ls == null && param2 == null && _ext != null && !param1.EndsWith("*") && !param1.Equals(_ext, StringComparison.OrdinalIgnoreCase))
+						ls = ResourceLocations.GetLocations(_baseLocation, null, param1 + _ext);
+					if (ls != null)
+						l.AddRange(ls);
 				}
 			}
 		}
 
-		private IList<FileReference> _includes;
-		public IEnumerable<FileReference> Includes
+		private List<IResourceLocation> _includes;
+		public IEnumerable<IResourceLocation> Includes
 		{
 			get
 			{
@@ -99,8 +106,8 @@ namespace Calyptus.ResourceManager
 			}
 		}
 
-		private IList<FileReference> _builds;
-		public IEnumerable<FileReference> Builds
+		private List<IResourceLocation> _builds;
+		public IEnumerable<IResourceLocation> Builds
 		{
 			get
 			{
@@ -108,8 +115,8 @@ namespace Calyptus.ResourceManager
 			}
 		}
 
-		private IList<FileReference> _references;
-		public IEnumerable<FileReference> References
+		private List<IResourceLocation> _references;
+		public IEnumerable<IResourceLocation> References
 		{
 			get
 			{
@@ -124,16 +131,5 @@ namespace Calyptus.ResourceManager
 		}
 
 		public bool HasContent { get; private set; }
-
-		public struct FileReference
-		{
-			public string Assembly;
-			public string Filename;
-
-			public IResourceLocation GetLocation(IResourceLocation baseLocation)
-			{
-				return LocationHelper.GetLocation(baseLocation, Assembly, Filename);
-			}
-		}
 	}
 }

@@ -31,26 +31,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Web.Extensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\MyStyleB.css" />
@@ -59,85 +44,6 @@
     <Content Include="Default.aspx" />
     <EmbeddedResource Include="JS\Test3.js" />
     <EmbeddedResource Include="Img\toad.jpg" />
-    <Content Include="MooTools\References\Class\Class.js" />
-    <Content Include="MooTools\References\Class\Class.Extras.js" />
-    <Content Include="MooTools\References\Core\Browser.js" />
-    <Content Include="MooTools\References\Core\Core.js" />
-    <Content Include="MooTools\References\Element\Element.Dimensions.js" />
-    <Content Include="MooTools\References\Element\Element.Style.js" />
-    <Content Include="MooTools\References\Element\Element.Event.js" />
-    <Content Include="MooTools\References\Element\Element.js" />
-    <Content Include="MooTools\References\Fx\Fx.CSS.js" />
-    <Content Include="MooTools\References\Fx\Fx.js" />
-    <Content Include="MooTools\References\Fx\Fx.Morph.js" />
-    <Content Include="MooTools\References\Fx\Fx.Transitions.js" />
-    <Content Include="MooTools\References\Fx\Fx.Tween.js" />
-    <Content Include="MooTools\References\Native\Array.js" />
-    <Content Include="MooTools\References\Plugins\Accordion.js" />
-    <Content Include="MooTools\References\Plugins\Assets.js" />
-    <Content Include="MooTools\References\Plugins\Color.js" />
-    <Content Include="MooTools\References\Plugins\Drag.js" />
-    <Content Include="MooTools\References\Plugins\Drag.Move.js" />
-    <Content Include="MooTools\References\Plugins\Fx.Elements.js" />
-    <Content Include="MooTools\References\Plugins\Fx.Scroll.js" />
-    <Content Include="MooTools\References\Plugins\Fx.Slide.js" />
-    <Content Include="MooTools\References\Plugins\Group.js" />
-    <Content Include="MooTools\References\Plugins\Hash.Cookie.js" />
-    <Content Include="MooTools\References\Plugins\Scroller.js" />
-    <Content Include="MooTools\References\Plugins\Slider.js" />
-    <Content Include="MooTools\References\Plugins\SmoothScroll.js" />
-    <Content Include="MooTools\References\Plugins\Sortables.js" />
-    <Content Include="MooTools\References\Plugins\Tips.js" />
-    <Content Include="MooTools\References\Request\Request.HTML.js" />
-    <Content Include="MooTools\References\Request\Request.js" />
-    <Content Include="MooTools\References\Request\Request.JSON.js" />
-    <Content Include="MooTools\References\Utilities\Cookie.js" />
-    <Content Include="MooTools\References\Utilities\Swiff.js" />
-    <Content Include="MooTools\References\Utilities\Selectors.js" />
-    <Content Include="MooTools\References\Utilities\JSON.js" />
-    <Content Include="MooTools\References\Utilities\DomReady.js" />
-    <Content Include="MooTools\Source\Class\Class.Extras.js" />
-    <Content Include="MooTools\Source\Class\Class.js" />
-    <Content Include="MooTools\Source\Core\Browser.js" />
-    <Content Include="MooTools\Source\Core\Core.js" />
-    <Content Include="MooTools\Source\Element\Element.Dimensions.js" />
-    <Content Include="MooTools\Source\Element\Element.Event.js" />
-    <Content Include="MooTools\Source\Element\Element.js" />
-    <Content Include="MooTools\Source\Element\Element.Style.js" />
-    <Content Include="MooTools\Source\Fx\Fx.CSS.js" />
-    <Content Include="MooTools\Source\Fx\Fx.js" />
-    <Content Include="MooTools\Source\Fx\Fx.Morph.js" />
-    <Content Include="MooTools\Source\Fx\Fx.Transitions.js" />
-    <Content Include="MooTools\Source\Fx\Fx.Tween.js" />
-    <Content Include="MooTools\Source\Native\Array.js" />
-    <Content Include="MooTools\Source\Native\Event.js" />
-    <Content Include="MooTools\Source\Native\Function.js" />
-    <Content Include="MooTools\Source\Native\Hash.js" />
-    <Content Include="MooTools\Source\Native\Number.js" />
-    <Content Include="MooTools\Source\Native\String.js" />
-    <Content Include="MooTools\Source\Plugins\Accordion.js" />
-    <Content Include="MooTools\Source\Plugins\Assets.js" />
-    <Content Include="MooTools\Source\Plugins\Color.js" />
-    <Content Include="MooTools\Source\Plugins\Drag.js" />
-    <Content Include="MooTools\Source\Plugins\Drag.Move.js" />
-    <Content Include="MooTools\Source\Plugins\Fx.Elements.js" />
-    <Content Include="MooTools\Source\Plugins\Fx.Scroll.js" />
-    <Content Include="MooTools\Source\Plugins\Fx.Slide.js" />
-    <Content Include="MooTools\Source\Plugins\Group.js" />
-    <Content Include="MooTools\Source\Plugins\Hash.Cookie.js" />
-    <Content Include="MooTools\Source\Plugins\Scroller.js" />
-    <Content Include="MooTools\Source\Plugins\Slider.js" />
-    <Content Include="MooTools\Source\Plugins\SmoothScroll.js" />
-    <Content Include="MooTools\Source\Plugins\Sortables.js" />
-    <Content Include="MooTools\Source\Plugins\Tips.js" />
-    <Content Include="MooTools\Source\Request\Request.HTML.js" />
-    <Content Include="MooTools\Source\Request\Request.js" />
-    <Content Include="MooTools\Source\Request\Request.JSON.js" />
-    <Content Include="MooTools\Source\Utilities\Cookie.js" />
-    <Content Include="MooTools\Source\Utilities\DomReady.js" />
-    <Content Include="MooTools\Source\Utilities\JSON.js" />
-    <Content Include="MooTools\Source\Utilities\Selectors.js" />
-    <Content Include="MooTools\Source\Utilities\Swiff.js" />
     <Content Include="Test.js" />
     <EmbeddedResource Include="JS\Test2.js" />
     <EmbeddedResource Include="MyResourceFile.resx">
@@ -166,6 +72,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Calyptus.ClientSide\Calyptus.ClientSide.csproj">
+      <Project>{E6F0FAB4-E37A-435C-BBF2-25E598E20C3D}</Project>
+      <Name>Calyptus.ClientSide</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Calyptus.ResourceManager\ResourceManager.csproj">
       <Project>{BFDEC588-9458-42B6-824B-F6D3B43C8899}</Project>
       <Name>ResourceManager</Name>

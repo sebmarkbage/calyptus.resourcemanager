@@ -1,11 +1,11 @@
-﻿//@reference(MooTools.Core.js)
-//@reference(MooTools.Array.js)
-//@reference(MooTools.Function.js)
-//@reference(MooTools.Class.js)
-//@reference(MooTools.Class.Extras.js)
-//@reference(MooTools.Element.js)
-//@reference(MooTools.Element.Event.js)
-//@reference(MooTools.Element.Style.js)
-//@reference(Calyptus.Range.js)
-//@reference(Calyptus.Range.Edit.js)
-//@include(Calyptus.ClientSide.Lib.Calyptus.Native.Range.js)
+﻿//@import MooTools.Core.js;
+//@import MooTools.Array.js;
+//@import MooTools.Function.js;
+//@import MooTools.Class.js;
+//@import MooTools.Class.Extras.js;
+//@import MooTools.Element.js;
+//@import MooTools.Element.Event.js;
+//@import MooTools.Element.Style.js;
+//@import Calyptus.Range.js;
+//@import Calyptus.Range.Edit.js;
+//@include Calyptus.ClientSide.Lib.Calyptus.Native.Range.js;

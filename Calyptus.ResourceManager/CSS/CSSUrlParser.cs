@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace Calyptus.ResourceManager
 {
-	internal static class CssUrlParserHelper
+	internal static class CSSUrlParser
 	{
 		private static Regex _urlParser = new Regex("(?<=[\\:\\s]url\\()\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\)\\,]+)[\\'\\\"]?\\s*(?:,\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\)\\,]+)[\\'\\\"]?)?\\s*(?=\\))", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Multiline);
 
@@ -16,7 +16,7 @@ namespace Calyptus.ResourceManager
 			{
 				string assembly = m.Groups[2].Success ? m.Groups[1].Value : null;
 				string filename = m.Groups[2].Success ? m.Groups[2].Value : m.Groups[1].Value;
-				IResourceLocation location = LocationHelper.GetLocation(baseLocation, assembly, filename);
+				IResourceLocation location = ResourceLocations.GetLocation(baseLocation, assembly, filename);
 				if (includedImages != null)
 					foreach (IImageResource res in includedImages)
 						if (location.Equals(res.Location))

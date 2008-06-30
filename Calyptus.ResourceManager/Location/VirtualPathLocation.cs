@@ -10,6 +10,11 @@ namespace Calyptus.ResourceManager
 {
 	public class VirtualPathLocation : FileLocation
 	{
+		public VirtualPathLocation(string absolutePath)
+		{
+			VirtualPath = VirtualPathUtility.ToAbsolute(absolutePath);
+		}
+
 		public VirtualPathLocation(string basePath, string relativePath)
 		{
 			VirtualPath = VirtualPathUtility.Combine(basePath, relativePath);

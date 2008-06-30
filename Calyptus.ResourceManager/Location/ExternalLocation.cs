@@ -9,6 +9,11 @@ namespace Calyptus.ResourceManager
 {
 	public class ExternalLocation : FileLocation
 	{
+		public ExternalLocation(string uri)
+		{
+			this.Uri = new Uri(uri);
+		}
+
 		public ExternalLocation(Uri uri)
 		{
 			this.Uri = uri;

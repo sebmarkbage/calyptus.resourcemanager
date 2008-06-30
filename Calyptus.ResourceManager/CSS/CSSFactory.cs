@@ -23,32 +23,30 @@ namespace Calyptus.ResourceManager
 
 			SyntaxReader reader;
 			using (TextReader r = new StreamReader(s))
-				reader = new SyntaxReader(r, false);
+				reader = new SyntaxReader(r, false, location, null);
 
 			Compress compress = reader.Compress == null ? Compress.Release : (Compress)Enum.Parse(typeof(Compress), reader.Compress, true);
+			bool cmpr = (compress == Compress.Always || (compress == Compress.Release && !Configuration.DebugMode));
 
 			var includes = new List<ICSSResource>();
 			var imageIncludes = new List<IImageResource>();
 			var builds = new List<ICSSResource>();
 			var references = new List<IResource>();
 			if (reader.References != null)
-				foreach (var r in reader.References)
+				foreach (var rl in reader.References)
 				{
-					IResourceLocation rl = r.GetLocation(location);
-					if (location.Equals(rl)) continue;
 					var resource = Configuration.GetResource(rl);
-					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", r.Assembly == null ? r.Filename : r.Assembly + ", " + r.Filename));
+					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", rl));
 					if (!references.Contains(resource))
 						references.Add(resource);
 				}
 			if (reader.Includes != null)
-				foreach (var r in reader.Includes)
+				foreach (var rl in reader.Includes)
 				{
-					IResourceLocation rl = r.GetLocation(location);
 					if (location.Equals(rl)) continue;
 					var resource = Configuration.GetResource(rl);
-					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", r.Assembly == null ? r.Filename : r.Assembly + ", " + r.Filename));
-					if (resource is ICSSResource && !Configuration.DebugMode)
+					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", rl));
+					if (resource is ICSSResource && cmpr)
 						includes.Add((ICSSResource)resource);
 					else if (resource is IImageResource)
 					{
@@ -56,16 +54,14 @@ namespace Calyptus.ResourceManager
 							imageIncludes.Add((IImageResource)resource);
 					}
 					else if (!references.Contains(resource))
-						references.Add(resource); // throw new Exception(String.Format("Resource {0}, {1} is not a JavaScript resource.", r.Assembly, r.Filename));
+						references.Add(resource);
 				}
 			if (reader.Builds != null)
-				foreach (var r in reader.Builds)
+				foreach (var rl in reader.Builds)
 				{
-					IResourceLocation rl = r.GetLocation(location);
-					if (location.Equals(rl)) continue;
 					var resource = Configuration.GetResource(rl);
-					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", r.Assembly == null ? r.Filename : r.Assembly + ", " + r.Filename));
-					if (resource is ICSSResource && !Configuration.DebugMode)
+					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", rl));
+					if (resource is ICSSResource && cmpr)
 						builds.Add((ICSSResource) resource);
 					else if (resource is IImageResource)
 					{
@@ -73,13 +69,13 @@ namespace Calyptus.ResourceManager
 							imageIncludes.Add((IImageResource)resource);
 					}
 					else if (!references.Contains(resource))
-						references.Add(resource); // throw new Exception(String.Format("Resource {0}, {1} is not a JavaScript resource and cannot be included.", r.Assembly, r.Filename));
+						references.Add(resource);
 				}
 			if ((reader.Compress == null || compress == Compress.Never) && reader.Includes == null && reader.Builds == null && l is VirtualPathLocation)
 				return new PlainCSSResource(references.Count > 0 ? references.ToArray() : null, l, reader.HasContent);
 			else
 				return new ExtendedCSSResource(
-					reader.Compress == null ? (bool?)null : (compress == Compress.Always || (compress == Compress.Release && !Configuration.DebugMode)),
+					reader.Compress == null ? (bool?)null : cmpr,
 					references.Count > 0 ? references.ToArray() : null,
 					imageIncludes.Count > 0 ? imageIncludes.ToArray() : null,
 					includes.Count > 0 ? includes.ToArray() : null,

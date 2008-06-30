@@ -1,4 +1,5 @@
-//@reference(MooTools.Fx.js)
-//@reference(MooTools.Element.Event.js)
-//@reference(MooTools.Element.Dimensions.js)
-//@include(Calyptus.ClientSide.Lib.MooTools.More.Fx.Fx.Scroll.js)
+//@import MooTools.Fx.js;
+//@import MooTools.Element.Event.js;
+//@import MooTools.Element.Dimensions.js;
+//@include Calyptus.ClientSide.Lib.MooTools.More.Fx.Fx.Scroll.js;
+//@compress Always;

@@ -83,9 +83,9 @@ namespace Calyptus.ResourceManager
 
 			IResourceLocation location;
 			if (assembly != null)
-				location = LocationHelper.GetLocation(Assembly.Load(assembly), path);
+				location = ResourceLocations.GetLocation(Assembly.Load(assembly), path);
 			else
-				location = LocationHelper.GetLocation("~/", path);
+				location = ResourceLocations.GetLocation("~/", path);
 
 			IResourceConfiguration config = ResourceConfigurationManager.GetConfiguration();
 			IResource res = config.GetResource(location);

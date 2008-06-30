@@ -1,7 +1,8 @@
-//@reference(MooTools.Core.js)
-//@reference(MooTools.Array.js)
-//@reference(MooTools.String.js)
-//@reference(MooTools.Function.js)
-//@reference(MooTools.Number.js)
-//@reference(MooTools.Hash.js)
-//@include(Calyptus.ClientSide.Lib.MooTools.Core.Class.Class.js)
+//@import MooTools.Core.js;
+//@import MooTools.Array.js;
+//@import MooTools.String.js;
+//@import MooTools.Function.js;
+//@import MooTools.Number.js;
+//@import MooTools.Hash.js;
+//@include Calyptus.ClientSide.Lib.MooTools.Core.Class.Class.js;
+//@compress Always;
