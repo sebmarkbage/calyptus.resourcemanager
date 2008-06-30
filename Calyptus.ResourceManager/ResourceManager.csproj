@@ -52,7 +52,7 @@
     <Compile Include="CSS\ExtendedCSSResource.cs" />
     <Compile Include="FileResources\FileResourceHelper.cs" />
     <Compile Include="Helpers\ChecksumHelper.cs" />
-    <Compile Include="Helpers\ExternalResourcePackage.cs" />
+    <Compile Include="Helpers\ResourcePackage.cs" />
     <Compile Include="Helpers\SyntaxReader.cs" />
     <Compile Include="Images\ProxyImageResource.cs" />
     <Compile Include="Images\IImageResource.cs" />
