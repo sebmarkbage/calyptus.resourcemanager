@@ -272,9 +272,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Calyptus.ResourceManager\ResourceManager.csproj">
+    <ProjectReference Include="..\Calyptus.ResourceManager\Calyptus.ResourceManager.csproj">
       <Project>{BFDEC588-9458-42B6-824B-F6D3B43C8899}</Project>
-      <Name>ResourceManager</Name>
+      <Name>Calyptus.ResourceManager</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
