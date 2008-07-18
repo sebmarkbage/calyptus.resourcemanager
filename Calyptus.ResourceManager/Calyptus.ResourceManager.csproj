@@ -12,6 +12,8 @@
     <AssemblyName>Calyptus.ResourceManager</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Calyptus.ResourceManager.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -93,6 +95,7 @@
     <Compile Include="URLFactories\IResourceURLProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Calyptus.ResourceManager.snk" />
     <None Include="Diagrams\Interfaces.cd" />
     <None Include="Diagrams\ResourceTypes.cd" />
     <None Include="Diagrams\Factories.cd" />

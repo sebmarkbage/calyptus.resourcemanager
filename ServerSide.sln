@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceManager", "Calyptus.ResourceManager\ResourceManager.csproj", "{BFDEC588-9458-42B6-824B-F6D3B43C8899}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateMooToolsReferences", "Calyptus.ResourceManager.CreateMooToolsReferences\CreateMooToolsReferences.csproj", "{C6969340-0CA2-41D5-AAE0-C61243DCA290}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWeb", "Calyptus.ResourceManager.TestWeb\TestWeb.csproj", "{BD38D7F6-244E-4631-933B-4231B9443D2D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calyptus.ClientSide", "Calyptus.ClientSide\Calyptus.ClientSide.csproj", "{E6F0FAB4-E37A-435C-BBF2-25E598E20C3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calyptus.ResourceManager", "Calyptus.ResourceManager\Calyptus.ResourceManager.csproj", "{BFDEC588-9458-42B6-824B-F6D3B43C8899}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C6969340-0CA2-41D5-AAE0-C61243DCA290}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C6969340-0CA2-41D5-AAE0-C61243DCA290}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6969340-0CA2-41D5-AAE0-C61243DCA290}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -31,6 +27,10 @@ Global
 		{E6F0FAB4-E37A-435C-BBF2-25E598E20C3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6F0FAB4-E37A-435C-BBF2-25E598E20C3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6F0FAB4-E37A-435C-BBF2-25E598E20C3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

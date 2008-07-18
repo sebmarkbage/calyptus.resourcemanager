@@ -12,6 +12,8 @@
     <AssemblyName>Calyptus.ClientSide</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Calyptus.ClientSide.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -272,13 +274,16 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Calyptus.ResourceManager\Calyptus.ResourceManager.csproj">
       <Project>{BFDEC588-9458-42B6-824B-F6D3B43C8899}</Project>
       <Name>Calyptus.ResourceManager</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <None Include="Calyptus.ClientSide.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
