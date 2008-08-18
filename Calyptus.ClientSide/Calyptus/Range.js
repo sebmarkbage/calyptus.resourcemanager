@@ -6,5 +6,4 @@
 //@import MooTools.Element.js;
 //@import MooTools.Element.Event.js;
 //@import MooTools.Element.Style.js;
-//@import Calyptus.Range.js;
 //@include Calyptus.ClientSide.Lib.Calyptus.Native.Range.js;
