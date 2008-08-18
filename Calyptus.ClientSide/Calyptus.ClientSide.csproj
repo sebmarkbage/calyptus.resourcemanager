@@ -266,6 +266,8 @@
     <EmbeddedResource Include="Lib\MooTools\More\Utilities\Hash.Cookie.js" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Calyptus\Debug.Firebug.js" />
+    <EmbeddedResource Include="Calyptus\Debug.Tracer.js" />
     <Content Include="ClientSide License.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
