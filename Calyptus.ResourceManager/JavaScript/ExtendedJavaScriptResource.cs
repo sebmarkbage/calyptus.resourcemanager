@@ -142,7 +142,7 @@ namespace Calyptus.ResourceManager
 			if (writer == null || (!_hasContent && _builds == null && _includes == null)) return;
 			writer.Write("<script src=\"");
 			writer.Write(HttpUtility.HtmlEncode(urlFactory.GetURL(this)));
-			writer.Write("\" type=\"text/javascript\"></script>");
+			writer.WriteLine("\" type=\"text/javascript\"></script>");
 		}
 
 		public string ContentType
@@ -157,7 +157,7 @@ namespace Calyptus.ResourceManager
 
 		public void RenderProxy(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)
 		{
-			RenderJavaScript(writer, writtenResources, !_compress.HasValue || _compress.Value);
+			RenderJavaScript(writer, writtenResources, _compress.HasValue ? _compress.Value : false);
 		}
 
 		public void RenderProxy(Stream stream, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)

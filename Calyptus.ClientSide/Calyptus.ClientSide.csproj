@@ -271,6 +271,7 @@
     <Content Include="ClientSide License.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Lib\Calyptus\Debug\Debug.Firebug.js" />
     <Content Include="MooTools License.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

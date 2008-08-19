@@ -66,7 +66,7 @@ namespace Calyptus.ResourceManager
 			if (writer == null || !_hasContent) return;
 			writer.Write("<script src=\"");
 			writer.Write(HttpUtility.HtmlEncode(urlFactory.GetURL(this)));
-			writer.Write("\" type=\"text/javascript\"></script>");
+			writer.WriteLine("\" type=\"text/javascript\"></script>");
 		}
 	}
 }
