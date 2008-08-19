@@ -37,6 +37,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Calyptus\Debug.Tracer.js">
+      <LogicalName>Calyptus.Debug.Tracer.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calyptus\Debug.Firebug.js">
+      <LogicalName>Calyptus.Debug.Firebug.js</LogicalName>
+    </EmbeddedResource>
     <EmbeddedResource Include="Calyptus\Editable.Exec.js">
       <LogicalName>Calyptus.Editable.Exec.js</LogicalName>
     </EmbeddedResource>
@@ -78,6 +84,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Calyptus\Video.js">
       <LogicalName>Calyptus.Video.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calyptus\Draggable.js">
+      <LogicalName>Calyptus.Draggable.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calyptus\Droppable.js">
+      <LogicalName>Calyptus.Droppable.js</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="MooTools\Class.Extras.js">
       <LogicalName>MooTools.Class.Extras.js</LogicalName>
@@ -208,6 +220,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Lib\Calyptus\Debug\Debug.Tracer.js" />
+    <EmbeddedResource Include="Lib\Calyptus\Debug\Debug.Firebug.js" />
     <EmbeddedResource Include="Lib\Calyptus\Editable\Editable.Exec.js" />
     <EmbeddedResource Include="Lib\Calyptus\Editable\Editable.Extras.js" />
     <EmbeddedResource Include="Lib\Calyptus\Editable\Editable.js" />
@@ -222,6 +235,8 @@
     <EmbeddedResource Include="Lib\Calyptus\Popup\Popup.Load.js" />
     <EmbeddedResource Include="Lib\Calyptus\Popup\Popup.Overlay.js" />
     <EmbeddedResource Include="Lib\Calyptus\Popup\Popup.Videobox.js" />
+    <EmbeddedResource Include="Lib\Calyptus\DragDrop\Draggable.js" />
+    <EmbeddedResource Include="Lib\Calyptus\DragDrop\Droppable.js" />
     <EmbeddedResource Include="Lib\MooTools\Core\Class\Class.Extras.js" />
     <EmbeddedResource Include="Lib\MooTools\Core\Class\Class.js" />
     <EmbeddedResource Include="Lib\MooTools\Core\Core\Browser.js" />
@@ -266,12 +281,9 @@
     <EmbeddedResource Include="Lib\MooTools\More\Utilities\Hash.Cookie.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Calyptus\Debug.Firebug.js" />
-    <EmbeddedResource Include="Calyptus\Debug.Tracer.js" />
     <Content Include="ClientSide License.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="Lib\Calyptus\Debug\Debug.Firebug.js" />
     <Content Include="MooTools License.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
