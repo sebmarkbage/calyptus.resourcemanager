@@ -38,7 +38,7 @@ namespace Calyptus.ResourceManager
 			get { return _references; }
 		}
 
-		public void RenderCSS(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources, bool compress, bool includeImages)
+		public void RenderCSS(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources, bool compress, bool includeImages, IEnumerable<IImageResource> parentIncludedImages)
 		{
 			if (writtenResources.Contains(this)) return;
 			writtenResources.Add(this);
@@ -50,7 +50,7 @@ namespace Calyptus.ResourceManager
 			{
 				s = compressor.Compress(s);
 			}
-			s = CSSUrlParser.ConvertUrls(s, Location, urlFactory, null);
+			s = CSSUrlParser.ConvertUrls(s, Location, urlFactory, includeImages ? parentIncludedImages : null);
 			writer.Write(s);
 		}
 

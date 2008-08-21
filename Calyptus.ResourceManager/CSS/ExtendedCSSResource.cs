@@ -63,7 +63,7 @@ namespace Calyptus.ResourceManager
 			get { return _references; }
 		}
 
-		public void RenderCSS(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources, bool compress, bool includeImages)
+		public void RenderCSS(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources, bool compress, bool includeImages, IEnumerable<IImageResource> parentIncludedImages)
 		{
 			if (_compress.HasValue)
 				compress = _compress.Value;
@@ -71,13 +71,15 @@ namespace Calyptus.ResourceManager
 			if (writtenResources.Contains(this)) return;
 			writtenResources.Add(this);
 
+			IEnumerable<IImageResource> includedImages = includeImages ? ExtendIncludedImages(parentIncludedImages) : null;
+
 			if (_builds != null)
 				foreach (ICSSResource resource in _builds)
-					RenderBuild(resource, writer, urlFactory, writtenResources, compress, includeImages);
+					RenderBuild(resource, writer, urlFactory, writtenResources, compress, includeImages, includedImages);
 
 			if (_includes != null)
 				foreach (ICSSResource resource in _includes)
-					resource.RenderCSS(writer, urlFactory, writtenResources, compress, includeImages);
+					resource.RenderCSS(writer, urlFactory, writtenResources, compress, includeImages, includedImages);
 
 			if (writer == null || !_hasContent) return;
 
@@ -87,21 +89,31 @@ namespace Calyptus.ResourceManager
 			if (compress)
 				s = compressor.Compress(s);
 
-			s = CSSUrlParser.ConvertUrls(s, Location, urlFactory, includeImages ? _imageIncludes : null);
+			s = CSSUrlParser.ConvertUrls(s, Location, urlFactory, includedImages);
 
 			writer.Write(s);
 		}
 
-		private void RenderBuild(ICSSResource resource, TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources, bool compress, bool includeImages)
+		private IEnumerable<IImageResource> ExtendIncludedImages(IEnumerable<IImageResource> includedImages)
+		{
+			if (includedImages != null)
+				foreach (IImageResource r in includedImages)
+					yield return r;
+			if (_imageIncludes != null)
+				foreach (IImageResource r in _imageIncludes)
+					yield return r;
+		}
+
+		private void RenderBuild(ICSSResource resource, TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources, bool compress, bool includeImages, IEnumerable<IImageResource> parentIncludedImages)
 		{
 			if (resource.References != null)
 				foreach (IResource res in resource.References)
 				{
 					ICSSResource css = res as ICSSResource;
 					if (css != null)
-						RenderBuild(css, writer, urlFactory, writtenResources, compress, includeImages);
+						RenderBuild(css, writer, urlFactory, writtenResources, compress, includeImages, parentIncludedImages);
 				}
-			resource.RenderCSS(writer, urlFactory, writtenResources, compress, includeImages);
+			resource.RenderCSS(writer, urlFactory, writtenResources, compress, includeImages, parentIncludedImages);
 		}
 
 		public void RenderReferenceTags(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)
@@ -159,12 +171,12 @@ namespace Calyptus.ResourceManager
 
 		public void RenderProxy(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)
 		{
-			RenderCSS(writer, urlFactory, writtenResources, !_compress.HasValue || _compress.Value, false);
+			RenderCSS(writer, urlFactory, writtenResources, !_compress.HasValue || _compress.Value, false, null);
 		}
 
 		public void RenderProxyWithBase64(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)
 		{
-			RenderCSS(writer, urlFactory, writtenResources, !_compress.HasValue || _compress.Value, true);
+			RenderCSS(writer, urlFactory, writtenResources, !_compress.HasValue || _compress.Value, true, null);
 		}
 
 		public void RenderProxy(Stream stream, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)

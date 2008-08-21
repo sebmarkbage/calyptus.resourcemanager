@@ -30,7 +30,7 @@ namespace Calyptus.ResourceManager
 				js.RenderJavaScript(writer, WrittenResources, c);
 				writer.WriteLine();
 				writer.WriteLine("//]]>");
-				writer.Write("</script>");
+				writer.WriteLine("</script>");
 				return;
 			}
 
@@ -40,7 +40,7 @@ namespace Calyptus.ResourceManager
 			if (css != null)
 			{
 				writer.WriteLine("<style type=\"text/css\">/*<![CDATA[*/");
-				css.RenderCSS(writer, UrlFactory, WrittenResources, c, inclImages);
+				css.RenderCSS(writer, UrlFactory, WrittenResources, c, inclImages, null);
 				writer.WriteLine();
 				writer.Write("/*]]>*/</style>");
 				return;

@@ -73,7 +73,7 @@ namespace Calyptus.ResourceManager
 						if (css != null)
 							RenderBuild(css, writer, inclImages, compress);
 					}
-			resource.RenderCSS(writer, UrlFactory, WrittenResources, compress, inclImages);
+			resource.RenderCSS(writer, UrlFactory, WrittenResources, compress, inclImages, null);
 		}
 	}
 }

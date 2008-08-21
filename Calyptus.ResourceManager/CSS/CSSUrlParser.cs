@@ -9,7 +9,7 @@ namespace Calyptus.ResourceManager
 	{
 		private static Regex _urlParser = new Regex("(?<=[\\:\\s]url\\()\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\)\\,]+)[\\'\\\"]?\\s*(?:,\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\)\\,]+)[\\'\\\"]?)?\\s*(?=\\))", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Multiline);
 		
-		public static string ConvertUrls(string css, IResourceLocation baseLocation, IResourceURLFactory urlFactory, IImageResource[] includedImages)
+		public static string ConvertUrls(string css, IResourceLocation baseLocation, IResourceURLFactory urlFactory, IEnumerable<IImageResource> includedImages)
 		{
 			return _urlParser.Replace(css, m =>
 			{
