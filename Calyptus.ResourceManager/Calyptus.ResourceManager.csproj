@@ -94,7 +94,6 @@
     <Compile Include="URLFactories\IResourceURLProvider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Calyptus.ResourceManager.snk" />
     <None Include="Diagrams\Interfaces.cd" />
     <None Include="Diagrams\ResourceTypes.cd" />

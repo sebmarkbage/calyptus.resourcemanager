@@ -7,5 +7,6 @@ h1
 {
 	color: #FF0000;
 	background-image: url(TestWeb, TestWebNamespace.Img.toad.jpg);
+	background-image: url(../Img/content-toad.jpg);
 }
 

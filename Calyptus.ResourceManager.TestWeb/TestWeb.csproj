@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{BD38D7F6-244E-4631-933B-4231B9443D2D}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -44,6 +44,7 @@
     <Content Include="Default.aspx" />
     <EmbeddedResource Include="JS\Test3.js" />
     <EmbeddedResource Include="Img\toad.jpg" />
+    <Content Include="Img\content-toad.jpg" />
     <Content Include="Test.js" />
     <EmbeddedResource Include="JS\Test2.js" />
     <EmbeddedResource Include="MyResourceFile.resx">
@@ -100,6 +101,9 @@
           <IISUrl>
           </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
