@@ -119,6 +119,10 @@ namespace Calyptus.ResourceManager
 
 			response.Cache.SetETag(version);
 			response.Cache.VaryByHeaders["Accept-Encoding"] = true;
+			response.Cache.VaryByParams["*"] = true;
+			response.Cache.SetVaryByCustom("browser");
+			response.Cache.SetOmitVaryStar(true);
+
 			response.Cache.SetCacheability(HttpCacheability.Public);
 			response.Cache.SetExpires(DateTime.Now.AddYears(1));
 			response.Cache.SetMaxAge(new TimeSpan(365, 0, 0, 0));
