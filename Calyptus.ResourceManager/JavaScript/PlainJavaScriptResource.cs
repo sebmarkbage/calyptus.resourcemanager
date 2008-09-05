@@ -40,7 +40,7 @@ namespace Calyptus.ResourceManager
 			get { return _references; }
 		}
 
-		public void RenderJavaScript(TextWriter writer, ICollection<IResource> writtenResources, bool compress)
+		public void RenderJavaScript(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources, bool compress)
 		{
 			if (writtenResources.Contains(this)) return;
 			writtenResources.Add(this);
@@ -67,6 +67,11 @@ namespace Calyptus.ResourceManager
 			writer.Write("<script src=\"");
 			writer.Write(HttpUtility.HtmlEncode(urlFactory.GetURL(this)));
 			writer.WriteLine("\" type=\"text/javascript\"></script>");
+		}
+
+		public bool CanReferenceJavaScript
+		{
+			get { return true; }
 		}
 	}
 }

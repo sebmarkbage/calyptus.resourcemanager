@@ -67,5 +67,10 @@ namespace Calyptus.ResourceManager
 			writer.Write(HttpUtility.HtmlEncode(urlFactory.GetURL(this)));
 			writer.Write("\" type=\"text/css\"/>");
 		}
+
+		public bool CanReferenceCSS
+		{
+			get { return true; }
+		}
 	}
 }

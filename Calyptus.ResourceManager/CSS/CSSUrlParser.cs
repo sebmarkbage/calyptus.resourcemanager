@@ -20,9 +20,19 @@ namespace Calyptus.ResourceManager
 				if (includedImages != null)
 					foreach (IImageResource res in includedImages)
 						if (location.Equals(res.Location))
-							return res.GetImageData(false);
+							return GetBase64URL(res);
 				return urlFactory.GetURL(new UnknownResource(location));
 			});
+		}
+
+		public static string GetBase64URL(IImageResource res)
+		{
+			StringBuilder sb = new StringBuilder("data:");
+			sb.Append(res.ContentType);
+			sb.Append(";base64,");
+			byte[] data = res.GetImageData();
+			sb.Append(Convert.ToBase64String(data, 0, data.Length, Base64FormattingOptions.None));
+			return sb.ToString();
 		}
 	}
 }

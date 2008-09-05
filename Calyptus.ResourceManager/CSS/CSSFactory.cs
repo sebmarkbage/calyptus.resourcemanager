@@ -37,7 +37,9 @@ namespace Calyptus.ResourceManager
 				{
 					var resource = Configuration.GetResource(rl);
 					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", rl));
-					if (!references.Contains(resource))
+					if (resource is ICSSResource && !((ICSSResource)resource).CanReferenceCSS)
+						includes.Add((ICSSResource)resource);
+					else if (!references.Contains(resource))
 						references.Add(resource);
 				}
 			if (reader.Includes != null)
@@ -46,7 +48,7 @@ namespace Calyptus.ResourceManager
 					if (location.Equals(rl)) continue;
 					var resource = Configuration.GetResource(rl);
 					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", rl));
-					if (resource is ICSSResource && cmpr)
+					if (resource is ICSSResource && (cmpr || !((ICSSResource)resource).CanReferenceCSS))
 						includes.Add((ICSSResource)resource);
 					else if (resource is IImageResource)
 					{
@@ -61,8 +63,15 @@ namespace Calyptus.ResourceManager
 				{
 					var resource = Configuration.GetResource(rl);
 					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", rl));
-					if (resource is ICSSResource && cmpr)
-						builds.Add((ICSSResource) resource);
+					if (resource is ICSSResource)
+					{
+						if (cmpr)
+							builds.Add((ICSSResource)resource);
+						else if (!((ICSSResource)resource).CanReferenceCSS)
+							includes.Add((ICSSResource)resource);
+						else if (!references.Contains(resource))
+							references.Add(resource);
+					}
 					else if (resource is IImageResource)
 					{
 						if (!Configuration.DebugMode)
@@ -71,7 +80,7 @@ namespace Calyptus.ResourceManager
 					else if (!references.Contains(resource))
 						references.Add(resource);
 				}
-			if ((reader.Compress == null || compress == Compress.Never) && reader.Includes == null && reader.Builds == null && l is VirtualPathLocation)
+			if ((reader.Compress == null || compress == Compress.Never) && includes.Count == 0 && builds.Count == 0 && l is VirtualPathLocation)
 				return new PlainCSSResource(references.Count > 0 ? references.ToArray() : null, l, reader.HasContent);
 			else
 				return new ExtendedCSSResource(

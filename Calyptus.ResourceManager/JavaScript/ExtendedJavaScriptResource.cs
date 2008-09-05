@@ -62,7 +62,7 @@ namespace Calyptus.ResourceManager
 			get { return _references; }
 		}
 
-		public void RenderJavaScript(TextWriter writer, ICollection<IResource> writtenResources, bool compress)
+		public void RenderJavaScript(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources, bool compress)
 		{
 			if (_compress.HasValue)
 				compress = _compress.Value;
@@ -72,11 +72,11 @@ namespace Calyptus.ResourceManager
 
 			if (_builds != null)
 				foreach (IJavaScriptResource resource in _builds)
-					RenderBuild(resource, writer, writtenResources, compress);
+					RenderBuild(resource, writer, urlFactory, writtenResources, compress);
 
 			if (_includes != null)
 				foreach (IJavaScriptResource resource in _includes)
-					resource.RenderJavaScript(writer, writtenResources, compress);
+					resource.RenderJavaScript(writer, urlFactory, writtenResources, compress);
 
 			if (writer == null || !_hasContent) return;
 
@@ -90,16 +90,16 @@ namespace Calyptus.ResourceManager
 			writer.Write(s);
 		}
 
-		private void RenderBuild(IJavaScriptResource resource, TextWriter writer, ICollection<IResource> writtenResources, bool compress)
+		private void RenderBuild(IJavaScriptResource resource, TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources, bool compress)
 		{
 			if (resource.References != null)
 				foreach (IResource res in resource.References)
 				{
 					IJavaScriptResource js = res as IJavaScriptResource;
 					if (js != null)
-						RenderBuild(js, writer, writtenResources, compress);
+						RenderBuild(js, writer, urlFactory, writtenResources, compress);
 				}
-			resource.RenderJavaScript(writer, writtenResources, compress);
+			resource.RenderJavaScript(writer, urlFactory, writtenResources, compress);
 		}
 
 		public void RenderReferenceTags(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)
@@ -157,12 +157,17 @@ namespace Calyptus.ResourceManager
 
 		public void RenderProxy(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)
 		{
-			RenderJavaScript(writer, writtenResources, _compress.HasValue ? _compress.Value : false);
+			RenderJavaScript(writer, urlFactory, writtenResources, _compress.HasValue ? _compress.Value : false);
 		}
 
 		public void RenderProxy(Stream stream, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)
 		{
 			RenderProxy(new StreamWriter(stream), urlFactory, writtenResources);
+		}
+
+		public bool CanReferenceJavaScript
+		{
+			get { return true; }
 		}
 	}
 }

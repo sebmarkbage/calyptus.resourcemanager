@@ -5,9 +5,8 @@ using System.IO;
 
 namespace Calyptus.ResourceManager
 {
-	public interface IImageResource : IResource
+	public interface IFlashResource : IResource
 	{
-		string ContentType { get; }
-		byte[] GetImageData();
+
 	}
 }

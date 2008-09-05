@@ -30,7 +30,8 @@ namespace Calyptus.ResourceManager
 					new JavaScriptFactory(),
 					new FileResourceFactory(),
 					new CSSFactory(),
-					new ImageFactory()
+					new ImageFactory(),
+					new FlashFactory()
 		}) { }
 
 		public static IResourceConfiguration GetConfiguration()

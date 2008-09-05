@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using Calyptus.ResourceManager;
 using System.IO;
-using System.Reflection;
-using System.Web;
-using System.Security.Cryptography;
 
-namespace Calyptus.ResourceManager
+namespace Calyptus.ClientSide.Swiff
 {
-	public class ProxyImageResource : PlainImageResource, IProxyResource
+	public class ProxySwiffClassResource : PlainSwiffClassResource, IProxyResource
 	{
-		public ProxyImageResource(string mime, FileLocation location) : base(mime, location) { }
+		public ProxySwiffClassResource(FileLocation location, string className, IResource swiffCode) : base(location, className, swiffCode)
+		{
+		}
+
+		public string ContentType
+		{
+			get { return "application/x-shockwave-flash"; }
+		}
 
 		public bool CultureSensitive
 		{

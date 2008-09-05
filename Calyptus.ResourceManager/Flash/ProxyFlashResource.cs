@@ -8,9 +8,14 @@ using System.Security.Cryptography;
 
 namespace Calyptus.ResourceManager
 {
-	public class ProxyImageResource : PlainImageResource, IProxyResource
+	public class ProxyFlashResource : PlainFlashResource, IProxyResource
 	{
-		public ProxyImageResource(string mime, FileLocation location) : base(mime, location) { }
+		public ProxyFlashResource(FileLocation location) : base(location) { }
+
+		public string ContentType
+		{
+			get { return "application/x-shockwave-flash"; }
+		}
 
 		public bool CultureSensitive
 		{

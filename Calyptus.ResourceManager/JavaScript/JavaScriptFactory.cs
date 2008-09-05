@@ -36,7 +36,9 @@ namespace Calyptus.ResourceManager
 				{
 					var resource = Configuration.GetResource(rl);
 					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", rl));
-					if (!references.Contains(resource))
+					if (resource is IJavaScriptResource && !((IJavaScriptResource)resource).CanReferenceJavaScript)
+						includes.Add(resource);
+					else if (!references.Contains(resource))
 						references.Add(resource);
 				}
 			if (reader.Includes != null)
@@ -44,7 +46,7 @@ namespace Calyptus.ResourceManager
 				{
 					var resource = Configuration.GetResource(rl);
 					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", rl));
-					if (resource is IJavaScriptResource && cmpr)
+					if (resource is IJavaScriptResource && (cmpr || !((IJavaScriptResource)resource).CanReferenceJavaScript))
 						includes.Add(resource);
 					else if (!references.Contains(resource))
 						references.Add(resource);
@@ -54,8 +56,15 @@ namespace Calyptus.ResourceManager
 				{
 					var resource = Configuration.GetResource(rl);
 					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", rl));
-					if (resource is IJavaScriptResource && cmpr)
-						builds.Add(resource);
+					if (resource is IJavaScriptResource)
+					{
+						if (cmpr)
+							builds.Add(resource);
+						else if (!((IJavaScriptResource)resource).CanReferenceJavaScript)
+							includes.Add(resource);
+						else if (!references.Contains(resource))
+							references.Add(resource);
+					}
 					else if (!references.Contains(resource))
 						references.Add(resource);
 				}
@@ -73,7 +82,7 @@ namespace Calyptus.ResourceManager
 				}
 			}
 
-			if ((reader.Compress == null || compress == Compress.Never) && reader.Includes == null && reader.Builds == null && !(l is EmbeddedLocation))
+			if ((reader.Compress == null || compress == Compress.Never) && includes.Count == 0 && builds.Count == 0 && !(l is EmbeddedLocation))
 				return new PlainJavaScriptResource(references.Count > 0 ? references.ToArray() : null, l, reader.HasContent);
 			else
 				return new ExtendedJavaScriptResource(

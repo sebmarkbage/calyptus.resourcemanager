@@ -19,7 +19,7 @@ namespace Calyptus.ResourceManager
 		private string _mime;
 		private FileLocation _location;
 
-		protected string Mime { get { return _mime; } }
+		public string ContentType { get { return _mime; } }
 
 		public IResourceLocation Location { get { return _location; } }
 
@@ -36,12 +36,8 @@ namespace Calyptus.ResourceManager
 			get { return null; }
 		}
 
-		public string GetImageData(bool compress)
+		public byte[] GetImageData()
 		{
-			StringBuilder sb = new StringBuilder("data:");
-			sb.Append(_mime);
-			sb.Append(";base64,");
-
 			Stream s = _location.GetStream();
 			byte[] data = new byte[s.Length > 0 ? s.Length : 32768];
 			int index = 0;
@@ -51,8 +47,7 @@ namespace Calyptus.ResourceManager
 				index += i;
 				Array.Resize(ref data, index + 32768);
 			}
-			sb.Append(Convert.ToBase64String(data, 0, index, Base64FormattingOptions.None));
-			return sb.ToString();
+			return data;
 		}
 
 

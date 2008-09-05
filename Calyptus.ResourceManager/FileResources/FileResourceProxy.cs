@@ -100,7 +100,7 @@ namespace Calyptus.ResourceManager
 			}
 		}
 
-		public void RenderJavaScript(TextWriter writer, ICollection<IResource> writtenResources, bool compress)
+		public void RenderJavaScript(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources, bool compress)
 		{
 			CultureInfo culture = CultureInfo.CurrentUICulture;
 
@@ -189,7 +189,7 @@ namespace Calyptus.ResourceManager
 
 		public void RenderProxy(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)
 		{
-			RenderJavaScript(writer, writtenResources, true);
+			RenderJavaScript(writer, urlFactory, writtenResources, true);
 		}
 
 		public void RenderProxy(Stream stream, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)
@@ -203,6 +203,11 @@ namespace Calyptus.ResourceManager
 		}
 
 		public bool Gzip
+		{
+			get { return true; }
+		}
+
+		public bool CanReferenceJavaScript
 		{
 			get { return true; }
 		}

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.UI;
 using System.Web;
+using System.Text;
 
 namespace Calyptus.ResourceManager
 {
@@ -22,19 +23,33 @@ namespace Calyptus.ResourceManager
 				foreach (IResource res in resource.References)
 					base.RenderTag(writer, res);
 
+			bool inclImages = !"IE".Equals(Context.Request.Browser.Browser, StringComparison.InvariantCultureIgnoreCase) || Context.Request.Browser.MajorVersion > 7;
+
+			IImageResource img = resource as IImageResource;
+			if (img != null)
+			{
+				if (inclImages)
+				{
+					writer.Write("<img src=\"");
+					writer.WriteEncodedText(CSSUrlParser.GetBase64URL(img));
+					writer.Write("\" alt=\"\" />");
+				}
+				else
+					base.RenderTag(writer, resource);
+				return;
+			}
+
 			IJavaScriptResource js = resource as IJavaScriptResource;
 			if (js != null)
 			{
 				writer.WriteLine("<script type=\"text/javascript\">");
 				writer.WriteLine("//<![CDATA[");
-				js.RenderJavaScript(writer, WrittenResources, c);
+				js.RenderJavaScript(writer, UrlFactory, WrittenResources, c);
 				writer.WriteLine();
 				writer.WriteLine("//]]>");
 				writer.WriteLine("</script>");
 				return;
 			}
-
-			bool inclImages = !"IE".Equals(Context.Request.Browser.Browser, StringComparison.InvariantCultureIgnoreCase) || Context.Request.Browser.MajorVersion > 7;
 
 			ICSSResource css = resource as ICSSResource;
 			if (css != null)
@@ -43,20 +58,6 @@ namespace Calyptus.ResourceManager
 				css.RenderCSS(writer, UrlFactory, WrittenResources, c, inclImages, null);
 				writer.WriteLine();
 				writer.Write("/*]]>*/</style>");
-				return;
-			}
-
-			IImageResource img = resource as IImageResource;
-			if (img != null)
-			{
-				if (inclImages)
-				{
-					writer.Write("<img src=\"");
-					writer.WriteEncodedText(img.GetImageData(c));
-					writer.Write("\" alt=\"\" />");
-				}
-				else
-					base.RenderTag(writer, resource);
 				return;
 			}
 

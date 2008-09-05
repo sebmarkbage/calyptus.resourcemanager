@@ -61,7 +61,7 @@ namespace Calyptus.ResourceManager
 						if (js != null)
 							RenderBuild(js, writer, compress);
 					}
-			resource.RenderJavaScript(writer, WrittenResources, compress);
+			resource.RenderJavaScript(writer, UrlFactory, WrittenResources, compress);
 		}
 
 		private void RenderBuild(ICSSResource resource, TextWriter writer, bool inclImages, bool compress)

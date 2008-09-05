@@ -183,5 +183,10 @@ namespace Calyptus.ResourceManager
 		{
 			RenderProxy(new StreamWriter(stream), urlFactory, writtenResources);
 		}
+
+		public bool CanReferenceCSS
+		{
+			get { return true; }
+		}
 	}
 }

@@ -7,6 +7,7 @@ namespace Calyptus.ResourceManager
 {
 	public interface IJavaScriptResource : IResource
 	{
-		void RenderJavaScript(TextWriter writer, ICollection<IResource> writtenResources, bool compress);
+		bool CanReferenceJavaScript { get; }
+		void RenderJavaScript(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources, bool compress);
 	}
 }
