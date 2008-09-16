@@ -188,5 +188,10 @@ namespace Calyptus.ResourceManager
 		{
 			get { return true; }
 		}
+
+		public override string ToString()
+		{
+			return Location.ToString();
+		}
 	}
 }

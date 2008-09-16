@@ -44,5 +44,10 @@ namespace Calyptus.ResourceManager
 					stream.Write(buffer, 0, i);
 			}
 		}
+
+		public override string ToString()
+		{
+			return Location.ToString();
+		}
 	}
 }

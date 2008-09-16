@@ -39,5 +39,10 @@ namespace Calyptus.ResourceManager
 			//writer.Write(HttpUtility.HtmlEncode(urlFactory.GetURL(this)));
 			//writer.Write("\" alt=\"\" />");
 		}
+
+		public override string ToString()
+		{
+			return Location.ToString();
+		}
 	}
 }
