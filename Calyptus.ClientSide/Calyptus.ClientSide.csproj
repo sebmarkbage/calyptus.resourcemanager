@@ -220,6 +220,12 @@
     <EmbeddedResource Include="MooTools\Swiff.js">
       <LogicalName>MooTools.Swiff.js</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="Calyptus\SortableList.js">
+      <LogicalName>Calyptus.SortableList.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calyptus\EditableList.js">
+      <LogicalName>Calyptus.EditableList.js</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Lib\Calyptus\Debug\Debug.Tracer.js" />
@@ -282,6 +288,11 @@
     <EmbeddedResource Include="Lib\MooTools\More\Utilities\Color.js" />
     <EmbeddedResource Include="Lib\MooTools\More\Utilities\Group.js" />
     <EmbeddedResource Include="Lib\MooTools\More\Utilities\Hash.Cookie.js" />
+    <EmbeddedResource Include="Lib\Calyptus\Interface\EditableList.js" />
+    <EmbeddedResource Include="Lib\Calyptus\Interface\SortableList.js" />
+    <EmbeddedResource Include="Lib\Calyptus\Plugins\Audio.js" />
+    <EmbeddedResource Include="Lib\Calyptus\Plugins\SwiffClass.js" />
+    <EmbeddedResource Include="Lib\Calyptus\Request\Upload.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClientSide License.txt">
