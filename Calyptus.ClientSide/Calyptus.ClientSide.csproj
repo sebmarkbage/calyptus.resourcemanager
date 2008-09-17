@@ -85,14 +85,17 @@
     <EmbeddedResource Include="Calyptus\Popup.Videobox.js">
       <LogicalName>Calyptus.Popup.Videobox.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calyptus\Video.js">
-      <LogicalName>Calyptus.Video.js</LogicalName>
-    </EmbeddedResource>
     <EmbeddedResource Include="Calyptus\Draggable.js">
       <LogicalName>Calyptus.Draggable.js</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="Calyptus\Droppable.js">
       <LogicalName>Calyptus.Droppable.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calyptus\SortableList.js">
+      <LogicalName>Calyptus.SortableList.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calyptus\EditableList.js">
+      <LogicalName>Calyptus.EditableList.js</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="MooTools\Class.Extras.js">
       <LogicalName>MooTools.Class.Extras.js</LogicalName>
@@ -220,12 +223,6 @@
     <EmbeddedResource Include="MooTools\Swiff.js">
       <LogicalName>MooTools.Swiff.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calyptus\SortableList.js">
-      <LogicalName>Calyptus.SortableList.js</LogicalName>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Calyptus\EditableList.js">
-      <LogicalName>Calyptus.EditableList.js</LogicalName>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Lib\Calyptus\Debug\Debug.Tracer.js" />
@@ -238,7 +235,6 @@
     <EmbeddedResource Include="Lib\Calyptus\Native\Range.js" />
     <EmbeddedResource Include="Lib\Calyptus\Native\String.js" />
     <EmbeddedResource Include="Lib\Calyptus\Native\Uri.js" />
-    <EmbeddedResource Include="Lib\Calyptus\Plugins\Video.js" />
     <EmbeddedResource Include="Lib\Calyptus\Popup\Popup.js" />
     <EmbeddedResource Include="Lib\Calyptus\Popup\Popup.Lightbox.js" />
     <EmbeddedResource Include="Lib\Calyptus\Popup\Popup.Load.js" />
@@ -246,6 +242,10 @@
     <EmbeddedResource Include="Lib\Calyptus\Popup\Popup.Videobox.js" />
     <EmbeddedResource Include="Lib\Calyptus\DragDrop\Draggable.js" />
     <EmbeddedResource Include="Lib\Calyptus\DragDrop\Droppable.js" />
+    <EmbeddedResource Include="Lib\Calyptus\Interface\EditableList.js" />
+    <EmbeddedResource Include="Lib\Calyptus\Interface\SortableList.js" />
+    <EmbeddedResource Include="Lib\Calyptus\Plugins\SwiffClass.js" />
+    <EmbeddedResource Include="Lib\Calyptus\Request\Upload.js" />
     <EmbeddedResource Include="Lib\MooTools\Core\Class\Class.Extras.js" />
     <EmbeddedResource Include="Lib\MooTools\Core\Class\Class.js" />
     <EmbeddedResource Include="Lib\MooTools\Core\Core\Browser.js" />
@@ -288,11 +288,6 @@
     <EmbeddedResource Include="Lib\MooTools\More\Utilities\Color.js" />
     <EmbeddedResource Include="Lib\MooTools\More\Utilities\Group.js" />
     <EmbeddedResource Include="Lib\MooTools\More\Utilities\Hash.Cookie.js" />
-    <EmbeddedResource Include="Lib\Calyptus\Interface\EditableList.js" />
-    <EmbeddedResource Include="Lib\Calyptus\Interface\SortableList.js" />
-    <EmbeddedResource Include="Lib\Calyptus\Plugins\Audio.js" />
-    <EmbeddedResource Include="Lib\Calyptus\Plugins\SwiffClass.js" />
-    <EmbeddedResource Include="Lib\Calyptus\Request\Upload.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClientSide License.txt">
