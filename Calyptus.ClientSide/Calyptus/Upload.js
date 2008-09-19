@@ -2,6 +2,5 @@
 //@import MooTools.Class.js;
 //@import MooTools.Class.Extras.js;
 //@import MooTools.Element.Dimensions.js;
-//@import MooTools.Utilities.Swiff.js;
-//@import Calyptus.Plugins.SwiffClass.js;
+//@import Calyptus.Upload.Swiff;
 //@include Calyptus.ClientSide.Lib.Calyptus.Request.Upload.js;
