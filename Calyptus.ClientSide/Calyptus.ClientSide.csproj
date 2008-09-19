@@ -97,17 +97,24 @@
     <EmbeddedResource Include="Calyptus\EditableList.js">
       <LogicalName>Calyptus.EditableList.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Class.Extras.js">
-      <LogicalName>MooTools.Class.Extras.js</LogicalName>
+    <EmbeddedResource Include="Calyptus\SwiffClass.js">
+      <LogicalName>Calyptus.SwiffClass.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Class.js">
-      <LogicalName>MooTools.Class.js</LogicalName>
+    <EmbeddedResource Include="Calyptus\Upload.js">
+      <LogicalName>Calyptus.Upload.js</LogicalName>
+    </EmbeddedResource>
+    
+    <EmbeddedResource Include="MooTools\Core.js">
+      <LogicalName>MooTools.Core.js</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="MooTools\Browser.js">
       <LogicalName>MooTools.Browser.js</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="MooTools\Core.js">
-      <LogicalName>MooTools.Core.js</LogicalName>
+    <EmbeddedResource Include="MooTools\Class.js">
+      <LogicalName>MooTools.Class.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MooTools\Class.Extras.js">
+      <LogicalName>MooTools.Class.Extras.js</LogicalName>
     </EmbeddedResource>
     <EmbeddedResource Include="MooTools\Element.Dimensions.js">
       <LogicalName>MooTools.Element.Dimensions.js</LogicalName>
