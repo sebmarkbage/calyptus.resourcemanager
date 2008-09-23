@@ -48,7 +48,7 @@ namespace Calyptus.ResourceManager
 					if (location.Equals(rl)) continue;
 					var resource = Configuration.GetResource(rl);
 					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", rl));
-					if (resource is ICSSResource && (cmpr || !((ICSSResource)resource).CanReferenceCSS))
+					if (resource is ICSSResource && (!Configuration.DebugMode || !((ICSSResource)resource).CanReferenceCSS))
 						includes.Add((ICSSResource)resource);
 					else if (resource is IImageResource)
 					{
@@ -65,7 +65,7 @@ namespace Calyptus.ResourceManager
 					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", rl));
 					if (resource is ICSSResource)
 					{
-						if (cmpr)
+						if (!Configuration.DebugMode)
 							builds.Add((ICSSResource)resource);
 						else if (!((ICSSResource)resource).CanReferenceCSS)
 							includes.Add((ICSSResource)resource);
@@ -85,6 +85,7 @@ namespace Calyptus.ResourceManager
 			else
 				return new ExtendedCSSResource(
 					reader.Compress == null ? (bool?)null : cmpr,
+					!Configuration.DebugMode,
 					references.Count > 0 ? references.ToArray() : null,
 					imageIncludes.Count > 0 ? imageIncludes.ToArray() : null,
 					includes.Count > 0 ? includes.ToArray() : null,

@@ -46,7 +46,7 @@ namespace Calyptus.ResourceManager
 				{
 					var resource = Configuration.GetResource(rl);
 					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", rl));
-					if (resource is IJavaScriptResource && (cmpr || !((IJavaScriptResource)resource).CanReferenceJavaScript))
+					if (resource is IJavaScriptResource && (!Configuration.DebugMode || !((IJavaScriptResource)resource).CanReferenceJavaScript))
 						includes.Add(resource);
 					else if (!references.Contains(resource))
 						references.Add(resource);
@@ -58,7 +58,7 @@ namespace Calyptus.ResourceManager
 					if (resource == null) throw new Exception(String.Format("Resource '{0}' is not a valid resource.", rl));
 					if (resource is IJavaScriptResource)
 					{
-						if (cmpr)
+						if (!Configuration.DebugMode)
 							builds.Add(resource);
 						else if (!((IJavaScriptResource)resource).CanReferenceJavaScript)
 							includes.Add(resource);
@@ -87,6 +87,7 @@ namespace Calyptus.ResourceManager
 			else
 				return new ExtendedJavaScriptResource(
 					reader.Compress == null ? (bool?)null : cmpr,
+					!Configuration.DebugMode,
 					references.Count > 0 ? references.ToArray() : null,
 					includes.Count > 0 ? includes.ToArray() : null,
 					builds.Count > 0 ? builds.ToArray() : null,

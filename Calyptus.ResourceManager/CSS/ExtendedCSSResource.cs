@@ -12,8 +12,9 @@ namespace Calyptus.ResourceManager
 	{
 		private static ICSSCompressor compressor = new YUICompressor();
 
-		public ExtendedCSSResource(bool? compress, IResource[] references, IImageResource[] imageIncludes, ICSSResource[] includes, ICSSResource[] builds, FileLocation location, bool hasContent)
+		public ExtendedCSSResource(bool? compress, bool defaultCompress, IResource[] references, IImageResource[] imageIncludes, ICSSResource[] includes, ICSSResource[] builds, FileLocation location, bool hasContent)
 		{
+			_defaultCompress = defaultCompress;
 			_hasContent = hasContent;
 			_compress = compress;
 			_builds = builds;
@@ -56,6 +57,7 @@ namespace Calyptus.ResourceManager
 			private set;
 		}
 
+		private bool _defaultCompress;
 		private bool? _compress;
 
 		public IEnumerable<IResource> References
@@ -171,12 +173,12 @@ namespace Calyptus.ResourceManager
 
 		public void RenderProxy(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)
 		{
-			RenderCSS(writer, urlFactory, writtenResources, !_compress.HasValue || _compress.Value, false, null);
+			RenderCSS(writer, urlFactory, writtenResources, _defaultCompress, false, null);
 		}
 
 		public void RenderProxyWithBase64(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)
 		{
-			RenderCSS(writer, urlFactory, writtenResources, !_compress.HasValue || _compress.Value, true, null);
+			RenderCSS(writer, urlFactory, writtenResources, _defaultCompress, true, null);
 		}
 
 		public void RenderProxy(Stream stream, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)

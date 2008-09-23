@@ -7,8 +7,8 @@
     <title>Untitled Page</title>
     <%--<c:Import Assembly="Calyptus.ClientSide" Name="GoogleAPIs.MooTools" runat="server" />--%>
     <c:Build Name="CSS/MyStyleB.css" runat="server" />
-    <!--<c:Import Src="http://www.fordonslagret.se/js/common.js" runat="server" />-->
-    <c:Build Compress="Never" Name="MooTools.*" runat="server" />
+    <%--<c:Import Src="http://www.fordonslagret.se/js/common.js" runat="server" />--%>
+    <%--<c:Build Compress="Never" Name="MooTools.*" runat="server" />--%>
     <c:Import Name="Test.js" runat="server" />
     <c:Import Assembly="Calyptus.ClientSide" Name="MooTools.DomReady.js" runat="server" />
 </head>

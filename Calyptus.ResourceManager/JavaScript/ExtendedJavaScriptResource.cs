@@ -12,8 +12,9 @@ namespace Calyptus.ResourceManager
 	{
 		private static IJavaScriptCompressor compressor = new Dean.Edwards.ECMAScriptPacker(Dean.Edwards.ECMAScriptPacker.PackerEncoding.None, false, false);
 
-		public ExtendedJavaScriptResource(bool? compress, IResource[] references, IResource[] includes, IResource[] builds, FileLocation location, bool hasContent)
+		public ExtendedJavaScriptResource(bool? compress, bool defaultCompress, IResource[] references, IResource[] includes, IResource[] builds, FileLocation location, bool hasContent)
 		{
+			_defaultCompress = defaultCompress;
 			_hasContent = hasContent;
 			_compress = compress;
 			_builds = builds;
@@ -55,6 +56,7 @@ namespace Calyptus.ResourceManager
 			private set;
 		}
 
+		private bool _defaultCompress;
 		private bool? _compress;
 
 		public IEnumerable<IResource> References
@@ -157,7 +159,7 @@ namespace Calyptus.ResourceManager
 
 		public void RenderProxy(TextWriter writer, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)
 		{
-			RenderJavaScript(writer, urlFactory, writtenResources, _compress.HasValue ? _compress.Value : false);
+			RenderJavaScript(writer, urlFactory, writtenResources, _defaultCompress);
 		}
 
 		public void RenderProxy(Stream stream, IResourceURLFactory urlFactory, ICollection<IResource> writtenResources)

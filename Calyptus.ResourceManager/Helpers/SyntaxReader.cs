@@ -18,7 +18,7 @@ namespace Calyptus.ResourceManager
 			_baseLocation = baseLocation;
 			_ext = defaultExtension;
 
-			_parser = new Regex("(?:^|\\s)\\@(include|import|build|compress)[\\(\\s]\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\)\\,]+)[\\'\\\"]?\\s*(?:,\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\)\\,]+)[\\'\\\"]?)?\\s*(?:,\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\)\\,]+)[\\'\\\"]?)?\\s*[\\)\\n\\;]", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Multiline);
+			_parser = new Regex("(?:^|\\s)\\@(include|import|build|compress)[\\(\\s]\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\;\\)\\,]+)[\\'\\\"]?\\s*(?:,\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\;\\)\\,]+)[\\'\\\"]?)?\\s*(?:,\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\;\\)\\,]+)[\\'\\\"]?)?\\s*[\\)\\n\\;]", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Multiline);
 
 			_includes = new List<IResourceLocation>();
 			_references = new List<IResourceLocation>();
