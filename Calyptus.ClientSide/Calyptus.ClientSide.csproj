@@ -307,15 +307,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Calyptus.ResourceManager, Version=1.0.3188.22799, Culture=neutral, PublicKeyToken=8f43c39ba091cdf2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Calyptus.ResourceManager\bin\Release\Calyptus.ResourceManager.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Calyptus.ResourceManager\Calyptus.ResourceManager.csproj">
-      <Project>{BFDEC588-9458-42B6-824B-F6D3B43C8899}</Project>
-      <Name>Calyptus.ResourceManager</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Calyptus.ClientSide.snk" />
