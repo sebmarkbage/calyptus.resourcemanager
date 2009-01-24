@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Calyptus.ResourceManager")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Calyptus AB")]
+[assembly: AssemblyCompany("Calyptus Life AB")]
 [assembly: AssemblyProduct("Calyptus ResourceManager")]
-[assembly: AssemblyCopyright("Copyright © Calyptus AB 2008")]
+[assembly: AssemblyCopyright("Copyright © Calyptus Life AB 2008-2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
