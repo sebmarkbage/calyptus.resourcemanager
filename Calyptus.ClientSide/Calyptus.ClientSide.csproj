@@ -301,7 +301,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Lib\Calyptus\Popup\Popup.Media.js" />
-    <Content Include="Lib\CompiledSwiff\Upload.swf" />
+    <EmbeddedResource Include="Lib\CompiledSwiff\Upload.swf" />
     <Content Include="MooTools License.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

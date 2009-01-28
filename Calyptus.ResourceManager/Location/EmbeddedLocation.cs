@@ -10,6 +10,9 @@ namespace Calyptus.ResourceManager
 	{
 		public EmbeddedLocation(Assembly assembly, string resourceName)
 		{
+			if (assembly == null) throw new ArgumentNullException("Assembly for an embedded assembly cannot be null.");
+			if (assembly.GetManifestResourceInfo(resourceName) == null) throw new ArgumentException("The resource '" + resourceName + "' does not exist within the assembly '" + assembly.GetName().FullName + "'");
+			
 			Assembly = assembly;
 			ResourceName = resourceName;
 		}

@@ -13,12 +13,20 @@ namespace Calyptus.ResourceManager
 		public VirtualPathLocation(string absolutePath)
 		{
 			VirtualPath = VirtualPathUtility.ToAbsolute(absolutePath);
+			VerifyPath();
 		}
 
 		public VirtualPathLocation(string basePath, string relativePath)
 		{
 			VirtualPath = VirtualPathUtility.Combine(basePath, relativePath);
 			VirtualPath = VirtualPathUtility.ToAbsolute(VirtualPath);
+			VerifyPath();
+		}
+
+		private void VerifyPath()
+		{
+			VirtualPathProvider vp = HostingEnvironment.VirtualPathProvider;
+			if (!vp.FileExists(VirtualPath) && !vp.DirectoryExists(VirtualPath)) throw new ArgumentException("The file or directory '" + VirtualPath + "' doesn't exist in the virtual path.");
 		}
 
 		private static List<VirtualPathLocation> _monitoredPaths;
