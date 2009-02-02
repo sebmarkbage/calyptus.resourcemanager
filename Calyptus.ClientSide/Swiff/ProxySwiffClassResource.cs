@@ -7,7 +7,13 @@ namespace Calyptus.ClientSide.Swiff
 {
 	public class ProxySwiffClassResource : PlainSwiffClassResource, IProxyResource
 	{
-		public ProxySwiffClassResource(FileLocation location, string className, IResource swiffCode) : base(location, className, swiffCode)
+		public ProxySwiffClassResource(FileLocation location, string className, IResource swiffCode) 
+			: base(location, className, swiffCode)
+		{
+		}
+
+		public ProxySwiffClassResource(FileLocation location, string className, IResource swiffCode, Dictionary<string, string> parameters)
+			: base(location, className, swiffCode, parameters)
 		{
 		}
 
