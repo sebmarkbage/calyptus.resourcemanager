@@ -307,9 +307,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Calyptus.ResourceManager, Version=1.0.3188.22799, Culture=neutral, PublicKeyToken=8f43c39ba091cdf2, processorArchitecture=MSIL">
+    <Reference Include="Calyptus.ResourceManager, Version=1.0.3320.23120, Culture=neutral, PublicKeyToken=8f43c39ba091cdf2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Calyptus.ResourceManager\bin\Release\Calyptus.ResourceManager.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
