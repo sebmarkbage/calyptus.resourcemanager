@@ -8,4 +8,5 @@
 //@import MooTools.Element.Style.js;
 //@import Calyptus.Range.js;
 //@import Calyptus.Range.Edit.js;
+//@import Calyptus.Selection.js;
 //@include Calyptus.ClientSide.Lib.Calyptus.Editable.Editable.js;

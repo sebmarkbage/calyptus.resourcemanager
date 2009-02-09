@@ -41,6 +41,12 @@
     <Compile Include="Swiff\PlainSwiffClassResource.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Calyptus\Editable.DefaultText.js">
+      <LogicalName>Calyptus.Editable.DefaultText.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calyptus\Selection.js">
+      <LogicalName>Calyptus.Selection.js</LogicalName>
+    </EmbeddedResource>
     <EmbeddedResource Include="Calyptus\Debug.Tracer.js">
       <LogicalName>Calyptus.Debug.Tracer.js</LogicalName>
     </EmbeddedResource>
@@ -295,21 +301,23 @@
     <EmbeddedResource Include="Lib\MooTools\More\Utilities\Color.js" />
     <EmbeddedResource Include="Lib\MooTools\More\Utilities\Group.js" />
     <EmbeddedResource Include="Lib\MooTools\More\Utilities\Hash.Cookie.js" />
+    <EmbeddedResource Include="Lib\Calyptus\Editable\Editable.DefaultText.js" />
+    <EmbeddedResource Include="Lib\Calyptus\Native\Selection.js" />
+    <EmbeddedResource Include="Lib\Calyptus\Popup\Popup.Media.js" />
+    <EmbeddedResource Include="Lib\CompiledSwiff\Upload.swf" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClientSide License.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Lib\Calyptus\Popup\Popup.Media.js" />
-    <EmbeddedResource Include="Lib\CompiledSwiff\Upload.swf" />
     <Content Include="MooTools License.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Calyptus.ResourceManager, Version=1.0.3320.23120, Culture=neutral, PublicKeyToken=8f43c39ba091cdf2, processorArchitecture=MSIL">
+    <Reference Include="Calyptus.ResourceManager, Version=1.0.3323.17720, Culture=neutral, PublicKeyToken=8f43c39ba091cdf2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <HintPath>..\Calyptus.ResourceManager\bin\Release\Calyptus.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
