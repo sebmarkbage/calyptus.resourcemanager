@@ -35,19 +35,55 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\YUICompressor\EcmaScript.NET\bin\Debug.VS2005\EcmaScript.NET.modified.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\Iesi.Collections.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model.Net20\Model.Net20\CssCompressor.cs">
+      <Link>Compression\YUI\CssCompressor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model.Net20\Model.Net20\Extensions.cs">
+      <Link>Compression\YUI\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model.Net20\Model.Net20\JavaScriptCompressor.cs">
+      <Link>Compression\YUI\JavaScriptCompressor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model.Net20\Model.Net20\YUICompressor.cs">
+      <Link>Compression\YUI\YUICompressor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model\CssCompressionType.cs">
+      <Link>Compression\YUI\CssCompressionType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model\JavaScriptIdentifier.cs">
+      <Link>Compression\YUI\JavaScriptIdentifier.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model\JavaScriptToken.cs">
+      <Link>Compression\YUI\JavaScriptToken.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model\MichaelAshRegexCompressor.cs">
+      <Link>Compression\YUI\MichaelAshRegexCompressor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model\ScriptOrFunctionScope.cs">
+      <Link>Compression\YUI\ScriptOrFunctionScope.cs</Link>
+    </Compile>
     <Compile Include="Compression\Compress.cs" />
     <Compile Include="Compression\ICSSCompressor.cs" />
     <Compile Include="Compression\EMCAScriptPacker.cs" />
     <Compile Include="Compression\ParseMaster.cs" />
+    <Compile Include="Compression\ParsingException.cs" />
     <Compile Include="Compression\SimpleCSSCompressor.cs" />
-    <Compile Include="Compression\CssMinify.cs" />
     <Compile Include="Compression\YUICompressor.cs" />
+    <Compile Include="Compression\YUI\CustomErrorReporter.cs" />
     <Compile Include="Controls\Build.cs" />
     <Compile Include="CSS\CSSUrlParser.cs" />
     <Compile Include="CSS\ExtendedCSSResource.cs" />
@@ -92,7 +128,7 @@
     <Compile Include="ResourceFactories\IResourceFactory.cs" />
     <Compile Include="URLFactories\IResourceURLFactory.cs" />
     <Compile Include="Location\VirtualPathLocation.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AssemblyInfo.cs" />
     <Compile Include="FileResources\FileResourceProxy.cs" />
     <Compile Include="FileResources\FileResourceFactory.cs" />
     <Compile Include="URLFactories\IResourceURLProvider.cs" />
@@ -113,6 +149,9 @@
     <Content Include="YUI Compressor License.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

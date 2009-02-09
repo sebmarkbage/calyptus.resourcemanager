@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calyptus.ClientSide", "Caly
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calyptus.ResourceManager", "Calyptus.ResourceManager\Calyptus.ResourceManager.csproj", "{BFDEC588-9458-42B6-824B-F6D3B43C8899}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcmaScript.NET", "..\Lib\YUICompressor\EcmaScript.NET\EcmaScript.NET.csproj", "{ED3DF8AE-9541-4C95-93C5-8C417D4CBA50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MooTools", "MooTools\MooTools.csproj", "{BE0659AA-4C69-4C79-92F1-C5F2C2F150C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,14 @@ Global
 		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED3DF8AE-9541-4C95-93C5-8C417D4CBA50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED3DF8AE-9541-4C95-93C5-8C417D4CBA50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED3DF8AE-9541-4C95-93C5-8C417D4CBA50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED3DF8AE-9541-4C95-93C5-8C417D4CBA50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE0659AA-4C69-4C79-92F1-C5F2C2F150C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE0659AA-4C69-4C79-92F1-C5F2C2F150C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE0659AA-4C69-4C79-92F1-C5F2C2F150C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE0659AA-4C69-4C79-92F1-C5F2C2F150C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

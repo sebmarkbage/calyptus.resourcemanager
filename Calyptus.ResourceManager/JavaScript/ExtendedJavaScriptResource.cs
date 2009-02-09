@@ -10,7 +10,7 @@ namespace Calyptus.ResourceManager
 {
 	public class ExtendedJavaScriptResource : IJavaScriptResource, ITextProxyResource
 	{
-		private static IJavaScriptCompressor compressor = new Dean.Edwards.ECMAScriptPacker(Dean.Edwards.ECMAScriptPacker.PackerEncoding.None, false, false);
+		private static IJavaScriptCompressor compressor = new YUICompressor();
 
 		public ExtendedJavaScriptResource(bool? compress, bool defaultCompress, IResource[] references, IResource[] includes, IResource[] builds, FileLocation location, bool hasContent)
 		{
@@ -87,7 +87,14 @@ namespace Calyptus.ResourceManager
 			r.Close();
 			if (compress)
 			{
-				s = compressor.Compress(s);
+				try
+				{
+					s = compressor.Compress(s);
+				}
+				catch (ParsingException e)
+				{
+					throw new InvalidOperationException(String.Format("JavaScript parsing error: {0}\n{1} line {2}: {3} [{4}]", e.Message, this.Location, e.Line, e.LineSource, e.LineOffset), e);
+				}
 			}
 			writer.Write(s);
 		}

@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BE0659AA-4C69-4C79-92F1-C5F2C2F150C5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MooTools</RootNamespace>
+    <AssemblyName>MooTools</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MooTools.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Calyptus.ResourceManager, Version=1.0.3327.30304, Culture=neutral, PublicKeyToken=8f43c39ba091cdf2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Calyptus.ResourceManager\bin\Release\Calyptus.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="GoogleAPIs\MooTools.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Lib\MooTools\Core\Class\Class.Extras.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Class\Class.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Core\Browser.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Core\Core.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Element\Element.Dimensions.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Element\Element.Event.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Element\Element.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Element\Element.Style.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Fx\Fx.CSS.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Fx\Fx.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Fx\Fx.Morph.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Fx\Fx.Transitions.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Fx\Fx.Tween.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Native\Array.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Native\Event.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Native\Function.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Native\Hash.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Native\Number.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Native\String.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Request\Request.HTML.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Request\Request.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Request\Request.JSON.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Utilities\Cookie.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Utilities\DomReady.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Utilities\JSON.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Utilities\Selectors.js" />
+    <EmbeddedResource Include="Lib\MooTools\Core\Utilities\Swiff.js" />
+    <EmbeddedResource Include="Lib\MooTools\More\Drag\Drag.js" />
+    <EmbeddedResource Include="Lib\MooTools\More\Drag\Drag.Move.js" />
+    <EmbeddedResource Include="Lib\MooTools\More\Fx\Fx.Elements.js" />
+    <EmbeddedResource Include="Lib\MooTools\More\Fx\Fx.Scroll.js" />
+    <EmbeddedResource Include="Lib\MooTools\More\Fx\Fx.Slide.js" />
+    <EmbeddedResource Include="Lib\MooTools\More\Interface\Accordion.js" />
+    <EmbeddedResource Include="Lib\MooTools\More\Interface\Scroller.js" />
+    <EmbeddedResource Include="Lib\MooTools\More\Interface\Slider.js" />
+    <EmbeddedResource Include="Lib\MooTools\More\Interface\SmoothScroll.js" />
+    <EmbeddedResource Include="Lib\MooTools\More\Interface\Sortables.js" />
+    <EmbeddedResource Include="Lib\MooTools\More\Interface\Tips.js" />
+    <EmbeddedResource Include="Lib\MooTools\More\Utilities\Assets.js" />
+    <EmbeddedResource Include="Lib\MooTools\More\Utilities\Color.js" />
+    <EmbeddedResource Include="Lib\MooTools\More\Utilities\Group.js" />
+    <EmbeddedResource Include="Lib\MooTools\More\Utilities\Hash.Cookie.js" />
+    <Content Include="MooTools License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="MooTools\Tips.js" />
+    <EmbeddedResource Include="MooTools\Swiff.js" />
+    <EmbeddedResource Include="MooTools\String.js" />
+    <EmbeddedResource Include="MooTools\Sortables.js" />
+    <EmbeddedResource Include="MooTools\SmoothScroll.js" />
+    <EmbeddedResource Include="MooTools\Slider.js" />
+    <EmbeddedResource Include="MooTools\Selectors.js" />
+    <EmbeddedResource Include="MooTools\Scroller.js" />
+    <EmbeddedResource Include="MooTools\Request.JSON.js" />
+    <EmbeddedResource Include="MooTools\Request.js" />
+    <EmbeddedResource Include="MooTools\Request.HTML.js" />
+    <EmbeddedResource Include="MooTools\Number.js" />
+    <EmbeddedResource Include="MooTools\JSON.js" />
+    <EmbeddedResource Include="MooTools\Hash.js" />
+    <EmbeddedResource Include="MooTools\Hash.Cookie.js" />
+    <EmbeddedResource Include="MooTools\Group.js" />
+    <EmbeddedResource Include="MooTools\Fx.Tween.js" />
+    <EmbeddedResource Include="MooTools\Fx.Transitions.js" />
+    <EmbeddedResource Include="MooTools\Fx.Slide.js" />
+    <EmbeddedResource Include="MooTools\Fx.Scroll.js" />
+    <EmbeddedResource Include="MooTools\Fx.Morph.js" />
+    <EmbeddedResource Include="MooTools\Fx.js" />
+    <EmbeddedResource Include="MooTools\Fx.Elements.js" />
+    <EmbeddedResource Include="MooTools\Fx.CSS.js" />
+    <EmbeddedResource Include="MooTools\Function.js" />
+    <EmbeddedResource Include="MooTools\Event.js" />
+    <EmbeddedResource Include="MooTools\Element.Style.js" />
+    <EmbeddedResource Include="MooTools\Element.js" />
+    <EmbeddedResource Include="MooTools\Element.Event.js" />
+    <EmbeddedResource Include="MooTools\Element.Dimensions.js" />
+    <EmbeddedResource Include="MooTools\Drag.Move.js" />
+    <EmbeddedResource Include="MooTools\Drag.js" />
+    <EmbeddedResource Include="MooTools\DomReady.js" />
+    <EmbeddedResource Include="MooTools\Core.js" />
+    <EmbeddedResource Include="MooTools\Cookie.js" />
+    <EmbeddedResource Include="MooTools\Color.js" />
+    <EmbeddedResource Include="MooTools\Class.js" />
+    <EmbeddedResource Include="MooTools\Class.Extras.js" />
+    <EmbeddedResource Include="MooTools\Browser.js" />
+    <EmbeddedResource Include="MooTools\Assets.js" />
+    <EmbeddedResource Include="MooTools\Array.js" />
+    <EmbeddedResource Include="MooTools\Accordion.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MooTools.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
