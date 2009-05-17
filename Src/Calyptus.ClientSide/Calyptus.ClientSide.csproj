@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E6F0FAB4-E37A-435C-BBF2-25E598E20C3D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Calyptus</RootNamespace>
+    <AssemblyName>Calyptus.ClientSide</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Properties\Calyptus.ClientSide.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Upload.Swiff.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Swiff\ProxySwiffClassResource.cs" />
+    <Compile Include="Swiff\SwiffClassFactory.cs" />
+    <Compile Include="Swiff\PlainSwiffClassResource.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Editable.DefaultText.js">
+      <LogicalName>Calyptus.Editable.DefaultText.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Selection.js">
+      <LogicalName>Calyptus.Selection.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Debug.Tracer.js">
+      <LogicalName>Calyptus.Debug.Tracer.js</LogicalName>
+    </EmbeddedResource>
+    <PackageWebResource Include="Debug.Firebug.js">
+      <LogicalName>Calyptus.Debug.Firebug.js</LogicalName>
+    </PackageWebResource>
+    <EmbeddedResource Include="Editable.Exec.js">
+      <LogicalName>Calyptus.Editable.Exec.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editable.Extras.js">
+      <LogicalName>Calyptus.Editable.Extras.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editable.js">
+      <LogicalName>Calyptus.Editable.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editable.Toolbox.js">
+      <LogicalName>Calyptus.Editable.Toolbox.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Range.Edit.js">
+      <LogicalName>Calyptus.Range.Edit.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Range.js">
+      <LogicalName>Calyptus.Range.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="String.js">
+      <LogicalName>Calyptus.String.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Uri.js">
+      <LogicalName>Calyptus.Uri.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup.js">
+      <LogicalName>Calyptus.Popup.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup.Lightbox.js">
+      <LogicalName>Calyptus.Popup.Lightbox.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup.Load.js">
+      <LogicalName>Calyptus.Popup.Load.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup.Overlay.js">
+      <LogicalName>Calyptus.Popup.Overlay.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup.Videobox.js">
+      <LogicalName>Calyptus.Popup.Videobox.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Draggable.js">
+      <LogicalName>Calyptus.Draggable.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Droppable.js">
+      <LogicalName>Calyptus.Droppable.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SortableList.js">
+      <LogicalName>Calyptus.SortableList.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditableList.js">
+      <LogicalName>Calyptus.EditableList.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwiffClass.js">
+      <LogicalName>Calyptus.SwiffClass.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Upload.js">
+      <LogicalName>Calyptus.Upload.js</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClientSide License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Calyptus.ResourceManager, Version=1.0.3315.30091, Culture=neutral, PublicKeyToken=8f43c39ba091cdf2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Calyptus.ResourceManager\bin\Release\Calyptus.ResourceManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Calyptus.ClientSide.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MooTools\MooTools.csproj">
+      <Project>{BE0659AA-4C69-4C79-92F1-C5F2C2F150C5}</Project>
+      <Name>MooTools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\Calyptus.ResourceManager\bin\Release\Calyptus.ResourceManager.targets" />
+</Project>

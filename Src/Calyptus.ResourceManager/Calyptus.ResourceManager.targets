@@ -1,0 +1,43 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<UsingTask TaskName="PackageWebResources" AssemblyFile="Calyptus.ResourceManager.dll" />
+	
+	<PropertyGroup>
+		
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<AvailableItemName Include="PackageWebResource">
+			<Visible>false</Visible>
+		</AvailableItemName>
+	</ItemGroup>
+	
+	<Target Name="PackageWebResources"
+					Inputs="@(PackageWebResource);$(Language);$(DefaultLanguageSourceExtension);@(ReferencePath)"
+					Outputs="@(EmbeddedResource);@(Compile);@(FileWrites);@(ReferencePath);@(PackageWebResource)"
+					Condition="'@(PackageWebResource)' != ''"
+					>
+
+		<PackageWebResources
+			ResourceFiles="@(PackageWebResource)"
+			OutputPath="$(IntermediateOutputPath)"
+			Language="$(Language)"
+			LanguageSourceExtension="$(DefaultLanguageSourceExtension)"
+			References="@(ReferencePath)"
+			>
+			<Output TaskParameter="GeneratedFiles" ItemName="FileWrites" />
+			<Output TaskParameter="EmbeddedFiles" ItemName="EmbeddedResource" />
+			<Output TaskParameter="SourceFiles" ItemName="Compile" />
+			<Output TaskParameter="AdditionalReferences" ItemName="ReferencePath" />
+		</PackageWebResources>
+
+		<ItemGroup>
+			<PackageWebResource Remove="@(PackageWebResource)" />
+		</ItemGroup>
+
+	</Target>
+	
+	<PropertyGroup>
+			<PrepareResourcesDependsOn>$(PrepareResourcesDependsOn);PackageWebResources</PrepareResourcesDependsOn>
+	</PropertyGroup>
+	
+</Project>

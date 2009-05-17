@@ -1,0 +1,9 @@
+﻿/*
+@--reference(TestWeb, TestWebNamespace.JS.Test3.js)
+@reference(Reset.css)
+*/
+
+body
+{
+	background-color: #EEEEEE;
+}

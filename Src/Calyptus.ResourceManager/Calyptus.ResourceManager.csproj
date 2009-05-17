@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BFDEC588-9458-42B6-824B-F6D3B43C8899}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Calyptus.ResourceManager</RootNamespace>
+    <AssemblyName>Calyptus.ResourceManager</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Properties\Calyptus.ResourceManager.snk</AssemblyOriginatorKeyFile>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\YUICompressor\EcmaScript.NET\bin\Debug.VS2005\EcmaScript.NET.modified.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Utilities" />
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model.Net20\Model.Net20\CssCompressor.cs">
+      <Link>Compression\YUI\CssCompressor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model.Net20\Model.Net20\Extensions.cs">
+      <Link>Compression\YUI\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model.Net20\Model.Net20\JavaScriptCompressor.cs">
+      <Link>Compression\YUI\JavaScriptCompressor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model.Net20\Model.Net20\YUICompressor.cs">
+      <Link>Compression\YUI\YUICompressor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model\CssCompressionType.cs">
+      <Link>Compression\YUI\CssCompressionType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model\JavaScriptIdentifier.cs">
+      <Link>Compression\YUI\JavaScriptIdentifier.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model\JavaScriptToken.cs">
+      <Link>Compression\YUI\JavaScriptToken.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model\MichaelAshRegexCompressor.cs">
+      <Link>Compression\YUI\MichaelAshRegexCompressor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model\ScriptOrFunctionScope.cs">
+      <Link>Compression\YUI\ScriptOrFunctionScope.cs</Link>
+    </Compile>
+    <Compile Include="Compression\Compress.cs" />
+    <Compile Include="Compression\ICSSCompressor.cs" />
+    <Compile Include="Compression\Packer\EMCAScriptPacker.cs" />
+    <Compile Include="Compression\Packer\ParseMaster.cs" />
+    <Compile Include="Compression\ParsingException.cs" />
+    <Compile Include="Compression\SimpleCSSCompressor.cs" />
+    <Compile Include="Compression\YUICompressor.cs" />
+    <Compile Include="Compression\YUI\CustomErrorReporter.cs" />
+    <Compile Include="Asp\Controls\Build.cs" />
+    <Compile Include="CSS\CSSUrlParser.cs" />
+    <Compile Include="CSS\ExtendedCSSResource.cs" />
+    <Compile Include="FileResources\FileResourceHelper.cs" />
+    <Compile Include="Flash\IFlashResource.cs" />
+    <Compile Include="Flash\FlashFactory.cs" />
+    <Compile Include="Flash\PlainFlashResource.cs" />
+    <Compile Include="Flash\ProxyFlashResource.cs" />
+    <Compile Include="Helpers\ChecksumHelper.cs" />
+    <Compile Include="Helpers\ResourcePackage.cs" />
+    <Compile Include="Helpers\SyntaxReader.cs" />
+    <Compile Include="Images\ProxyImageResource.cs" />
+    <Compile Include="Images\IImageResource.cs" />
+    <Compile Include="Images\PlainImageResource.cs" />
+    <Compile Include="Resources\IProxyResource.cs" />
+    <Compile Include="JavaScript\ExtendedJavaScriptResource.cs" />
+    <Compile Include="Compression\IJavaScriptCompressor.cs" />
+    <Compile Include="Location\FileSystemLocation.cs" />
+    <Compile Include="Location\ExternalLocation.cs" />
+    <Compile Include="Location\FileLocation.cs" />
+    <Compile Include="Location\ResourceLocations.cs" />
+    <Compile Include="Asp\Controls\Include.cs" />
+    <Compile Include="Asp\Controls\WebResourceControl.cs" />
+    <Compile Include="Asp\Controls\Import.cs" />
+    <Compile Include="MSBuild\PackageWebResources.cs" />
+    <Compile Include="ResourceFactories\IResourceConfiguration.cs" />
+    <Compile Include="ResourceFactories\ResourceConfigurationManager.cs" />
+    <Compile Include="CSS\CSSFactory.cs" />
+    <Compile Include="CSS\PlainCSSResource.cs" />
+    <Compile Include="Images\ImageFactory.cs" />
+    <Compile Include="JavaScript\JavaScriptFactory.cs" />
+    <Compile Include="ResourceFactories\ResourceFactoryBase.cs" />
+    <Compile Include="Resources\UnknownResource.cs" />
+    <Compile Include="Asp\HttpHandlerURLProvider.cs" />
+    <Compile Include="Asp\ResourceHttpHandler.cs" />
+    <Compile Include="Asp\HttpHandlerURLFactory.cs" />
+    <Compile Include="JavaScript\PlainJavaScriptResource.cs" />
+    <Compile Include="CSS\ICSSResource.cs" />
+    <Compile Include="Location\EmbeddedLocation.cs" />
+    <Compile Include="JavaScript\IJavaScriptResource.cs" />
+    <Compile Include="Location\TypeLocation.cs" />
+    <Compile Include="Location\IResourceLocation.cs" />
+    <Compile Include="Resources\IResource.cs" />
+    <Compile Include="ResourceFactories\IResourceFactory.cs" />
+    <Compile Include="URLFactories\IResourceURLFactory.cs" />
+    <Compile Include="Location\VirtualPathLocation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FileResources\FileResourceProxy.cs" />
+    <Compile Include="FileResources\FileResourceFactory.cs" />
+    <Compile Include="URLFactories\IResourceURLProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Calyptus.ResourceManager.targets">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Properties\Calyptus.ResourceManager.snk" />
+    <None Include="Diagrams\Interfaces.cd" />
+    <None Include="Diagrams\ResourceTypes.cd" />
+    <None Include="Diagrams\Factories.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resource Manager License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Packer License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="YUI Compressor License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BE0659AA-4C69-4C79-92F1-C5F2C2F150C5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MooTools</RootNamespace>
+    <AssemblyName>MooTools</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Properties\MooTools.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Calyptus.ResourceManager, Version=1.0.3327.34489, Culture=neutral, PublicKeyToken=8f43c39ba091cdf2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Calyptus.ResourceManager\bin\Release\Calyptus.ResourceManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GoogleAPIs\MooTools.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MooTools License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Tips.js" />
+    <EmbeddedResource Include="Swiff.js" />
+    <EmbeddedResource Include="String.js" />
+    <EmbeddedResource Include="Sortables.js" />
+    <EmbeddedResource Include="SmoothScroll.js" />
+    <EmbeddedResource Include="Slider.js" />
+    <EmbeddedResource Include="Selectors.js" />
+    <EmbeddedResource Include="Scroller.js" />
+    <EmbeddedResource Include="Request.JSON.js" />
+    <EmbeddedResource Include="Request.js" />
+    <EmbeddedResource Include="Request.HTML.js" />
+    <EmbeddedResource Include="Number.js" />
+    <EmbeddedResource Include="JSON.js" />
+    <EmbeddedResource Include="Hash.js" />
+    <EmbeddedResource Include="Hash.Cookie.js" />
+    <EmbeddedResource Include="Group.js" />
+    <EmbeddedResource Include="Fx.Tween.js" />
+    <EmbeddedResource Include="Fx.Transitions.js" />
+    <EmbeddedResource Include="Fx.Slide.js" />
+    <EmbeddedResource Include="Fx.Scroll.js" />
+    <EmbeddedResource Include="Fx.Morph.js" />
+    <EmbeddedResource Include="Fx.js" />
+    <EmbeddedResource Include="Fx.Elements.js" />
+    <EmbeddedResource Include="Fx.CSS.js" />
+    <EmbeddedResource Include="Function.js" />
+    <EmbeddedResource Include="Event.js" />
+    <EmbeddedResource Include="Element.Style.js" />
+    <EmbeddedResource Include="Element.js" />
+    <EmbeddedResource Include="Element.Event.js" />
+    <EmbeddedResource Include="Element.Dimensions.js" />
+    <EmbeddedResource Include="Drag.Move.js" />
+    <EmbeddedResource Include="Drag.js" />
+    <EmbeddedResource Include="DomReady.js" />
+    <EmbeddedResource Include="Core.js" />
+    <EmbeddedResource Include="Cookie.js" />
+    <EmbeddedResource Include="Color.js" />
+    <EmbeddedResource Include="Class.js" />
+    <EmbeddedResource Include="Class.Extras.js" />
+    <EmbeddedResource Include="Browser.js" />
+    <EmbeddedResource Include="Assets.js" />
+    <EmbeddedResource Include="Array.js" />
+    <EmbeddedResource Include="Accordion.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\MooTools.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+<!--  <Import Project="..\Calyptus.ResourceManager\bin\Release\Calyptus.ResourceManager.targets" />-->
+</Project>

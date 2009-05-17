@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MooTools.GenerateReferences", "Utils\Calyptus.ResourceManager.MooTools.GenerateReferences\MooTools.GenerateReferences.csproj", "{C6969340-0CA2-41D5-AAE0-C61243DCA290}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWeb", "Utils\Calyptus.ResourceManager.TestWeb\TestWeb.csproj", "{BD38D7F6-244E-4631-933B-4231B9443D2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calyptus.ClientSide", "Src\Calyptus.ClientSide\Calyptus.ClientSide.csproj", "{E6F0FAB4-E37A-435C-BBF2-25E598E20C3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calyptus.ResourceManager", "Src\Calyptus.ResourceManager\Calyptus.ResourceManager.csproj", "{BFDEC588-9458-42B6-824B-F6D3B43C8899}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcmaScript.NET", "Lib\YUICompressor\EcmaScript.NET\EcmaScript.NET.csproj", "{ED3DF8AE-9541-4C95-93C5-8C417D4CBA50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MooTools", "Src\MooTools\MooTools.csproj", "{BE0659AA-4C69-4C79-92F1-C5F2C2F150C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calyptus.ResourceManager.HtmlHelpers", "Src\Calyptus.ResourceManager.HtmlHelpers\Calyptus.ResourceManager.HtmlHelpers.csproj", "{AC738112-2C47-475B-9A8C-3CF2F7ABDB32}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frameworks", "Frameworks", "{03E8FB36-B898-4955-8D19-9E744E6EAF56}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{56B9702F-A087-4E18-B789-23A30A26CB01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6969340-0CA2-41D5-AAE0-C61243DCA290}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6969340-0CA2-41D5-AAE0-C61243DCA290}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6969340-0CA2-41D5-AAE0-C61243DCA290}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6969340-0CA2-41D5-AAE0-C61243DCA290}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD38D7F6-244E-4631-933B-4231B9443D2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD38D7F6-244E-4631-933B-4231B9443D2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD38D7F6-244E-4631-933B-4231B9443D2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD38D7F6-244E-4631-933B-4231B9443D2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6F0FAB4-E37A-435C-BBF2-25E598E20C3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6F0FAB4-E37A-435C-BBF2-25E598E20C3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6F0FAB4-E37A-435C-BBF2-25E598E20C3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6F0FAB4-E37A-435C-BBF2-25E598E20C3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED3DF8AE-9541-4C95-93C5-8C417D4CBA50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED3DF8AE-9541-4C95-93C5-8C417D4CBA50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED3DF8AE-9541-4C95-93C5-8C417D4CBA50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED3DF8AE-9541-4C95-93C5-8C417D4CBA50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE0659AA-4C69-4C79-92F1-C5F2C2F150C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE0659AA-4C69-4C79-92F1-C5F2C2F150C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE0659AA-4C69-4C79-92F1-C5F2C2F150C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE0659AA-4C69-4C79-92F1-C5F2C2F150C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC738112-2C47-475B-9A8C-3CF2F7ABDB32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC738112-2C47-475B-9A8C-3CF2F7ABDB32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC738112-2C47-475B-9A8C-3CF2F7ABDB32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC738112-2C47-475B-9A8C-3CF2F7ABDB32}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BD38D7F6-244E-4631-933B-4231B9443D2D} = {56B9702F-A087-4E18-B789-23A30A26CB01}
+		{C6969340-0CA2-41D5-AAE0-C61243DCA290} = {56B9702F-A087-4E18-B789-23A30A26CB01}
+		{BE0659AA-4C69-4C79-92F1-C5F2C2F150C5} = {03E8FB36-B898-4955-8D19-9E744E6EAF56}
+		{E6F0FAB4-E37A-435C-BBF2-25E598E20C3D} = {03E8FB36-B898-4955-8D19-9E744E6EAF56}
+	EndGlobalSection
+EndGlobal
