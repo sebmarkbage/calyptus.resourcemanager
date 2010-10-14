@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Calyptus.ResourceManager
 {
-	internal static class CSSUrlParser
+	public static class CSSUrlParser
 	{
 		private static Regex _urlParser = new Regex("(?<=[\\:\\s]url\\()\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\)\\,]+)[\\'\\\"]?\\s*(?:,\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\)\\,]+)[\\'\\\"]?)?\\s*(?=\\))", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Multiline);
 		

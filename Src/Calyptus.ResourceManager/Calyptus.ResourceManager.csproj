@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,12 +10,30 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Calyptus.ResourceManager</RootNamespace>
     <AssemblyName>Calyptus.ResourceManager</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Properties\Calyptus.ResourceManager.snk</AssemblyOriginatorKeyFile>
-    <TargetFrameworkSubset>
-    </TargetFrameworkSubset>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,6 +43,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,11 +52,11 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Lib\YUICompressor\EcmaScript.NET\bin\Debug.VS2005\EcmaScript.NET.modified.dll</HintPath>
+    <Reference Include="EcmaScript.NET.modified">
+      <HintPath>..\..\Lib\EcmaScript.NET.modified.dll</HintPath>
     </Reference>
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -47,36 +66,11 @@
     <Reference Include="Microsoft.Build.Utilities" />
     <Reference Include="System" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Xml" />
+    <Reference Include="Yahoo.Yui.Compressor">
+      <HintPath>..\..\Lib\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model.Net20\Model.Net20\CssCompressor.cs">
-      <Link>Compression\YUI\CssCompressor.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model.Net20\Model.Net20\Extensions.cs">
-      <Link>Compression\YUI\Extensions.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model.Net20\Model.Net20\JavaScriptCompressor.cs">
-      <Link>Compression\YUI\JavaScriptCompressor.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model.Net20\Model.Net20\YUICompressor.cs">
-      <Link>Compression\YUI\YUICompressor.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model\CssCompressionType.cs">
-      <Link>Compression\YUI\CssCompressionType.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model\JavaScriptIdentifier.cs">
-      <Link>Compression\YUI\JavaScriptIdentifier.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model\JavaScriptToken.cs">
-      <Link>Compression\YUI\JavaScriptToken.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model\MichaelAshRegexCompressor.cs">
-      <Link>Compression\YUI\MichaelAshRegexCompressor.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Lib\YUICompressor\Yahoo.Yui.Compressor\Model\ScriptOrFunctionScope.cs">
-      <Link>Compression\YUI\ScriptOrFunctionScope.cs</Link>
-    </Compile>
     <Compile Include="Compression\Compress.cs" />
     <Compile Include="Compression\ICSSCompressor.cs" />
     <Compile Include="Compression\Packer\EMCAScriptPacker.cs" />
@@ -99,6 +93,8 @@
     <Compile Include="Images\ProxyImageResource.cs" />
     <Compile Include="Images\IImageResource.cs" />
     <Compile Include="Images\PlainImageResource.cs" />
+    <Compile Include="Packager\Package.cs" />
+    <Compile Include="Packager\PackageConfiguration.cs" />
     <Compile Include="Resources\IProxyResource.cs" />
     <Compile Include="JavaScript\ExtendedJavaScriptResource.cs" />
     <Compile Include="Compression\IJavaScriptCompressor.cs" />
@@ -155,6 +151,23 @@
     <Content Include="YUI Compressor License.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

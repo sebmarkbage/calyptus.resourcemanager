@@ -1,4 +1,4 @@
-﻿//@include TestWebNamespace.MyResourceFbile;
+﻿//@include TestWebNamespace.MyResourceFile;
 
 var mythird = 3;
 

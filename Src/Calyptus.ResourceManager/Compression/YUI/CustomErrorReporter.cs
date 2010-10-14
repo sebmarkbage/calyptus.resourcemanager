@@ -3,6 +3,7 @@ using EcmaScript.NET;
 
 namespace Yahoo.Yui.Compressor
 {
+	/*
 	public class CustomErrorReporter : ErrorReporter
 	{
 		public CustomErrorReporter(bool isVerboseLogging)
@@ -35,5 +36,5 @@ namespace Yahoo.Yui.Compressor
 		{
 			throw new Calyptus.ResourceManager.ParsingException(message, line, lineOffset, lineSource);
 		}
-	}
+	}*/
 }

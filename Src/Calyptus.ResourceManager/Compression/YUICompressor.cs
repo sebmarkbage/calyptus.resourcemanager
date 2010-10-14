@@ -14,7 +14,7 @@ namespace Calyptus.ResourceManager
 
 		public string CompressJavaScript(string content)
 		{
-			return JavaScriptCompressor.Compress(content, false, false, false, false, -1, Encoding.UTF8);
+			return JavaScriptCompressor.Compress(content, false, false, false, false, -1);
 		}
 
 		string ICSSCompressor.Compress(string content)
