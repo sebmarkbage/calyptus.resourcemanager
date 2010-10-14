@@ -10,7 +10,7 @@ namespace Calyptus.ResourceManager
 {
 	public class PlainJavaScriptResource : IJavaScriptResource
 	{
-		private static IJavaScriptCompressor compressor = new Dean.Edwards.ECMAScriptPacker(Dean.Edwards.ECMAScriptPacker.PackerEncoding.None, false, false);
+		private static IJavaScriptCompressor compressor = new YUICompressor(); // new Dean.Edwards.ECMAScriptPacker(Dean.Edwards.ECMAScriptPacker.PackerEncoding.None, false, false);
 
 		public PlainJavaScriptResource(IResource[] references, FileLocation location, bool hasContent)
 		{

@@ -9,7 +9,8 @@ namespace Calyptus.ResourceManager
 {
 	public class ResourceConfigurationManager : IResourceConfiguration
 	{
-		private ReaderWriterLock _lock;
+		//private ReaderWriterLock _lock;
+		private Action _resetAction;
 		private IResourceURLProvider _urlProvider;
 		private IResourceFactory[] _resourceFactories;
 		private Dictionary<IResourceLocation, IResource> _resourceCache;
@@ -23,12 +24,14 @@ namespace Calyptus.ResourceManager
 			_resourceFactories = resourceFactories;
 			foreach (IResourceFactory factory in _resourceFactories)
 				factory.Configuration = this;
-			_lock = new ReaderWriterLock();
+			//_lock = new ReaderWriterLock();
+			_resetAction = new Action(Reset);
 		}
 
 		protected ResourceConfigurationManager() : this(new HttpHandlerURLProvider(), new IResourceFactory[] {
 					new JavaScriptFactory(),
 					new FileResourceFactory(),
+					new LESSFactory(),
 					new CSSFactory(),
 					new ImageFactory(),
 					new FlashFactory()
@@ -54,6 +57,7 @@ namespace Calyptus.ResourceManager
 
 		protected virtual void Reset()
 		{
+			foreach (var key in _resourceCache.Keys) key.StopMonitorChanges(_resetAction);
 			_resourceCache.Clear();
 		}
 
@@ -64,30 +68,30 @@ namespace Calyptus.ResourceManager
 			if (location == null) return null;
 
 			IResource res;
-			_lock.AcquireReaderLock(3000);
+			//_lock.AcquireReaderLock(3000);
 			try
 			{
 				if (!_resourceCache.TryGetValue(location, out res))
 				{
-					var c = _lock.UpgradeToWriterLock(3000);
+					//var c = _lock.UpgradeToWriterLock(3000);
 					try
 					{
 						_resourceCache.Add(location, null); // Adding it as null first prevents recursive reference errors
 						res = GetResourcePrivate(location) ?? new UnknownResource(location);
 						_resourceCache[location] = res;
-						location.MonitorChanges(new Action(Reset));
+						location.MonitorChanges(_resetAction);
 					}
 					finally
 					{
-						_lock.DowngradeFromWriterLock(ref c);
+						//_lock.DowngradeFromWriterLock(ref c);
 					}
 				}
 			}
 			finally
 			{
-				_lock.ReleaseReaderLock();
+				//_lock.ReleaseReaderLock();
 			}
-			if (res == null) throw new Exception(String.Format("The resource at {0} contains recursive references. This is not supported.", location.ToString()));
+			if (res == null) throw new Exception(String.Format("The resource {0} contains recursive references. This is not supported.", location.ToString()));
 			return res;
 		}
 

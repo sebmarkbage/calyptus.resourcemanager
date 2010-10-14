@@ -1,0 +1,3 @@
+﻿/*
+@build MainScript.js
+*/

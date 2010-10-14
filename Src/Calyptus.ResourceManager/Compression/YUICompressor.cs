@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Yahoo.Yui.Compressor;
+using System.Globalization;
 
 namespace Calyptus.ResourceManager
 {
@@ -14,7 +15,7 @@ namespace Calyptus.ResourceManager
 
 		public string CompressJavaScript(string content)
 		{
-			return JavaScriptCompressor.Compress(content, false, false, false, false, -1, Encoding.UTF8);
+			return JavaScriptCompressor.Compress(content, false, false, false, false, -1, Encoding.UTF8, CultureInfo.InvariantCulture);
 		}
 
 		string ICSSCompressor.Compress(string content)

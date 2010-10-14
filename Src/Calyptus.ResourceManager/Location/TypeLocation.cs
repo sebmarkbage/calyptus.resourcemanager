@@ -58,6 +58,10 @@ namespace Calyptus.ResourceManager
 		{
 		}
 
+		public void StopMonitorChanges(Action onChanged)
+		{
+		}
+
 		public IResourceLocation GetRelativeLocation(string name)
 		{
 			Assembly a = ProxyType.Assembly;

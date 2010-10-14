@@ -5,16 +5,16 @@ using System.IO;
 
 namespace Calyptus.ResourceManager
 {
-	public class CSSFactory : ResourceFactoryBase
+	public class LESSFactory : ResourceFactoryBase
 	{
 		public override IResource GetResource(IResourceLocation location)
 		{
 			FileLocation l = location as FileLocation;
 			if (l == null) return null;
-			if (!l.FileName.EndsWith(".css", StringComparison.InvariantCultureIgnoreCase))
+			if (!l.FileName.EndsWith(".less", StringComparison.InvariantCultureIgnoreCase) && !l.FileName.EndsWith(".less.css", StringComparison.InvariantCultureIgnoreCase))
 			{
 				ExternalLocation el = l as ExternalLocation;
-				if (el == null || el.Mime == null || !el.Mime.EndsWith("/css", StringComparison.InvariantCultureIgnoreCase))
+				if (el == null || el.Mime == null || !el.Mime.EndsWith("/css+less", StringComparison.InvariantCultureIgnoreCase))
 					return null;
 			}
 
@@ -80,18 +80,16 @@ namespace Calyptus.ResourceManager
 					else if (!references.Contains(resource))
 						references.Add(resource);
 				}
-			if ((reader.Compress == null || compress == Compress.Never) && imageIncludes.Count == 0 && includes.Count == 0 && builds.Count == 0 && l is VirtualPathLocation)
-				return new PlainCSSResource(references.Count > 0 ? references.ToArray() : null, l, reader.HasContent);
-			else
-				return new ExtendedCSSResource(
-					reader.Compress == null ? (bool?)null : cmpr,
-					!Configuration.DebugMode,
-					references.Count > 0 ? references.ToArray() : null,
-					imageIncludes.Count > 0 ? imageIncludes.ToArray() : null,
-					includes.Count > 0 ? includes.ToArray() : null,
-					builds.Count > 0 ? builds.ToArray() : null,
-					l,
-					reader.HasContent);
+
+			return new LESSResource(
+				reader.Compress == null ? (bool?)null : cmpr,
+				!Configuration.DebugMode,
+				references.Count > 0 ? references.ToArray() : null,
+				imageIncludes.Count > 0 ? imageIncludes.ToArray() : null,
+				includes.Count > 0 ? includes.ToArray() : null,
+				builds.Count > 0 ? builds.ToArray() : null,
+				l,
+				reader.HasContent);
 		}
 	}
 }

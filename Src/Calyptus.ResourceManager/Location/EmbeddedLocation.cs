@@ -80,5 +80,13 @@ namespace Calyptus.ResourceManager
 			}
 			return (ls.Count > 0) ? ls : null;
 		}
+
+		public override void MonitorChanges(Action onChange)
+		{
+		}
+
+		public override void StopMonitorChanges(Action onChange)
+		{
+		}
 	}
 }

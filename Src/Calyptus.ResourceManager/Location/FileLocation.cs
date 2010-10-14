@@ -32,18 +32,8 @@ namespace Calyptus.ResourceManager
 				return ChecksumHelper.GetChecksum(s);
 		}
 
-		protected virtual void OnChanged()
-		{
-			if (_version == null || !_version.Equals(GetVersion()))
-				Changed();
-		}
-
-		public virtual void MonitorChanges(Action onChange)
-		{
-			Changed += onChange;
-		}
-
-		public event Action Changed;
+		public abstract void MonitorChanges(Action onChange);
+		public abstract void StopMonitorChanges(Action onChange);
 
 		public abstract IEnumerable<IResourceLocation> GetRelativeLocations(string name);
 		public abstract IResourceLocation GetRelativeLocation(string name);

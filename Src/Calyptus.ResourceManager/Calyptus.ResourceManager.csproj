@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{BFDEC588-9458-42B6-824B-F6D3B43C8899}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="dotless.Core, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Lib\DotLESS\dotless.Core.dll</HintPath>
+    </Reference>
     <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Lib\YUICompressor\EcmaScript.NET\bin\Debug.VS2005\EcmaScript.NET.modified.dll</HintPath>
@@ -46,6 +50,7 @@
     <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.Build.Utilities" />
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -99,6 +104,10 @@
     <Compile Include="Images\ProxyImageResource.cs" />
     <Compile Include="Images\IImageResource.cs" />
     <Compile Include="Images\PlainImageResource.cs" />
+    <Compile Include="LESS\LESSFactory.cs" />
+    <Compile Include="LESS\LESSResource.cs" />
+    <Compile Include="Location\VirtualPathMonitor.cs" />
+    <Compile Include="Location\FileSystemMonitor.cs" />
     <Compile Include="Resources\IProxyResource.cs" />
     <Compile Include="JavaScript\ExtendedJavaScriptResource.cs" />
     <Compile Include="Compression\IJavaScriptCompressor.cs" />
@@ -146,6 +155,9 @@
     <None Include="Diagrams\Factories.cd" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DotLESS License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resource Manager License.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

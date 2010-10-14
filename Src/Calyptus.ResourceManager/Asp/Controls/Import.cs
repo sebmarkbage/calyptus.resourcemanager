@@ -15,7 +15,9 @@ namespace Calyptus.ResourceManager
 		{
 			get
 			{
-				return ResourceLocations.GetLocations(BaseLocation, Assembly, Name);
+				var locations = ResourceLocations.GetLocations(BaseLocation, Assembly, Name);
+				if (locations == null) throw new Exception("Could not find resource: " + (Name ?? "null"));
+				return locations;
 			}
 		}
 
@@ -26,6 +28,10 @@ namespace Calyptus.ResourceManager
 	}
 
 	public class Using : Import
+	{
+	}
+
+	public class Use : Import
 	{
 	}
 }
