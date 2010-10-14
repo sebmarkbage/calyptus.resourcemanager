@@ -8,7 +8,6 @@ namespace Calyptus.ResourceManager
 {
 	public class FileSystemLocation : FileLocation
 	{
-		private FileSystemWatcher fileSystemWatcher;
 		private AssemblyName[] referencedAssemblies;
 
 		public FileSystemLocation(string absolutePath)
@@ -28,12 +27,6 @@ namespace Calyptus.ResourceManager
 			FullName = Path.GetFullPath(absolutePath);
 			VerifyPath();
 			this.referencedAssemblies = referencedAssemblies;
-		}
-
-		~FileSystemLocation()
-		{
-			if (fileSystemWatcher != null)
-				fileSystemWatcher.Dispose();
 		}
 
 		private void VerifyPath()
@@ -72,28 +65,6 @@ namespace Calyptus.ResourceManager
 		public override string ToString()
 		{
 			return FullName;
-		}
-
-		public override void MonitorChanges(Action onChange)
-		{
-			if (this.fileSystemWatcher == null) 
-			{
-				this.fileSystemWatcher = new FileSystemWatcher(Path.GetDirectoryName(this.FullName), Path.GetFileName(this.FullName));
-
-				FileSystemEventHandler handler = (sender, e) => {
-					this.OnChanged();
-					this.fileSystemWatcher.Dispose();
-				};
-
-				this.fileSystemWatcher.Deleted += handler;
-				this.fileSystemWatcher.Changed += handler;
-				this.fileSystemWatcher.Renamed += (sender, e) =>
-				{
-					this.OnChanged();
-					this.fileSystemWatcher.Dispose();
-				};
-			}
-			base.MonitorChanges(onChange);
 		}
 
 		public override IResourceLocation GetRelativeLocation(string name)
@@ -137,5 +108,28 @@ namespace Calyptus.ResourceManager
 				}
 			return (ls.Count > 0) ? ls : null;
 		}
+
+		public override void MonitorChanges(Action onChange)
+		{
+			var fn = this.FullName;
+			FileSystemMonitor monitor;
+			if (monitoredFiles == null) monitoredFiles = new Dictionary<string, FileSystemMonitor>();
+			if (!monitoredFiles.TryGetValue(fn, out monitor)) monitoredFiles.Add(fn, monitor = new FileSystemMonitor(fn));
+			monitor.Subscribe(onChange);
+		}
+
+		public override void StopMonitorChanges(Action onChange)
+		{
+			FileSystemMonitor monitor;
+			if (!monitoredFiles.TryGetValue(this.FullName, out monitor)) return;
+			monitor.Unsubscribe(onChange);
+			if (!monitor.HasCallbacks)
+			{
+				monitoredFiles.Remove(this.FullName);
+				if (monitoredFiles.Count == 0) monitoredFiles = null;
+			}
+		}
+
+		private static Dictionary<string, FileSystemMonitor> monitoredFiles;
 	}
 }

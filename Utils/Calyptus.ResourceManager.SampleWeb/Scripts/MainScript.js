@@ -1,0 +1,3 @@
+﻿/*
+@import DependencyScript.js
+*/

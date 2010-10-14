@@ -57,7 +57,8 @@ namespace Calyptus.ResourceManager
 		{
 			HttpRequest request = context.Request;
 			HttpResponse response = context.Response;
-			string[] ps = request.QueryString[null].Split('-');
+			string q = request.QueryString[null];
+			string[] ps = q == null ? new string[0] : q.Split('-');
 			string version = ps.Length > 0 ? ps[0] : null;
 
 			/*string c = context.Request.QueryString["c"];
@@ -131,7 +132,7 @@ namespace Calyptus.ResourceManager
 			ICollection<IResource> writtenResources = new Collection<IResource>();
 			IResourceURLFactory urlFactory = config.URLProvider.GetURLFactory(context);
 
-			bool base64support = !"IE".Equals(request.Browser.Browser, StringComparison.InvariantCultureIgnoreCase) || request.Browser.MajorVersion > 7;
+			bool base64support = !"IE".Equals(request.Browser.Browser, StringComparison.InvariantCultureIgnoreCase) || request.Browser.MajorVersion > 8;
 			ITextProxyResource tr;
 			IBase64TextProxyResource cr;
 

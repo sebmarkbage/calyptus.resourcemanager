@@ -45,12 +45,14 @@ namespace Calyptus.ResourceManager
 				if (_resources == null)
 				{
 					_resources = new List<IResource>();
-					foreach (IResourceLocation l in Locations)
-					{
-						IResource res = Manager.GetResource(l);
-						if (res != null)
-							_resources.Add(res);
-					}
+					var ls = Locations;
+					if (ls != null)
+						foreach (IResourceLocation l in ls)
+						{
+							IResource res = Manager.GetResource(l);
+							if (res != null)
+								_resources.Add(res);
+						}
 				}
 				return _resources;
 			}

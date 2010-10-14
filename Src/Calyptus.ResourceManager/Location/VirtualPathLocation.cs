@@ -76,44 +76,9 @@ namespace Calyptus.ResourceManager
 			return VirtualPath;
 		}
 
-		private static List<VirtualPathLocation> _monitoredPaths;
-
-		public override void MonitorChanges(Action onChange)
-		{
-			if (_monitoredPaths == null) _monitoredPaths = new List<VirtualPathLocation>();
-
-			bool alreadyMonitored = _monitoredPaths.Contains(this);
-			_monitoredPaths.Add(this);
-
-			if (!alreadyMonitored)
-			{
-				VirtualPathProvider vp = HostingEnvironment.VirtualPathProvider;
-				System.Web.Caching.CacheDependency cd = vp.GetCacheDependency(this.VirtualPath, new string[] { this.VirtualPath }, DateTime.UtcNow);
-				HostingEnvironment.Cache.Add("VirtualPathMonitor:" + this.VirtualPath, 0, cd, System.Web.Caching.Cache.NoAbsoluteExpiration, System.Web.Caching.Cache.NoSlidingExpiration, System.Web.Caching.CacheItemPriority.NotRemovable, (k, v, r) =>
-				{
-					if (_monitoredPaths == null) return;
-					int i = 0;
-					while (i < _monitoredPaths.Count)
-					{
-						VirtualPathLocation l = _monitoredPaths[i];
-						if (l.Equals(this))
-						{
-							l.OnChanged();
-							_monitoredPaths.RemoveAt(i);
-						}
-						else
-							i++;
-					}
-					if (_monitoredPaths.Count == 0) _monitoredPaths = null;
-				});
-			}
-
-			base.MonitorChanges(onChange);
-		}
-
 		public override IResourceLocation GetRelativeLocation(string name)
 		{
-			string path = VirtualPathUtility.Combine(VirtualPathUtility.GetDirectory(this.VirtualPath), name);
+			string path = VirtualPathUtility.Combine(this.VirtualPath, name);
 			if (HostingEnvironment.VirtualPathProvider.FileExists(path))
 				return new VirtualPathLocation(path);
 			foreach (Assembly r in System.Web.Compilation.BuildManager.GetReferencedAssemblies())
@@ -136,7 +101,7 @@ namespace Calyptus.ResourceManager
 			}
 			else
 			{
-				string path = VirtualPathUtility.Combine(VirtualPathUtility.GetDirectory(this.VirtualPath), name.Substring(0, i)),
+				string path = VirtualPathUtility.Combine(this.VirtualPath, name.Substring(0, i)),
 					filename = name.Substring(i);
 				path = VirtualPathUtility.ToAbsolute(path);
 				VirtualDirectory dir = HostingEnvironment.VirtualPathProvider.GetDirectory(path);
@@ -152,5 +117,28 @@ namespace Calyptus.ResourceManager
 			}
 			return (ls.Count > 0) ? ls : null;
 		}
+
+		public override void MonitorChanges(Action onChange)
+		{
+			var fn = this.VirtualPath;
+			VirtualPathMonitor monitor;
+			if (monitoredFiles == null) monitoredFiles = new Dictionary<string, VirtualPathMonitor>();
+			if (!monitoredFiles.TryGetValue(fn, out monitor)) monitoredFiles.Add(fn, monitor = new VirtualPathMonitor(fn));
+			monitor.Subscribe(onChange);
+		}
+
+		public override void StopMonitorChanges(Action onChange)
+		{
+			VirtualPathMonitor monitor;
+			if (!monitoredFiles.TryGetValue(this.VirtualPath, out monitor)) return;
+			monitor.Unsubscribe(onChange);
+			if (!monitor.HasCallbacks)
+			{
+				monitoredFiles.Remove(this.VirtualPath);
+				if (monitoredFiles.Count == 0) monitoredFiles = null;
+			}
+		}
+
+		private static Dictionary<string, VirtualPathMonitor> monitoredFiles;
 	}
 }

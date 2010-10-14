@@ -13,6 +13,7 @@ namespace Calyptus.ResourceManager
 		}
 
 		void MonitorChanges(Action onChanged);
+		void StopMonitorChanges(Action onChanged);
 
 		IResourceLocation GetRelativeLocation(string name);
 		IEnumerable<IResourceLocation> GetRelativeLocations(string name);

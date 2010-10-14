@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{56B9702F-A087-4E18-B789-23A30A26CB01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWeb", "Utils\Calyptus.ResourceManager.SampleWeb\SampleWeb.csproj", "{BD38D7F6-244E-4631-933B-4231B9443D2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calyptus.ResourceManager", "Src\Calyptus.ResourceManager\Calyptus.ResourceManager.csproj", "{BFDEC588-9458-42B6-824B-F6D3B43C8899}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calyptus.ResourceManager.Mvc", "Src\Calyptus.ResourceManager.Mvc\Calyptus.ResourceManager.Mvc.csproj", "{AC738112-2C47-475B-9A8C-3CF2F7ABDB32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleWebMvc", "Utils\Calyptus.ResourceManager.SampleWebMvc\SampleWebMvc.csproj", "{DBCE5D86-955A-42FA-8B0C-543FDA6F4695}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD38D7F6-244E-4631-933B-4231B9443D2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD38D7F6-244E-4631-933B-4231B9443D2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD38D7F6-244E-4631-933B-4231B9443D2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD38D7F6-244E-4631-933B-4231B9443D2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFDEC588-9458-42B6-824B-F6D3B43C8899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC738112-2C47-475B-9A8C-3CF2F7ABDB32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC738112-2C47-475B-9A8C-3CF2F7ABDB32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC738112-2C47-475B-9A8C-3CF2F7ABDB32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC738112-2C47-475B-9A8C-3CF2F7ABDB32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBCE5D86-955A-42FA-8B0C-543FDA6F4695}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBCE5D86-955A-42FA-8B0C-543FDA6F4695}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBCE5D86-955A-42FA-8B0C-543FDA6F4695}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBCE5D86-955A-42FA-8B0C-543FDA6F4695}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BD38D7F6-244E-4631-933B-4231B9443D2D} = {56B9702F-A087-4E18-B789-23A30A26CB01}
+		{DBCE5D86-955A-42FA-8B0C-543FDA6F4695} = {56B9702F-A087-4E18-B789-23A30A26CB01}
+	EndGlobalSection
+EndGlobal

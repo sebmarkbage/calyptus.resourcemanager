@@ -77,6 +77,14 @@ namespace Calyptus.ResourceManager
 			return Uri.ToString();
 		}
 
+		public override void MonitorChanges(Action onChange)
+		{
+		}
+
+		public override void StopMonitorChanges(Action onChange)
+		{
+		}
+
 		public override IResourceLocation GetRelativeLocation(string name)
 		{
 			return new ExternalLocation(new Uri(this.Uri, name));
