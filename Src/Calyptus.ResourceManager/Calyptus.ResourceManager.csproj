@@ -140,6 +140,7 @@
     <Compile Include="FileResources\FileResourceProxy.cs" />
     <Compile Include="FileResources\FileResourceFactory.cs" />
     <Compile Include="URLFactories\IResourceURLProvider.cs" />
+    <Compile Include="URLFactories\ResourceURLProviders.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Calyptus.ResourceManager.targets">

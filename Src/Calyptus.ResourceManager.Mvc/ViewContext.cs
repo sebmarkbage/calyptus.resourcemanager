@@ -5,16 +5,19 @@ using System.Text;
 using System.Web;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Web.Routing;
 
 namespace Calyptus.ResourceManager
 {
 	class ViewContext
 	{
-		HttpContextBase httpcontext;
+		RouteBase route;
+		RequestContext requestContext;
 
-		public ViewContext(HttpContextBase context)
+		public ViewContext(RequestContext requestContext, RouteBase route)
 		{
-			this.httpcontext = context;
+			this.requestContext = requestContext;
+			this.route = route;
 		}
 
 		private IResourceConfiguration _config;
@@ -35,12 +38,8 @@ namespace Calyptus.ResourceManager
 			{
 				if (_urlFactory == null)
 				{
-					IResourceURLProvider p = Manager.URLProvider;
-					IMvcResourceURLProvider cp = p as IMvcResourceURLProvider;
-					if (cp != null)
-						_urlFactory = cp.GetURLFactory(this.httpcontext);
-					else
-						_urlFactory = p.GetURLFactory(HttpContext.Current);
+					if (route == null) _urlFactory = ResourceURLProvider.GetURLProvider().GetURLFactory(HttpContext.Current);
+					else _urlFactory = new RoutingResourceURLFactory(route, requestContext);
 				}
 				return _urlFactory;
 			}
@@ -71,7 +70,9 @@ namespace Calyptus.ResourceManager
 				foreach (IResource res in resource.References)
 					RenderImportTag(writer, res);
 
-			bool inclImages = !"IE".Equals(httpcontext.Request.Browser.Browser, StringComparison.InvariantCultureIgnoreCase) || httpcontext.Request.Browser.MajorVersion > 7;
+			var browser = requestContext.HttpContext.Request.Browser;
+
+			bool inclImages = !"IE".Equals(browser.Browser, StringComparison.InvariantCultureIgnoreCase) || browser.MajorVersion > 7;
 
 			IImageResource img = resource as IImageResource;
 			if (img != null)
@@ -131,7 +132,9 @@ namespace Calyptus.ResourceManager
 				return;
 			}
 
-			bool inclImages = !"IE".Equals(httpcontext.Request.Browser.Browser, StringComparison.InvariantCultureIgnoreCase) || httpcontext.Request.Browser.MajorVersion > 7;
+			var browser = requestContext.HttpContext.Request.Browser;
+
+			bool inclImages = !"IE".Equals(browser.Browser, StringComparison.InvariantCultureIgnoreCase) || browser.MajorVersion > 7;
 
 			ICSSResource css = resource as ICSSResource;
 			if (css != null)

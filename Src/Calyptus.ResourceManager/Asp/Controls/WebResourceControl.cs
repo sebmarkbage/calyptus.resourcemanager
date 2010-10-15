@@ -65,7 +65,7 @@ namespace Calyptus.ResourceManager
 			{
 				if (_urlFactory == null)
 				{
-					IResourceURLProvider p = Manager.URLProvider;
+					IResourceURLProvider p = ResourceURLProvider.GetURLProvider();
 					IResourceURLControlProvider pc = p as IResourceURLControlProvider;
 					if (pc != null)
 						_urlFactory = pc.GetURLFactory(this);

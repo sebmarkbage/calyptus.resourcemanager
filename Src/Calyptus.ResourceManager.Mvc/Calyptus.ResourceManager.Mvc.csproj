@@ -8,8 +8,8 @@
     <ProjectGuid>{AC738112-2C47-475B-9A8C-3CF2F7ABDB32}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Calyptus.ResourceManager.HtmlHelpers</RootNamespace>
-    <AssemblyName>Calyptus.ResourceManager.HtmlHelpers</AssemblyName>
+    <RootNamespace>Calyptus.ResourceManager</RootNamespace>
+    <AssemblyName>Calyptus.ResourceManager.Mvc</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
@@ -61,9 +61,14 @@
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MultiRoute.cs" />
+    <Compile Include="RoutingResourceHttpHandler.cs" />
     <Compile Include="HtmlHelperExtensions.cs" />
-    <Compile Include="IMvcResourceURLProvider.cs" />
+    <Compile Include="ResourceRouteHandler.cs" />
+    <Compile Include="RoutingExtensions.cs" />
+    <Compile Include="RoutingResourceURLFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UrlHelperExtensions.cs" />
     <Compile Include="ViewContext.cs" />
   </ItemGroup>
   <ItemGroup>

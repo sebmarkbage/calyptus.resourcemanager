@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Calyptus.ResourceManager.TestWebMvc.MvcApplication" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Calyptus.ResourceManager.SampleWebMvc.MvcApplication" Language="C#" %>

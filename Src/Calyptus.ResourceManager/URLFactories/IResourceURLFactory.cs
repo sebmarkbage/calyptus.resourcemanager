@@ -10,14 +10,4 @@ namespace Calyptus.ResourceManager
 	{
 		string GetURL(IResource location);
 	}
-
-	public interface IResourceHttpContextURLFactory
-	{
-		HttpContext Context { set; }
-	}
-
-	public interface IResourceControlURLFactory
-	{
-		Control Control { set; }
-	}
 }

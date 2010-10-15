@@ -13,7 +13,7 @@ namespace Calyptus.ResourceManager
 		private static ViewContext GetContext(HtmlHelper helper)
 		{
 			var mgr = helper.ViewContext.TempData[contextKey] as ViewContext;
-			if (mgr == null) helper.ViewContext.TempData[contextKey] = mgr = new ViewContext(helper.ViewContext.HttpContext);
+			if (mgr == null) helper.ViewContext.TempData[contextKey] = mgr = new ViewContext(helper.ViewContext.RequestContext, helper.RouteCollection["ResourceManager"]);
 			return mgr;
 		}
 

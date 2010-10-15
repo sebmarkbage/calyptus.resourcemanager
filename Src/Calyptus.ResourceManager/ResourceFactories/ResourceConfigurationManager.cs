@@ -11,16 +11,14 @@ namespace Calyptus.ResourceManager
 	{
 		//private ReaderWriterLock _lock;
 		private Action _resetAction;
-		private IResourceURLProvider _urlProvider;
 		private IResourceFactory[] _resourceFactories;
 		private Dictionary<IResourceLocation, IResource> _resourceCache;
 
 		// TODO: Configurable
 
-		protected ResourceConfigurationManager(IResourceURLProvider urlProvider, IResourceFactory[] resourceFactories)
+		protected ResourceConfigurationManager(IResourceFactory[] resourceFactories)
 		{
 			_resourceCache = new Dictionary<IResourceLocation, IResource>();
-			_urlProvider = urlProvider;
 			_resourceFactories = resourceFactories;
 			foreach (IResourceFactory factory in _resourceFactories)
 				factory.Configuration = this;
@@ -28,7 +26,7 @@ namespace Calyptus.ResourceManager
 			_resetAction = new Action(Reset);
 		}
 
-		protected ResourceConfigurationManager() : this(new HttpHandlerURLProvider(), new IResourceFactory[] {
+		protected ResourceConfigurationManager() : this(new IResourceFactory[] {
 					new JavaScriptFactory(),
 					new FileResourceFactory(),
 					new LESSFactory(),
@@ -60,8 +58,6 @@ namespace Calyptus.ResourceManager
 			foreach (var key in _resourceCache.Keys) key.StopMonitorChanges(_resetAction);
 			_resourceCache.Clear();
 		}
-
-		public IResourceURLProvider URLProvider { get { return _urlProvider; } }
 
 		public IResource GetResource(IResourceLocation location)
 		{

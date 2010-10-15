@@ -18,7 +18,7 @@ namespace Calyptus.ResourceManager
 			get { return true; }
 		}
 
-		private string ToHex(byte[] bytes)
+		private static string ToHex(byte[] bytes)
 		{
 			if (bytes == null) return null;
 			StringBuilder sb = new StringBuilder();
@@ -89,11 +89,8 @@ namespace Calyptus.ResourceManager
 				location = new VirtualPathLocation("~/", path);
 
 			IResourceConfiguration config = ResourceConfigurationManager.GetConfiguration();
+			IResourceURLFactory urlFactory = ResourceURLProvider.GetURLProvider().GetURLFactory(context);
 			IResource res = config.GetResource(location);
-			if (res == null) throw new HttpException(404, "Resource not found");
-
-			IProxyResource r = res as IProxyResource;
-			if (r == null) throw new Exception("Resource is not a IProxyResource.");
 
 			if (ps.Length > 1 && ps[1] != "")
 				System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo(int.Parse(ps[1], NumberStyles.AllowHexSpecifier));
@@ -104,12 +101,22 @@ namespace Calyptus.ResourceManager
 			string v = ToHex(res.Version);
 			if (v != version)
 			{
-				response.RedirectLocation = String.Format("{0}?{1}{2}{3}", context.Request.Path, v, ps.Length > 1 ? "-" + ps[1] : null, ps.Length > 2 ? "-" + ps[2] : null);
+				response.RedirectLocation = String.Format("{0}?{1}{2}{3}", request.Path, v, ps.Length > 1 ? "-" + ps[1] : null, ps.Length > 2 ? "-" + ps[2] : null);
 				response.StatusCode = 301;
 				return;
 			}
 
-			if (request.Headers["If-None-Match"] == v)
+			ProcessRequest(request, response, urlFactory, res, version);
+		}
+
+		public static void ProcessRequest(HttpRequest request, HttpResponse response, IResourceURLFactory urlFactory, IResource res, string version)
+		{
+			if (res == null) throw new HttpException(404, "Resource not found");
+
+			IProxyResource r = res as IProxyResource;
+			if (r == null) throw new Exception("Resource is not a IProxyResource.");
+
+			if (version != null && request.Headers["If-None-Match"] == version)
 			{
 				response.Cache.VaryByHeaders["If-None-Match"] = true;
 				response.StatusCode = 304;
@@ -118,7 +125,7 @@ namespace Calyptus.ResourceManager
 
 			response.ContentType = r.ContentType;
 
-			response.Cache.SetETag(version);
+			if (version != null) response.Cache.SetETag(version);
 			response.Cache.VaryByHeaders["Accept-Encoding"] = true;
 			response.Cache.VaryByParams["*"] = true;
 			response.Cache.SetVaryByCustom("browser");
@@ -130,7 +137,7 @@ namespace Calyptus.ResourceManager
 			response.Cache.SetValidUntilExpires(true);
 
 			ICollection<IResource> writtenResources = new Collection<IResource>();
-			IResourceURLFactory urlFactory = config.URLProvider.GetURLFactory(context);
+			
 
 			bool base64support = !"IE".Equals(request.Browser.Browser, StringComparison.InvariantCultureIgnoreCase) || request.Browser.MajorVersion > 8;
 			ITextProxyResource tr;

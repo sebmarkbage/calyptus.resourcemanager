@@ -7,7 +7,6 @@ namespace Calyptus.ResourceManager
 	public interface IResourceConfiguration
 	{
 		IResource GetResource(IResourceLocation location);
-		IResourceURLProvider URLProvider { get; }
 		bool DebugMode { get; }
 	}
 }
