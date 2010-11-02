@@ -68,6 +68,9 @@
   <ItemGroup>
     <Content Include="Content\DependentStyle.css" />
     <Content Include="Global.asax" />
+    <EmbeddedResource Include="Scripts\embedded2.js" />
+    <EmbeddedResource Include="Scripts\embedded1.js" />
+    <Content Include="Scripts\dependent.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -18,7 +18,7 @@ namespace Calyptus.ResourceManager
 			_baseLocation = baseLocation;
 			_ext = defaultExtension;
 
-			_parser = new Regex("(?:^|\\s)\\@(include|import|build|compress)[\\(\\s]\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\;\\)\\,]+)[\\'\\\"]?\\s*(?:,\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\;\\)\\,]+)[\\'\\\"]?)?\\s*(?:,\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\;\\)\\,]+)[\\'\\\"]?)?\\s*[\\)\\n\\;]", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Multiline);
+			_parser = new Regex("(?:^|\\s)\\@(include|import|build|compress)[\\(\\s]\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\;\\)\\,]+)[\\'\\\"]?\\s*(?:,\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\;\\)\\,]+)[\\'\\\"]?)?\\s*(?:,\\s*[\\'\\\"]?((?<=\\\")[^\\\"]*(?=\\\")|(?<=\\')[^\\']*(?=\\')|[^\\s\\'\\;\\)\\,]+)[\\'\\\"]?)?\\s*[\\)\\n\\;]|^[ \\t]*\\<reference(?:[^\\>]+?(?:assembly=\"([^\"]+)\"|(?:name|path)=\"([^\"]+)\"))+[^\\>]*\\>", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.Multiline);
 
 			_includes = new List<IResourceLocation>();
 			_references = new List<IResourceLocation>();
@@ -68,6 +68,18 @@ namespace Calyptus.ResourceManager
 		{
 			foreach (Match m in _parser.Matches(block))
 			{
+				if (m.Groups[6].Success)
+				{
+					var assembly = m.Groups[5].Success ? m.Groups[5].Value : null;
+					var path = m.Groups[6].Value;
+					IEnumerable<IResourceLocation> ls = ResourceLocations.GetLocations(_baseLocation, assembly, path);
+					if (ls == null && assembly == null && _ext != null && !path.EndsWith("*") && !path.Equals(_ext, StringComparison.OrdinalIgnoreCase))
+						ls = ResourceLocations.GetLocations(_baseLocation, null, path + _ext);
+					if (ls != null)
+						_references.AddRange(ls);
+					continue;
+				}
+
 				string command = m.Groups[1].Value;
 				string param1 = m.Groups[2].Success ? m.Groups[2].Value : null;
 				string param2 = m.Groups[3].Success ? m.Groups[3].Value : null;
