@@ -85,6 +85,8 @@
     <Compile Include="Compression\YUICompressor.cs" />
     <Compile Include="Compression\YUI\CustomErrorReporter.cs" />
     <Compile Include="Asp\Controls\Build.cs" />
+    <Compile Include="Html\HtmlProxy.cs" />
+    <Compile Include="Html\HtmlFactory.cs" />
     <Compile Include="CSS\CSSUrlParser.cs" />
     <Compile Include="CSS\ExtendedCSSResource.cs" />
     <Compile Include="FileResources\FileResourceHelper.cs" />

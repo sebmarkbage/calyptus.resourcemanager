@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Calyptus.ResourceManager
 {
-	class ResourceRouteHandler : IRouteHandler
+	public class ResourceRouteHandler : IRouteHandler
 	{
 		public IHttpHandler GetHttpHandler(RequestContext requestContext)
 		{
